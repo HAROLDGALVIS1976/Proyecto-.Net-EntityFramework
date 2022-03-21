@@ -1,0 +1,435 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsVentasweb>
+
+
+
+@{
+    ViewBag.Title = "Ventaweb";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<SelectListItem> ListarCarga = (List<SelectListItem>)ViewBag.ListarCarga;
+    List<SelectListItem> ListarRutas = (List<SelectListItem>)ViewBag.ListarRutas;
+    List<SelectListItem> ListarClientes = (List<SelectListItem>)ViewBag.ListarClientes;
+    List<SelectListItem> ListarTipo = (List<SelectListItem>)ViewBag.ListarTipo;
+    List<SelectListItem> ListarRef = (List<SelectListItem>)ViewBag.ListarRef;
+    List<SelectListItem> ListarUsuarios = (List<SelectListItem>)ViewBag.ListarUsuarios;
+    List<SelectListItem> ListarPlaca = (List<SelectListItem>)ViewBag.ListarPlaca;
+
+}
+
+<br />
+<h3><font color="green"><span>Ventas Web</span></font></h3>
+<h4><font color="green"><span> @DateTime.Today.ToLongDateString()</span></font></h4>
+<br />
+<div class="modal-footer text-left">
+    <button type="button" onclick="Agregar()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Nueva Venta</button>
+    <button type="button" onclick="Cambios()" class="btn btn-success"> Cambios Web</button>
+    <button type="button" onclick="Cargue()" class="btn btn-danger"> Cargue</button>
+</div>
+<br />
+<br />
+<div class="row product-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h4><font color="green"><strong>Monto Ventas Cliente</strong></font></h4>
+                    </div>
+                </div>
+            </div>
+           @using (Ajax.BeginForm("Filtrar", "Admin", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "divUsuario",
+                InsertionMode = InsertionMode.Replace
+            }, new { @id = "frmFiltrar" }))
+            {
+                <div class="col-md-6 col-sm-8 col-xs-12">
+                    <font color="green"><span>@Html.Label("Cliente")</span></font>
+                    @Html.DropDownList("RutaParametro", ListarClientes, new { @class = "form-control" })
+                </div>
+                <br />
+                <div id="divUsuario">
+                    @Html.Partial("_TablaVentaweb", Model)
+                </div>
+            }
+        </div>
+<br />
+<div class="row product-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h4><font color="green"><strong>Filtrar x Carga y Referencia</strong></font></h4>
+                    </div>
+                </div>
+            </div>
+           @using (Ajax.BeginForm("FiltrarReferencias", "Admin", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "divUsuario2",
+                InsertionMode = InsertionMode.Replace
+            }, new { @id = "frmFiltrar2" }))
+            {
+                <div class="col-md-6 col-sm-8 col-xs-12" >
+                    <font color="green"><span> @Html.Label("Carga")</span></font>
+                    @Html.DropDownList("Parametro", ListarCarga, new { @class = "form-control" })
+                </div>
+                <div class="col-md-6 col-sm-8 col-xs-12">
+                    <font color="green"><span> @Html.Label("Referencia")</span></font>
+                    @Html.DropDownList("idreferencia", ListarRef, new { @class = "form-control" })
+                </div>
+                <br />
+                <div id="divUsuario2" >
+                    @Html.Partial("_TablaTotalesCarga", Model)
+                </div>
+            }
+        </div>
+<br />
+<br />
+<br />
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><font color="green"> <span>Ventas Web</span></font></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            @using (Ajax.BeginForm("Guardar", "Admin", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo", null, new { @class = "form-control" })
+                @Html.Hidden("cliente", null, new { @class = "form-control" })
+                @Html.Hidden("ruta", null, new { @class = "form-control" })
+                @Html.Hidden("tipo", null, new { @class = "form-control" })
+                @Html.Hidden("placa", null, new { @class = "form-control" })
+                @Html.Hidden("Ref", null, new { @class = "form-control", @id = "Ref" })
+
+                <div class="modal-body">
+
+                    <div>
+                        @Html.Label("Identificador Carga")
+                        @Html.DropDownList("idcarga", ListarCarga, new { @class = "form-control", @id = "idcarga" })
+                    </div>
+                    <div>
+                        @Html.Label("Fecha de Venta")
+                        @Html.Editor("fechaventa", null, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    </div>
+                    <div>
+                        @Html.Label("Cliente")
+                        @Html.DropDownList("idcliente", ListarClientes, new { @class = "form-control", @id = "idcliente" })
+                    </div>
+                    <div>
+                        @Html.Label("Tipo Venta")
+                        @Html.DropDownList("idtipoventa", ListarTipo, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Valor Minimo de Venta")
+                        @Html.TextBox("valmin_venta", null, new { @class = "form-control", @type = "number", @id = "valmin_venta", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Referencia")
+                        @Html.DropDownList("idref", ListarRef, new { @class = "form-control", @id = "idref" })
+                    </div>
+                    <div>
+                        @Html.Label("Valor Venta")
+                        @Html.Editor("valuni_venta", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "valuni_venta" } })
+                    </div>
+                    <div>
+                        @Html.Label("Cantidad")
+                        @Html.Editor("cant", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "cant" } })
+                    </div>
+                    <div>
+                        @Html.Label("Consecutivo")
+                        @Html.Editor("consecutivo", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("Abono Venta Credito")
+                        @Html.Editor("abono", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" onclick="Multiplicar()" class="btn btn-success">Guardar</button>
+                        <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                    </div>
+                    <div>
+                        @Html.Label("Sub Total")
+                        @Html.Editor("monto_total", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "monto_total", @readOnly = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Placa")
+                        @Html.DropDownList("idcarro", ListarPlaca, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Usuario")
+                        @Html.DropDownList("idusuario", ListarUsuarios, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Ruta")
+                        @Html.DropDownList("idruta", ListarRutas, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Fecha de Pago")
+                        @Html.Editor("fechapago", null, new { htmlAttributes = new { @class = "form-control", @type = "date", @readOnly = "true" } })
+                    </div>
+                    <br />
+                </div>
+            }
+            <div id="error">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><font color="orange"> <span>¿Dese guardar Los Cambios ?</span></font></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div style="padding:1em">
+                <button type="button" id="btnCerrarConfirmacion" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="ConfirmarEliminar()" class="btn btn-success">Aceptar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+    var idref = document.getElementById("idref");
+    idref.onchange = function () {
+        var y = $("#idref").val();
+        BuscaReferencia(y);
+        document.getElementById("Ref").value = idref.options[idref.selectedIndex].text;
+
+    }
+
+    var idcliente = document.getElementById("idcliente");
+    idcliente.onchange = function () {
+        var id = $("#idcliente").val();
+        BuscaRuta(id);
+        Fecha();
+        document.getElementById("cliente").value = idcliente.options[idcliente.selectedIndex].text;
+    }
+
+    var idtipoventa = document.getElementById("idtipoventa");
+    idtipoventa.onchange = function () {
+        document.getElementById("tipo").value = idtipoventa.options[idtipoventa.selectedIndex].text;
+        $("#abono").val(0);
+    }
+
+    var idcarga = document.getElementById("idcarga");
+    idcarga.onchange = function () {
+        var idcarga = $("#idcarga").val();
+        BuscaCarga(idcarga);
+    }
+
+    function Eliminar(idventa) {
+        document.getElementById("titulo").value = idventa;
+    }
+
+    function ConfirmarEliminar() {
+        var idventa = document.getElementById("titulo").value;
+        $.get("Admin/EliminarViaje/?idventa=" + idventa, function (data) {
+
+            if (data == 1) {
+                alert("Se ejecuto correctamente");
+                document.getElementById("btnCerrarConfirmacion").click();
+                $("#frmFiltrar").trigger("submit");
+            } else {
+                alert("Ocurrio un error");
+            }
+
+        })
+
+    }
+
+
+
+    function Multiplicar() {
+        var subtotal = 0;
+        var VALUNI = $("#valuni_venta").val();
+        var VALMIN = $("#valmin_venta").val();
+        var CANT = $("#cant").val();
+
+
+        if (parseInt(VALUNI) >= parseInt(VALMIN)) {
+            subtotal = (CANT * VALUNI);
+            console.info(subtotal);
+            $("#monto_total").val(subtotal);
+
+        } else {
+            $("#valuni_venta").val(0);
+            alert("El Valor de Venta Mininimo debe ser: " + VALMIN + ", Corrija el Valor de Venta por favor");
+        }
+
+    }
+
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var RutaParametro = document.getElementById("RutaParametro");
+    RutaParametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+    // var frmFiltrar2 = document.getElementById("frmFiltrar2");
+    var Parametro = document.getElementById("Parametro");
+    var idreferencia = document.getElementById("idreferencia");
+    idreferencia.onchange = function () {
+        $("#frmFiltrar2").trigger("submit");
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(idventa) {
+        Limpiar();
+        document.getElementById("titulo").value = idventa;
+        $.get("Admin/RecuperarInformacion/?idventa=" + idventa, function (data) {
+            document.getElementById("idref").value = data.idref;
+            document.getElementById("idcliente").value = data.idcliente;
+            document.getElementById("idruta").value = data.idruta;
+            document.getElementById("idtipoventa").value = data.idtipoventa;
+            document.getElementById("idcarro").value = data.idcarro;
+            document.getElementById("idusuario").value = data.idusuario;
+            document.getElementById("Ref").value = data.Ref;
+            document.getElementById("cliente").value = data.cliente;
+            document.getElementById("ruta").value = data.ruta;
+            document.getElementById("tipo").value = data.tipo;
+            document.getElementById("valuni_venta").value = data.valuni_venta;
+            document.getElementById("cant").value = data.cant;
+            document.getElementById("monto_total").value = data.monto_total;
+            document.getElementById("fechaventa").value = data.fechaVentaCadena;
+            document.getElementById("fechapago").value = data.fechaPagoCadena;
+            document.getElementById("placa").value = data.placa;
+            document.getElementById("consecutivo").value = data.consecutivo;
+            document.getElementById("idcarga").value = data.idcarga;
+            document.getElementById("abono").value = data.abono;
+            var idcarga = $("#idcarga").val();
+            BuscaCarga(idcarga);
+            var y = $("#idref").val();
+            BuscaReferencia(y);
+        })
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function BuscaReferencia(id) {
+        document.getElementById("idref").value = id;
+        $.get("Admin/BuscaReferencia/?id=" + id, function (data) {
+            document.getElementById("valmin_venta").value = data.valmin_venta;
+            document.getElementById("valuni_venta").value = data.valuni_venta;
+            var VALUNI = $("#valuni_venta").val();
+            parseInt(VALUNI)
+        })
+    }
+
+
+    //Funcion JvaScript para Recuperar los datos
+    function BuscaRuta(id) {
+        document.getElementById("idcliente").value = id;
+        $.get("Admin/BuscaRuta/?id=" + id, function (data) {
+            document.getElementById("idruta").value = data.idruta;
+            var RUTA = $("#idruta").val();
+            $("#ruta").val(RUTA);
+        })
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function BuscaCarga(idcarga) {
+        document.getElementById("idcarga").value = idcarga;
+
+        $.get("Admin/BuscaCarga/?idcarga=" + idcarga, function (data) {
+            document.getElementById("idusuario").value = data.idusuario;
+            document.getElementById("idcarro").value = data.idcarro;
+            var PLACA = $("#idcarro").val();
+            $("#placa").val(PLACA);
+
+        })
+    }
+
+
+    function Agregar() {
+        Limpiar();
+        document.getElementById("titulo").value = -1;
+    }
+
+    function Cambios() {
+        Limpiar();
+        document.location.href = "@Url.Action("Index","Cambios")";
+    }
+
+     function Cargue() {
+        Limpiar();
+        document.location.href = "@Url.Action("Index","Cargue")";
+    }
+
+
+    //Funcion JavaScript para Guardar y Editar los Registros
+    function Guardar(rpta) {
+        var valventa = $("#valuni_venta").val();
+        var valminimoventa = $("#valmin_venta").val();
+
+        if (parseInt(valventa) >= parseInt(valminimoventa)) {
+
+            if (rpta == "1") {
+                var idcarga = $("#idcarga").val();
+                alert("Se ejecuto correctamente en la Carga con  ID:  " + idcarga + "");
+                document.getElementById("idref").value = "";
+                document.getElementById("cant").value = "";
+                document.getElementById("abono").value = 0;
+                $("#frmFiltrar").trigger("submit");
+            }
+            else {
+                alert("Ocurrio un error");
+
+            }
+
+        }
+        else {
+            $("#valuni_venta").val(0);
+        }
+
+    }
+
+    function Fecha()
+    {
+        var Tipo = $("#tipo").val();
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+        $("#fechapago").val(today);
+
+    }
+
+
+
+
+
+
+</script>

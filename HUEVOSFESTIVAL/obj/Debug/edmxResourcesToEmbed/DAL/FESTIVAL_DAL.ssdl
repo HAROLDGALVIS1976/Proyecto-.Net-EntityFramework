@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FESTIVALModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.ABONOSCOMPRASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ABONOSCOMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ABONO" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHABONO" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.ABONOSVENTASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ABONOSVENTASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ABONO" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHABONO" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="NUIP" />
+    </Key>
+    <Property Name="CLIENTE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CIUDAD" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RUTA" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.COMPRASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="COMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.DEVCOMPRAS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="DEVCOMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALCOSTO_UNI" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHACOMPRA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.DEVENTA_PROD' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="DEVENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAVENTA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.GASTOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="GASTOS">
+    <Key>
+      <PropertyRef Name="COMPROVANTE" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="MONTO" />
+      <PropertyRef Name="BENEFICIARIO" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="DESCRIPCION_DETALLADA" />
+    </Key>
+    <Property Name="COMPROVANTE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTO" Type="float" Nullable="false" />
+    <Property Name="BENEFICIARIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION_DETALLADA" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.ITEMS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ITEMS">
+    <Key>
+      <PropertyRef Name="DESCRIPCION" />
+    </Key>
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.LIBRODIARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="LIBRODIARIO">
+    <Key>
+      <PropertyRef Name="VENTAS" />
+      <PropertyRef Name="COMPRAS" />
+      <PropertyRef Name="GASTOS" />
+      <PropertyRef Name="AB_VENTAS" />
+      <PropertyRef Name="AB_COMPRAS" />
+      <PropertyRef Name="UTILIDAD" />
+      <PropertyRef Name="FECHA" />
+    </Key>
+    <Property Name="VENTAS" Type="float" Nullable="false" />
+    <Property Name="COMPRAS" Type="float" Nullable="false" />
+    <Property Name="GASTOS" Type="float" Nullable="false" />
+    <Property Name="AB_VENTAS" Type="float" Nullable="false" />
+    <Property Name="AB_COMPRAS" Type="float" Nullable="false" />
+    <Property Name="UTILIDAD" Type="float" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PEDIDOS">
+    <Key>
+      <PropertyRef Name="ORDEN" />
+    </Key>
+    <Property Name="ORDEN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PEDIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="FECHA_PEDIDO" Type="datetime" Nullable="false" />
+    <Property Name="FECHA_ENTREGA" Type="datetime" Nullable="false" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROVEEDORES">
+    <Key>
+      <PropertyRef Name="NUIP" />
+    </Key>
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CIUDAD" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REFERENCIAS">
+    <Key>
+      <PropertyRef Name="REF" />
+    </Key>
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT_MINIMA" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="VALVENTA_TOTAL" Type="float" Nullable="false" />
+    <Property Name="IMAGEN" Type="varchar" MaxLength="200" />
+    <Property Name="UNI_MEDIDA" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.USUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="USUARIO" />
+      <PropertyRef Name="CONTRASEÑA" />
+    </Key>
+    <Property Name="USUARIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+    </Key>
+    <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.VENTAINICIAL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VENTAINICIAL">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="SUBTOTAL" />
+    </Key>
+    <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="SUBTOTAL" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.VENTASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VENTASCREDITO">
+    <Key>
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_CLIENTES_ABONOSVENTASCREDITO">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="ABONOSVENTASCREDITO">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_DEVVENTAS">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_PED">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="PEDIDOS" Type="Self.PEDIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="PEDIDOS">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASCREDITO">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="VENTASCREDITO">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASP">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_COMPRASDEVCOMPRAS">
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_DEVVENTAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_PED">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="PEDIDOS" Type="Self.PEDIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="PEDIDOS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_VENTASP">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIASCOMPRAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="COMPRAS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIASDEVCOMPRAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VENTAPROD_DEVVENTAS">
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FESTIVALModel1StoreContainer">
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOS" EntityType="Self.PEDIDOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ABONOSCOMPRASCREDITO].[IDABONO] AS [IDABONO], 
+    [ABONOSCOMPRASCREDITO].[FACTURA] AS [FACTURA], 
+    [ABONOSCOMPRASCREDITO].[PROVEEDOR] AS [PROVEEDOR], 
+    [ABONOSCOMPRASCREDITO].[ABONO] AS [ABONO], 
+    [ABONOSCOMPRASCREDITO].[TIPO] AS [TIPO], 
+    [ABONOSCOMPRASCREDITO].[FECHABONO] AS [FECHABONO], 
+    [ABONOSCOMPRASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[ABONOSCOMPRASCREDITO] AS [ABONOSCOMPRASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ABONOSVENTASCREDITO].[IDABONO] AS [IDABONO], 
+    [ABONOSVENTASCREDITO].[REMISION] AS [REMISION], 
+    [ABONOSVENTASCREDITO].[NUIP] AS [NUIP], 
+    [ABONOSVENTASCREDITO].[ABONO] AS [ABONO], 
+    [ABONOSVENTASCREDITO].[TIPO] AS [TIPO], 
+    [ABONOSVENTASCREDITO].[FECHABONO] AS [FECHABONO], 
+    [ABONOSVENTASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[ABONOSVENTASCREDITO] AS [ABONOSVENTASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [COMPRASCREDITO].[FACTURA] AS [FACTURA], 
+    [COMPRASCREDITO].[PROVEEDOR] AS [PROVEEDOR], 
+    [COMPRASCREDITO].[MONTODEUDA] AS [MONTODEUDA], 
+    [COMPRASCREDITO].[TIPO] AS [TIPO], 
+    [COMPRASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[COMPRASCREDITO] AS [COMPRASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DEVCOMPRAS].[IDCOMPRA] AS [IDCOMPRA], 
+    [DEVCOMPRAS].[FACTURA] AS [FACTURA], 
+    [DEVCOMPRAS].[REF] AS [REF], 
+    [DEVCOMPRAS].[CANT] AS [CANT], 
+    [DEVCOMPRAS].[VALCOSTO_UNI] AS [VALCOSTO_UNI], 
+    [DEVCOMPRAS].[PROVEEDOR] AS [PROVEEDOR], 
+    [DEVCOMPRAS].[MONTO_TOTAL] AS [MONTO_TOTAL], 
+    [DEVCOMPRAS].[TIPO] AS [TIPO], 
+    [DEVCOMPRAS].[FECHACOMPRA] AS [FECHACOMPRA], 
+    [DEVCOMPRAS].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[DEVCOMPRAS] AS [DEVCOMPRAS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DEVENTA_PROD].[IDVENTA] AS [IDVENTA], 
+    [DEVENTA_PROD].[REMISION] AS [REMISION], 
+    [DEVENTA_PROD].[REF] AS [REF], 
+    [DEVENTA_PROD].[DESCRIPCION] AS [DESCRIPCION], 
+    [DEVENTA_PROD].[NUIP] AS [NUIP], 
+    [DEVENTA_PROD].[VALUNI_VENTA] AS [VALUNI_VENTA], 
+    [DEVENTA_PROD].[CANT] AS [CANT], 
+    [DEVENTA_PROD].[MONTO_TOTAL] AS [MONTO_TOTAL], 
+    [DEVENTA_PROD].[TIPO] AS [TIPO], 
+    [DEVENTA_PROD].[FECHAVENTA] AS [FECHAVENTA], 
+    [DEVENTA_PROD].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[DEVENTA_PROD] AS [DEVENTA_PROD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GASTOS" EntityType="Self.GASTOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GASTOS].[COMPROVANTE] AS [COMPROVANTE], 
+    [GASTOS].[FECHA] AS [FECHA], 
+    [GASTOS].[DESCRIPCION] AS [DESCRIPCION], 
+    [GASTOS].[MONTO] AS [MONTO], 
+    [GASTOS].[BENEFICIARIO] AS [BENEFICIARIO], 
+    [GASTOS].[NUIP] AS [NUIP], 
+    [GASTOS].[DESCRIPCION_DETALLADA] AS [DESCRIPCION_DETALLADA]
+    FROM [dbo].[GASTOS] AS [GASTOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ITEMS" EntityType="Self.ITEMS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ITEMS].[DESCRIPCION] AS [DESCRIPCION]
+    FROM [dbo].[ITEMS] AS [ITEMS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LIBRODIARIO].[VENTAS] AS [VENTAS], 
+    [LIBRODIARIO].[COMPRAS] AS [COMPRAS], 
+    [LIBRODIARIO].[GASTOS] AS [GASTOS], 
+    [LIBRODIARIO].[AB_VENTAS] AS [AB_VENTAS], 
+    [LIBRODIARIO].[AB_COMPRAS] AS [AB_COMPRAS], 
+    [LIBRODIARIO].[UTILIDAD] AS [UTILIDAD], 
+    [LIBRODIARIO].[FECHA] AS [FECHA]
+    FROM [dbo].[LIBRODIARIO] AS [LIBRODIARIO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USUARIOS].[USUARIO] AS [USUARIO], 
+    [USUARIOS].[CONTRASEÑA] AS [CONTRASEÑA]
+    FROM [dbo].[USUARIOS] AS [USUARIOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VENTAINICIAL" EntityType="Self.VENTAINICIAL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VENTAINICIAL].[IDVENTA] AS [IDVENTA], 
+    [VENTAINICIAL].[REMISION] AS [REMISION], 
+    [VENTAINICIAL].[REF] AS [REF], 
+    [VENTAINICIAL].[DESCRIPCION] AS [DESCRIPCION], 
+    [VENTAINICIAL].[CANT] AS [CANT], 
+    [VENTAINICIAL].[VALUNI_VENTA] AS [VALUNI_VENTA], 
+    [VENTAINICIAL].[SUBTOTAL] AS [SUBTOTAL]
+    FROM [dbo].[VENTAINICIAL] AS [VENTAINICIAL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VENTASCREDITO].[REMISION] AS [REMISION], 
+    [VENTASCREDITO].[NUIP] AS [NUIP], 
+    [VENTASCREDITO].[MONTODEUDA] AS [MONTODEUDA], 
+    [VENTASCREDITO].[TIPO] AS [TIPO], 
+    [VENTASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[VENTASCREDITO] AS [VENTASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_CLIENTES_ABONOSVENTASCREDITO" Association="Self.fk_CLIENTES_ABONOSVENTASCREDITO">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_DEVVENTAS" Association="Self.fk_CLIENTES_DEVVENTAS">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_PED" Association="Self.fk_CLIENTES_PED">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="PEDIDOS" EntitySet="PEDIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASCREDITO" Association="Self.fk_CLIENTES_VENTASCREDITO">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_COMPRASDEVCOMPRAS" Association="Self.fk_COMPRASDEVCOMPRAS">
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_DEVVENTAS" Association="Self.fk_REFERENCIAS_DEVVENTAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_PED" Association="Self.fk_REFERENCIAS_PED">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="PEDIDOS" EntitySet="PEDIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIASCOMPRAS" Association="Self.fk_REFERENCIASCOMPRAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIASDEVCOMPRAS" Association="Self.fk_REFERENCIASDEVCOMPRAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VENTAPROD_DEVVENTAS" Association="Self.fk_VENTAPROD_DEVVENTAS">
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

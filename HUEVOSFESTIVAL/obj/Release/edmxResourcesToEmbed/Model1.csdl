@@ -1,0 +1,1327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FESTIVALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ABONOSVENTASCREDITO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="IDCLIENTE" />
+    </Key>
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDRUTA" Type="Int32" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="CLIENTES" ToRole="VENTA_PRODWEB" />
+    <NavigationProperty Name="RUTA" Relationship="Self.fk_Ruta" FromRole="CLIENTES" ToRole="RUTA" />
+  </EntityType>
+  <EntityType Name="COMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DEVCOMPRAS" Relationship="Self.fk_COMPRASDEVCOMPRAS" FromRole="COMPRAS" ToRole="DEVCOMPRAS" />
+  </EntityType>
+  <EntityType Name="PROVEEDORES">
+    <Key>
+      <PropertyRef Name="IDPROVEEDOR" />
+    </Key>
+    <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REFERENCIAS">
+    <Key>
+      <PropertyRef Name="IDREF" />
+    </Key>
+    <Property Name="IDREF" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT_MINIMA" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="VALVENTA_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UNI_MEDIDA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.fk_Category" FromRole="REFERENCIAS" ToRole="Tbl_Category" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="REFERENCIAS" ToRole="VENTA_PRODWEB" />
+  </EntityType>
+  <EntityType Name="RUTA">
+    <Key>
+      <PropertyRef Name="IDRUTA" />
+    </Key>
+    <Property Name="IDRUTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRERUTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_Ruta" FromRole="RUTA" ToRole="CLIENTES" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_Ruta_VENTASP" FromRole="RUTA" ToRole="VENTA_PRODWEB" />
+  </EntityType>
+  <EntityType Name="Tbl_Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_Category" FromRole="Tbl_Category" ToRole="REFERENCIAS" />
+  </EntityType>
+  <EntityType Name="Tbl_TIPO">
+    <Key>
+      <PropertyRef Name="IDTIPOVENTA" />
+    </Key>
+    <Property Name="IDTIPOVENTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TIPOVENTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_TIPOVENTA_VENTASP" FromRole="Tbl_TIPO" ToRole="VENTA_PRODWEB" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DEVENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVVENTAS" FromRole="VENTA_PROD" ToRole="DEVENTA_PROD" />
+  </EntityType>
+  <EntityType Name="VENTA_PRODWEB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDREF" Type="Int32" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="IDRUTA" Type="Int32" Nullable="false" />
+    <Property Name="IDTIPOVENTA" Type="Int32" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RUTA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="VENTA_PRODWEB" ToRole="CLIENTES" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="VENTA_PRODWEB" ToRole="REFERENCIAS" />
+    <NavigationProperty Name="RUTA1" Relationship="Self.fk_Ruta_VENTASP" FromRole="VENTA_PRODWEB" ToRole="RUTA" />
+    <NavigationProperty Name="Tbl_TIPO" Relationship="Self.fk_TIPOVENTA_VENTASP" FromRole="VENTA_PRODWEB" ToRole="Tbl_TIPO" />
+  </EntityType>
+  <EntityType Name="ABONOSCOMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="COMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DEVCOMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALCOSTO_UNI" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHACOMPRA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="COMPRAS" Relationship="Self.fk_COMPRASDEVCOMPRAS" FromRole="DEVCOMPRAS" ToRole="COMPRAS" />
+  </EntityType>
+  <EntityType Name="DEVENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAVENTA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVVENTAS" FromRole="DEVENTA_PROD" ToRole="VENTA_PROD" />
+  </EntityType>
+  <EntityType Name="GASTOS">
+    <Key>
+      <PropertyRef Name="COMPROVANTE" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="MONTO" />
+      <PropertyRef Name="BENEFICIARIO" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="DESCRIPCION_DETALLADA" />
+    </Key>
+    <Property Name="COMPROVANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO" Type="Double" Nullable="false" />
+    <Property Name="BENEFICIARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION_DETALLADA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITEMS">
+    <Key>
+      <PropertyRef Name="DESCRIPCION" />
+    </Key>
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LIBRODIARIO">
+    <Key>
+      <PropertyRef Name="VENTAS" />
+      <PropertyRef Name="COMPRAS" />
+      <PropertyRef Name="GASTOS" />
+      <PropertyRef Name="AB_VENTAS" />
+      <PropertyRef Name="AB_COMPRAS" />
+      <PropertyRef Name="UTILIDAD" />
+      <PropertyRef Name="FECHA" />
+    </Key>
+    <Property Name="VENTAS" Type="Double" Nullable="false" />
+    <Property Name="COMPRAS" Type="Double" Nullable="false" />
+    <Property Name="GASTOS" Type="Double" Nullable="false" />
+    <Property Name="AB_VENTAS" Type="Double" Nullable="false" />
+    <Property Name="AB_COMPRAS" Type="Double" Nullable="false" />
+    <Property Name="UTILIDAD" Type="Double" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="VENTAINICIAL">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="SUBTOTAL" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="SUBTOTAL" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENTASCREDITO">
+    <Key>
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BHABILITADO" Type="Int32" />
+  </EntityType>
+  <Association Name="fk_CLIENTES_VENTASP">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ruta">
+    <End Role="RUTA" Type="Self.RUTA" Multiplicity="0..1" />
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RUTA">
+        <PropertyRef Name="IDRUTA" />
+      </Principal>
+      <Dependent Role="CLIENTES">
+        <PropertyRef Name="IDRUTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_COMPRASDEVCOMPRAS">
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="REFERENCIAS">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_VENTASP">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="IDREF" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDREF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ruta_VENTASP">
+    <End Role="RUTA" Type="Self.RUTA" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RUTA">
+        <PropertyRef Name="IDRUTA" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDRUTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TIPOVENTA_VENTASP">
+    <End Role="Tbl_TIPO" Type="Self.Tbl_TIPO" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_TIPO">
+        <PropertyRef Name="IDTIPOVENTA" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDTIPOVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VENTAPROD_DEVVENTAS">
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FESTIVALEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" />
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+    <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" />
+    <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
+    <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" />
+    <EntitySet Name="RUTA" EntityType="Self.RUTA" />
+    <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+    <EntitySet Name="Tbl_TIPO" EntityType="Self.Tbl_TIPO" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" />
+    <EntitySet Name="VENTA_PRODWEB" EntityType="Self.VENTA_PRODWEB" />
+    <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" />
+    <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" />
+    <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" />
+    <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" />
+    <EntitySet Name="GASTOS" EntityType="Self.GASTOS" />
+    <EntitySet Name="ITEMS" EntityType="Self.ITEMS" />
+    <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" />
+    <EntitySet Name="VENTAINICIAL" EntityType="Self.VENTAINICIAL" />
+    <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" />
+    <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ruta" Association="Self.fk_Ruta">
+      <End Role="RUTA" EntitySet="RUTA" />
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_COMPRASDEVCOMPRAS" Association="Self.fk_COMPRASDEVCOMPRAS">
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Category" Association="Self.fk_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ruta_VENTASP" Association="Self.fk_Ruta_VENTASP">
+      <End Role="RUTA" EntitySet="RUTA" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TIPOVENTA_VENTASP" Association="Self.fk_TIPOVENTA_VENTASP">
+      <End Role="Tbl_TIPO" EntitySet="Tbl_TIPO" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VENTAPROD_DEVVENTAS" Association="Self.fk_VENTAPROD_DEVVENTAS">
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <FunctionImport Name="GetBySearch" ReturnType="Collection(FESTIVALModel.GetBySearch_Result)">
+      <Parameter Name="search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BorrarVentaInicial" />
+    <FunctionImport Name="Sp_BuscaCli" ReturnType="Collection(FESTIVALModel.Sp_BuscaCli_Result)">
+      <Parameter Name="cliente" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaCli2" ReturnType="Collection(FESTIVALModel.Sp_BuscaCli2_Result)">
+      <Parameter Name="nuip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaCliente" ReturnType="Collection(FESTIVALModel.Sp_BuscaCliente_Result)" />
+    <FunctionImport Name="Sp_BuscaCliente2" ReturnType="Collection(FESTIVALModel.Sp_BuscaCliente2_Result)" />
+    <FunctionImport Name="Sp_BuscaCompra2" ReturnType="Collection(FESTIVALModel.Sp_BuscaCompra2_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaCompraCredito" ReturnType="Collection(FESTIVALModel.Sp_BuscaCompraCredito_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaCompras" ReturnType="Collection(FESTIVALModel.Sp_BuscaCompras_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaCompras2" ReturnType="Collection(FESTIVALModel.Sp_BuscaCompras2_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaComprasCredito" ReturnType="Collection(FESTIVALModel.Sp_BuscaComprasCredito_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaGastos" ReturnType="Collection(FESTIVALModel.Sp_BuscaGastos_Result)" />
+    <FunctionImport Name="Sp_BuscaGastos2" ReturnType="Collection(FESTIVALModel.Sp_BuscaGastos2_Result)">
+      <Parameter Name="comprobante" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaNuipVentas" ReturnType="Collection(String)">
+      <Parameter Name="remision" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaProv" ReturnType="Collection(FESTIVALModel.Sp_BuscaProv_Result)">
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaProv2" ReturnType="Collection(FESTIVALModel.Sp_BuscaProv2_Result)">
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaProveedor" ReturnType="Collection(FESTIVALModel.Sp_BuscaProveedor_Result)" />
+    <FunctionImport Name="Sp_BuscarComprasCredito" ReturnType="Collection(FESTIVALModel.Sp_BuscarComprasCredito_Result)">
+      <Parameter Name="factura" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaRef" ReturnType="Collection(FESTIVALModel.Sp_BuscaRef_Result)">
+      <Parameter Name="ref" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaRef2" ReturnType="Collection(FESTIVALModel.Sp_BuscaRef2_Result)">
+      <Parameter Name="ref" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaReferencia" ReturnType="Collection(FESTIVALModel.Sp_BuscaReferencia_Result)">
+      <Parameter Name="ref" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscarLibro" ReturnType="Collection(FESTIVALModel.Sp_BuscarLibro_Result)">
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscarVentaCredito" ReturnType="Collection(FESTIVALModel.Sp_BuscarVentaCredito_Result)">
+      <Parameter Name="remision" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaUser" ReturnType="Collection(FESTIVALModel.Sp_BuscaUser_Result)" />
+    <FunctionImport Name="Sp_BuscaVenta" ReturnType="Collection(FESTIVALModel.Sp_BuscaVenta_Result)">
+      <Parameter Name="remision" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaVenta2" ReturnType="Collection(FESTIVALModel.Sp_BuscaVenta2_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaVentaCredito" ReturnType="Collection(FESTIVALModel.Sp_BuscaVentaCredito_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaVentaPerdida" ReturnType="Collection(FESTIVALModel.Sp_BuscaVentaPerdida_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaVentas" ReturnType="Collection(FESTIVALModel.Sp_BuscaVentas_Result)">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_BuscaVentasCredito" ReturnType="Collection(FESTIVALModel.Sp_BuscaVentasCredito_Result)">
+      <Parameter Name="nuip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CargaCboCliente" ReturnType="Collection(String)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CargaCboFactura" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CargaCboFechaPago" ReturnType="Collection(DateTime)">
+      <Parameter Name="remision" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CargaCboNuip" ReturnType="Collection(String)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CargaCboRemision" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CargaCboRemision2" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CargaCboTipo" ReturnType="Collection(String)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CompletaBeneficiario" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaCliente" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaComprobante" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaConsecutivo" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaDescripcion" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaDescripcionGastos" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaNuip" ReturnType="Collection(String)">
+      <Parameter Name="cliente" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CompletaNuipCliente" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaNuipProveedor" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaProveedor" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaRef" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaRefDeventas" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaReferefencia" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaRemision" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_CompletaRuta" ReturnType="Collection(FESTIVALModel.Sp_CompletaRuta_Result)" />
+    <FunctionImport Name="Sp_CompletItem" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_ConsecutivGastos" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoCompras" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoCXC" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoCXP" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoDevCompras" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoDevVentas" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoVentaInicial" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoVentas" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="Sp_ConsecutivoVentas2" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_ConsultaCopras" ReturnType="Collection(FESTIVALModel.Sp_ConsultaCopras_Result)">
+      <Parameter Name="fecha1" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ConsultaCredito" ReturnType="Collection(FESTIVALModel.Sp_ConsultaCredito_Result)">
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ConsultaDevCopras" ReturnType="Collection(FESTIVALModel.Sp_ConsultaDevCopras_Result)">
+      <Parameter Name="fecha1" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarAbonoCompra">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarAbonoVentas">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarClientes">
+      <Parameter Name="nuip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarGasto">
+      <Parameter Name="comprobante" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarProveedor">
+      <Parameter Name="nuip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarVenta">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarVenta2">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminarVentaCredito">
+      <Parameter Name="remision" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_EliminaUser">
+      <Parameter Name="user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_FechaTipo" ReturnType="Collection(FESTIVALModel.Sp_FechaTipo_Result)">
+      <Parameter Name="remision" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaAbonoComprasCredito">
+      <Parameter Name="id" Mode="In" Type="String" />
+      <Parameter Name="factura" Mode="In" Type="String" />
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="abono" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="fechabono" Mode="In" Type="DateTime" />
+      <Parameter Name="fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaAbonoVentaCredito">
+      <Parameter Name="remision" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="abono" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="fechabono" Mode="In" Type="DateTime" />
+      <Parameter Name="fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaCliente">
+      <Parameter Name="cliente" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="ciudad" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="ruta" Mode="In" Type="Int32" />
+      <Parameter Name="habiltado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaCompra">
+      <Parameter Name="idcompra" Mode="In" Type="String" />
+      <Parameter Name="factura" Mode="In" Type="String" />
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="cant" Mode="In" Type="Double" />
+      <Parameter Name="valcosto" Mode="In" Type="Double" />
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="montototal" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="fechacompra" Mode="In" Type="DateTime" />
+      <Parameter Name="fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaCompraCredito">
+      <Parameter Name="factura" Mode="In" Type="String" />
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="abono" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaDevCompra">
+      <Parameter Name="idcompra" Mode="In" Type="String" />
+      <Parameter Name="factura" Mode="In" Type="String" />
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="cant" Mode="In" Type="Double" />
+      <Parameter Name="valcosto" Mode="In" Type="Double" />
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="montototal" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="fechacompra" Mode="In" Type="DateTime" />
+      <Parameter Name="fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaDevVenta">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+      <Parameter Name="Remision" Mode="In" Type="String" />
+      <Parameter Name="Ref" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Nuip" Mode="In" Type="String" />
+      <Parameter Name="Valuniventa" Mode="In" Type="Double" />
+      <Parameter Name="Cant" Mode="In" Type="Double" />
+      <Parameter Name="Monto" Mode="In" Type="Double" />
+      <Parameter Name="Tipo" Mode="In" Type="String" />
+      <Parameter Name="Fechaventa" Mode="In" Type="DateTime" />
+      <Parameter Name="Fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaGasto">
+      <Parameter Name="comprobante" Mode="In" Type="String" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="monto" Mode="In" Type="Double" />
+      <Parameter Name="beneficiario" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="descripcion2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaLibro">
+      <Parameter Name="ventas" Mode="In" Type="Double" />
+      <Parameter Name="compras" Mode="In" Type="Double" />
+      <Parameter Name="gastos" Mode="In" Type="Double" />
+      <Parameter Name="abonocxc" Mode="In" Type="Double" />
+      <Parameter Name="abonocxp" Mode="In" Type="Double" />
+      <Parameter Name="utilidad" Mode="In" Type="Double" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaProveedor">
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="ciudad" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaRef">
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Cant" Mode="In" Type="Double" />
+      <Parameter Name="Costounidad" Mode="In" Type="Double" />
+      <Parameter Name="ValventaUni" Mode="In" Type="Double" />
+      <Parameter Name="Cantminima" Mode="In" Type="Double" />
+      <Parameter Name="Costototal" Mode="In" Type="Double" />
+      <Parameter Name="Ventatotal" Mode="In" Type="Double" />
+      <Parameter Name="Imagen" Mode="In" Type="String" />
+      <Parameter Name="Unimed" Mode="In" Type="String" />
+      <Parameter Name="Categoria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaUser">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="contraseña" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaVentaCredito">
+      <Parameter Name="remision" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="abono" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaVentaIni">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+      <Parameter Name="Remision" Mode="In" Type="String" />
+      <Parameter Name="Ref" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Cant" Mode="In" Type="Double" />
+      <Parameter Name="Valuniventa" Mode="In" Type="Double" />
+      <Parameter Name="Subtot" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_GuardaVentaTotal">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+      <Parameter Name="Remision" Mode="In" Type="String" />
+      <Parameter Name="Ref" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Nuip" Mode="In" Type="String" />
+      <Parameter Name="Valuniventa" Mode="In" Type="Double" />
+      <Parameter Name="Cant" Mode="In" Type="Double" />
+      <Parameter Name="Monto" Mode="In" Type="Double" />
+      <Parameter Name="Tipo" Mode="In" Type="String" />
+      <Parameter Name="Fechaventa" Mode="In" Type="DateTime" />
+      <Parameter Name="Fechapago" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaCliente">
+      <Parameter Name="cliente" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="ciudad" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="ruta" Mode="In" Type="Int32" />
+      <Parameter Name="habiltado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaCompraCXP">
+      <Parameter Name="id" Mode="In" Type="String" />
+      <Parameter Name="total" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaCompras">
+      <Parameter Name="idcompra" Mode="In" Type="String" />
+      <Parameter Name="cant" Mode="In" Type="Double" />
+      <Parameter Name="monto" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaGasto">
+      <Parameter Name="comprobante" Mode="In" Type="String" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="monto" Mode="In" Type="Double" />
+      <Parameter Name="beneficiario" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="descripcion2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaLibro">
+      <Parameter Name="ventas" Mode="In" Type="Double" />
+      <Parameter Name="compras" Mode="In" Type="Double" />
+      <Parameter Name="gastos" Mode="In" Type="Double" />
+      <Parameter Name="abonocxc" Mode="In" Type="Double" />
+      <Parameter Name="abonocxp" Mode="In" Type="Double" />
+      <Parameter Name="utilidad" Mode="In" Type="Double" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaProveedor">
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="ciudad" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificarComprasCredito">
+      <Parameter Name="factura" Mode="In" Type="String" />
+      <Parameter Name="abono" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaRef">
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Cant" Mode="In" Type="Double" />
+      <Parameter Name="Costounidad" Mode="In" Type="Double" />
+      <Parameter Name="ValventaUni" Mode="In" Type="Double" />
+      <Parameter Name="Cantminima" Mode="In" Type="Double" />
+      <Parameter Name="Costototal" Mode="In" Type="Double" />
+      <Parameter Name="Ventatotal" Mode="In" Type="Double" />
+      <Parameter Name="Imagen" Mode="In" Type="String" />
+      <Parameter Name="Unimed" Mode="In" Type="String" />
+      <Parameter Name="Categoria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaReferencia">
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="cant" Mode="In" Type="Double" />
+      <Parameter Name="valtotcosto" Mode="In" Type="Double" />
+      <Parameter Name="valtotventa" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaReferenciaPP">
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="cant" Mode="In" Type="Double" />
+      <Parameter Name="costopp" Mode="In" Type="Double" />
+      <Parameter Name="valtotcosto" Mode="In" Type="Double" />
+      <Parameter Name="valtotventa" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificarVentaCredito">
+      <Parameter Name="remision" Mode="In" Type="String" />
+      <Parameter Name="abono" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaUser">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="contraseña" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaVenta">
+      <Parameter Name="idventa" Mode="In" Type="String" />
+      <Parameter Name="cant" Mode="In" Type="Double" />
+      <Parameter Name="monto" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ModificaVentaCredito">
+      <Parameter Name="remision" Mode="In" Type="String" />
+      <Parameter Name="monto" Mode="In" Type="Double" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_MostrarCategoria" ReturnType="Collection(FESTIVALModel.Sp_MostrarCategoria_Result)" />
+    <FunctionImport Name="Sp_MostrarCompras2" ReturnType="Collection(FESTIVALModel.Sp_MostrarCompras2_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_MostrarDevCompras" ReturnType="Collection(FESTIVALModel.Sp_MostrarDevCompras_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_MostrarDevVentaTotal" ReturnType="Collection(FESTIVALModel.Sp_MostrarDevVentaTotal_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_MostrarLibro" ReturnType="Collection(FESTIVALModel.Sp_MostrarLibro_Result)">
+      <Parameter Name="parametro" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_MostrarRef" ReturnType="Collection(FESTIVALModel.Sp_MostrarRef_Result)" />
+    <FunctionImport Name="Sp_MostrarVentaInicial" ReturnType="Collection(FESTIVALModel.Sp_MostrarVentaInicial_Result)" />
+    <FunctionImport Name="Sp_MostrarVentaTotal" ReturnType="Collection(FESTIVALModel.Sp_MostrarVentaTotal_Result)" />
+    <FunctionImport Name="Sp_ValidaCliente" ReturnType="Collection(Int32)">
+      <Parameter Name="cliente" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ValidaCompra" ReturnType="Collection(Int32)">
+      <Parameter Name="idcompra" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ValidaGasto" ReturnType="Collection(Int32)">
+      <Parameter Name="comprobante" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ValidaProveedor" ReturnType="Collection(Int32)">
+      <Parameter Name="proveedor" Mode="In" Type="String" />
+      <Parameter Name="nuip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Validar" ReturnType="Collection(Int32)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="contraseña" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ValidarDescripcion" ReturnType="Collection(Int32)">
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Validaref" ReturnType="Collection(Int32)">
+      <Parameter Name="ref" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Validareferencia" ReturnType="Collection(Int32)">
+      <Parameter Name="ref" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ValidarLibro" ReturnType="Collection(Int32)">
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ValidFactura" ReturnType="Collection(Int32)">
+      <Parameter Name="factura" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetBySearch_Result">
+    <Property Type="Int32" Name="IDREF" Nullable="false" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT_MINIMA" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_TOTAL" Nullable="false" />
+    <Property Type="Double" Name="VALVENTA_TOTAL" Nullable="false" />
+    <Property Type="String" Name="IMAGEN" Nullable="false" />
+    <Property Type="String" Name="UNI_MEDIDA" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+    <Property Type="Int32" Name="CategoryId1" Nullable="true" />
+    <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="BHABILITADO1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCli_Result">
+    <Property Type="Int32" Name="IDCLIENTE" Nullable="false" />
+    <Property Type="String" Name="CLIENTE" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CIUDAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IDRUTA" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCli2_Result">
+    <Property Type="Int32" Name="IDCLIENTE" Nullable="false" />
+    <Property Type="String" Name="CLIENTE" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CIUDAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IDRUTA" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCliente_Result">
+    <Property Type="Int32" Name="IDCLIENTE" Nullable="false" />
+    <Property Type="String" Name="CLIENTE" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CIUDAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IDRUTA" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCliente2_Result">
+    <Property Type="String" Name="CLIENTE" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCompra2_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCompraCredito_Result">
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCompras_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaCompras2_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaComprasCredito_Result">
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTODEUDA" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaGastos_Result">
+    <Property Type="String" Name="COMPROVANTE" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO" Nullable="false" />
+    <Property Type="String" Name="BENEFICIARIO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION_DETALLADA" Nullable="false" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaGastos2_Result">
+    <Property Type="String" Name="COMPROVANTE" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO" Nullable="false" />
+    <Property Type="String" Name="BENEFICIARIO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION_DETALLADA" Nullable="false" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaProv_Result">
+    <Property Type="Int32" Name="IDPROVEEDOR" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CIUDAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaProv2_Result">
+    <Property Type="Int32" Name="IDPROVEEDOR" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CIUDAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaProveedor_Result">
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DIRECCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="TELEFONO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CIUDAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscarComprasCredito_Result">
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTODEUDA" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaRef_Result">
+    <Property Type="Int32" Name="IDREF" Nullable="false" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT_MINIMA" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_TOTAL" Nullable="false" />
+    <Property Type="Double" Name="VALVENTA_TOTAL" Nullable="false" />
+    <Property Type="String" Name="IMAGEN" Nullable="false" />
+    <Property Type="String" Name="UNI_MEDIDA" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaRef2_Result">
+    <Property Type="Int32" Name="IDREF" Nullable="false" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT_MINIMA" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_TOTAL" Nullable="false" />
+    <Property Type="Double" Name="VALVENTA_TOTAL" Nullable="false" />
+    <Property Type="String" Name="IMAGEN" Nullable="false" />
+    <Property Type="String" Name="UNI_MEDIDA" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaReferencia_Result">
+    <Property Type="Int32" Name="IDREF" Nullable="false" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT_MINIMA" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_TOTAL" Nullable="false" />
+    <Property Type="Double" Name="VALVENTA_TOTAL" Nullable="false" />
+    <Property Type="String" Name="IMAGEN" Nullable="false" />
+    <Property Type="String" Name="UNI_MEDIDA" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscarLibro_Result">
+    <Property Type="Double" Name="VENTAS" Nullable="false" />
+    <Property Type="Double" Name="COMPRAS" Nullable="false" />
+    <Property Type="Double" Name="GASTOS" Nullable="false" />
+    <Property Type="Double" Name="AB_VENTAS" Nullable="false" />
+    <Property Type="Double" Name="AB_COMPRAS" Nullable="false" />
+    <Property Type="Double" Name="UTILIDAD" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscarVentaCredito_Result">
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="MONTODEUDA" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaUser_Result">
+    <Property Type="String" Name="USUARIO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CONTRASEÑA" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaVenta_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAVENTA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaVenta2_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAVENTA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaVentaCredito_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaVentaPerdida_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaVentas_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAVENTA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_BuscaVentasCredito_Result">
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="MONTODEUDA" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_CompletaRuta_Result">
+    <Property Type="Int32" Name="IDRUTA" Nullable="false" />
+    <Property Type="String" Name="NOMBRERUTA" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="Sp_ConsultaCopras_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_ConsultaCredito_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_ConsultaDevCopras_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_FechaTipo_Result">
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAVENTA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarCategoria_Result">
+    <Property Type="Int32" Name="CategoryId" Nullable="false" />
+    <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarCompras2_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarDevCompras_Result">
+    <Property Type="String" Name="IDCOMPRA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FACTURA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="String" Name="PROVEEDOR" Nullable="false" MaxLength="150" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHACOMPRA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarDevVentaTotal_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAVENTA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarLibro_Result">
+    <Property Type="Double" Name="VENTAS" Nullable="false" />
+    <Property Type="Double" Name="COMPRAS" Nullable="false" />
+    <Property Type="Double" Name="GASTOS" Nullable="false" />
+    <Property Type="Double" Name="AB_VENTAS" Nullable="false" />
+    <Property Type="Double" Name="AB_COMPRAS" Nullable="false" />
+    <Property Type="Double" Name="UTILIDAD" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarRef_Result">
+    <Property Type="Int32" Name="IDREF" Nullable="false" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_UNI" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT_MINIMA" Nullable="false" />
+    <Property Type="Double" Name="VALCOSTO_TOTAL" Nullable="false" />
+    <Property Type="Double" Name="VALVENTA_TOTAL" Nullable="false" />
+    <Property Type="String" Name="IMAGEN" Nullable="false" />
+    <Property Type="String" Name="UNI_MEDIDA" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="CategoryId" Nullable="true" />
+    <Property Type="Int32" Name="BHABILITADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarVentaInicial_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="SUBTOTAL" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Sp_MostrarVentaTotal_Result">
+    <Property Type="String" Name="IDVENTA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="REMISION" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="REF" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="NUIP" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="VALUNI_VENTA" Nullable="false" />
+    <Property Type="Double" Name="CANT" Nullable="false" />
+    <Property Type="Double" Name="MONTO_TOTAL" Nullable="false" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHAVENTA" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FECHAPAGO" Nullable="false" Precision="23" />
+  </ComplexType>
+</Schema>

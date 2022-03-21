@@ -1,0 +1,32 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsClientes>
+@{
+    Layout = null;
+
+}
+
+<table class="table table-bordered table-hover">
+
+    <tr>
+
+        <td>@Html.LabelFor(p => Model[0].idcliente)</td>
+        <td>@Html.LabelFor(p => Model[0].cliente)</td>
+        <td>@Html.LabelFor(p => Model[0].idruta)</td>
+        <td>Editar</td>
+
+    </tr>
+    @foreach (var item in Model)
+     {
+        <tr>
+            <td>@item.idcliente</td>
+            <td>@item.cliente</td>
+            <td>@item.idruta</td>
+            <td>
+                <button type="button" onclick="Editar(@item.idcliente)" class="btn btn-success glyphicon glyphicon-edit" data-toggle="modal" data-target="#exampleModal"></button>
+            </td>
+
+        </tr>
+     }
+
+</table>
+

@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FESTIVALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ABONOSCOMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="PROVEEDORES" Relationship="Self.fk_ABONOCOMPRAS_CREDITO" FromRole="ABONOSCOMPRASCREDITO" ToRole="PROVEEDORES" />
+  </EntityType>
+  <EntityType Name="ABONOSVENTASCREDITO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+    <Property Name="CONSECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_ABONOSVENTASCRED" FromRole="ABONOSVENTASCREDITO" ToRole="CARROS" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_ABONOSVENTASCRED" FromRole="ABONOSVENTASCREDITO" ToRole="CLIENTES" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USUARIOS_ABONOSVENTASCRED" FromRole="ABONOSVENTASCREDITO" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="BALANCERUTA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EXTR" Type="Int32" Nullable="false" />
+    <Property Name="AAR" Type="Int32" Nullable="false" />
+    <Property Name="AR" Type="Int32" Nullable="false" />
+    <Property Name="BR" Type="Int32" Nullable="false" />
+    <Property Name="EXTB" Type="Int32" Nullable="false" />
+    <Property Name="AAB" Type="Int32" Nullable="false" />
+    <Property Name="AB" Type="Int32" Nullable="false" />
+    <Property Name="BB" Type="Int32" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+    <Property Name="VENTASCONTADO" Type="Double" Nullable="false" />
+    <Property Name="VENTASCREDITO" Type="Double" Nullable="false" />
+    <Property Name="ABONOS" Type="Double" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DEXTR" Type="Int32" Nullable="false" />
+    <Property Name="DAAR" Type="Int32" Nullable="false" />
+    <Property Name="DAR" Type="Int32" Nullable="false" />
+    <Property Name="DBR" Type="Int32" Nullable="false" />
+    <Property Name="DEXTB" Type="Int32" Nullable="false" />
+    <Property Name="DAAB" Type="Int32" Nullable="false" />
+    <Property Name="DAB" Type="Int32" Nullable="false" />
+    <Property Name="DBB" Type="Int32" Nullable="false" />
+    <Property Name="MONTOEFECTIVO" Type="Double" Nullable="false" />
+    <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+    <Property Name="DIFERENCIA" Type="Double" Nullable="false" />
+    <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_BALANCE" FromRole="BALANCERUTA" ToRole="CARGUE" />
+    <NavigationProperty Name="CARROS" Relationship="Self.fk_CARRO_BALANCE" FromRole="BALANCERUTA" ToRole="CARROS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USUARIO_BALANCE" FromRole="BALANCERUTA" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="CAMBIOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="IDREF" Type="Int32" Nullable="false" />
+    <Property Name="CANT" Type="Int32" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_CAMBIOS" FromRole="CAMBIOS" ToRole="CARGUE" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_CAMBIOS" FromRole="CAMBIOS" ToRole="CLIENTES" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USERS_CAMBIOS" FromRole="CAMBIOS" ToRole="USUARIOS" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_USERS_REFERENCIAS" FromRole="CAMBIOS" ToRole="REFERENCIAS" />
+  </EntityType>
+  <EntityType Name="CARGUE">
+    <Key>
+      <PropertyRef Name="IDCARGA" />
+    </Key>
+    <Property Name="IDCARGA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EXTR" Type="Int32" Nullable="false" />
+    <Property Name="AAR" Type="Int32" Nullable="false" />
+    <Property Name="AR" Type="Int32" Nullable="false" />
+    <Property Name="BR" Type="Int32" Nullable="false" />
+    <Property Name="EXTB" Type="Int32" Nullable="false" />
+    <Property Name="AAB" Type="Int32" Nullable="false" />
+    <Property Name="AB" Type="Int32" Nullable="false" />
+    <Property Name="BB" Type="Int32" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="BALANCERUTA" Relationship="Self.fk_CARGUE_BALANCE" FromRole="CARGUE" ToRole="BALANCERUTA" />
+    <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_CARGUE_CAMBIOS" FromRole="CARGUE" ToRole="CAMBIOS" />
+    <NavigationProperty Name="CARGUE2" Relationship="Self.fk_CARGUE_CARGUE2" FromRole="CARGUE" ToRole="CARGUE2" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_CARGUE_VENTASP" FromRole="CARGUE" ToRole="VENTA_PRODWEB" />
+    <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_CARGUE" FromRole="CARGUE" ToRole="CARROS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USU_CAMBIOS" FromRole="CARGUE" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="CARGUE2">
+    <Key>
+      <PropertyRef Name="IDCARGA2" />
+    </Key>
+    <Property Name="IDCARGA2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EXTR" Type="Int32" Nullable="false" />
+    <Property Name="AAR" Type="Int32" Nullable="false" />
+    <Property Name="AR" Type="Int32" Nullable="false" />
+    <Property Name="BR" Type="Int32" Nullable="false" />
+    <Property Name="EXTB" Type="Int32" Nullable="false" />
+    <Property Name="AAB" Type="Int32" Nullable="false" />
+    <Property Name="AB" Type="Int32" Nullable="false" />
+    <Property Name="BB" Type="Int32" Nullable="false" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_CARGUE2" FromRole="CARGUE2" ToRole="CARGUE" />
+    <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_CARGUE2" FromRole="CARGUE2" ToRole="CARROS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USU_CARGUE2" FromRole="CARGUE2" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="CARROS">
+    <Key>
+      <PropertyRef Name="IDCARRO" />
+    </Key>
+    <Property Name="IDCARRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PLACA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_CARROS_ABONOSVENTASCRED" FromRole="CARROS" ToRole="ABONOSVENTASCREDITO" />
+    <NavigationProperty Name="BALANCERUTA" Relationship="Self.fk_CARRO_BALANCE" FromRole="CARROS" ToRole="BALANCERUTA" />
+    <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARROS_CARGUE" FromRole="CARROS" ToRole="CARGUE" />
+    <NavigationProperty Name="CARGUE2" Relationship="Self.fk_CARROS_CARGUE2" FromRole="CARROS" ToRole="CARGUE2" />
+    <NavigationProperty Name="VENTASCREDITO" Relationship="Self.fk_CARROS_VENTASCRED" FromRole="CARROS" ToRole="VENTASCREDITO" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="IDCLIENTE" />
+    </Key>
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDRUTA" Type="Int32" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_CLIENTES_ABONOSVENTASCRED" FromRole="CLIENTES" ToRole="ABONOSVENTASCREDITO" />
+    <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_CLIENTES_CAMBIOS" FromRole="CLIENTES" ToRole="CAMBIOS" />
+    <NavigationProperty Name="RUTA" Relationship="Self.FK__CLIENTES__IDRUTA__33D4B598" FromRole="CLIENTES" ToRole="RUTA" />
+    <NavigationProperty Name="TIPOUSUARIOREGISTRO" Relationship="Self.FK__CLIENTES__TIPOUS__34C8D9D1" FromRole="CLIENTES" ToRole="TIPOUSUARIOREGISTRO" />
+    <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_CLIENTES_VENTAS_PROD" FromRole="CLIENTES" ToRole="VENTA_PROD" />
+    <NavigationProperty Name="VENTASCREDITO" Relationship="Self.fk_CLIENTES_VENTASCRED" FromRole="CLIENTES" ToRole="VENTASCREDITO" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="CLIENTES" ToRole="VENTA_PRODWEB" />
+  </EntityType>
+  <EntityType Name="COMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="PROVEEDORES" Relationship="Self.fk_COMPRAS_CONTADO" FromRole="COMPRAS" ToRole="PROVEEDORES" />
+  </EntityType>
+  <EntityType Name="CONSECUTIVO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CONSECUTIVO1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="IIDEMPLEADO" />
+    </Key>
+    <Property Name="IIDEMPLEADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+    <Property Name="SUELDO" Type="Double" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="Int32" />
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK__EMPLEADO__IDUSUA__286302EC" FromRole="EMPLEADO" ToRole="USUARIOS" />
+    <NavigationProperty Name="TIPOUSUARIOREGISTRO" Relationship="Self.FK__EMPLEADO__TIPOUS__29572725" FromRole="EMPLEADO" ToRole="TIPOUSUARIOREGISTRO" />
+  </EntityType>
+  <EntityType Name="ITEMS">
+    <Key>
+      <PropertyRef Name="IDITEM" />
+    </Key>
+    <Property Name="IDITEM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PROVEEDORES">
+    <Key>
+      <PropertyRef Name="IDPROVEEDOR" />
+    </Key>
+    <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="ABONOSCOMPRASCREDITO" Relationship="Self.fk_ABONOCOMPRAS_CREDITO" FromRole="PROVEEDORES" ToRole="ABONOSCOMPRASCREDITO" />
+    <NavigationProperty Name="COMPRAS" Relationship="Self.fk_COMPRAS_CONTADO" FromRole="PROVEEDORES" ToRole="COMPRAS" />
+  </EntityType>
+  <EntityType Name="REFERENCIAS">
+    <Key>
+      <PropertyRef Name="IDREF" />
+    </Key>
+    <Property Name="IDREF" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT_MINIMA" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="VALVENTA_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UNI_MEDIDA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="VALMIN_VENTA" Type="Double" />
+    <Property Name="PORCENTAJE" Type="Double" />
+    <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_USERS_REFERENCIAS" FromRole="REFERENCIAS" ToRole="CAMBIOS" />
+    <NavigationProperty Name="Tbl_Category" Relationship="Self.fk_Category" FromRole="REFERENCIAS" ToRole="Tbl_Category" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="REFERENCIAS" ToRole="VENTA_PRODWEB" />
+  </EntityType>
+  <EntityType Name="RUTA">
+    <Key>
+      <PropertyRef Name="IDRUTA" />
+    </Key>
+    <Property Name="IDRUTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRERUTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.FK__CLIENTES__IDRUTA__33D4B598" FromRole="RUTA" ToRole="CLIENTES" />
+  </EntityType>
+  <EntityType Name="Tbl_Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_Category" FromRole="Tbl_Category" ToRole="REFERENCIAS" />
+  </EntityType>
+  <EntityType Name="Tbl_TIPO">
+    <Key>
+      <PropertyRef Name="IDTIPOVENTA" />
+    </Key>
+    <Property Name="IDTIPOVENTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TIPOVENTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_TIPOVENTA_VENTASP" FromRole="Tbl_TIPO" ToRole="VENTA_PRODWEB" />
+  </EntityType>
+  <EntityType Name="TIPOUSUARIOREGISTRO">
+    <Key>
+      <PropertyRef Name="TIPOUSUARIO" />
+    </Key>
+    <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.FK__CLIENTES__TIPOUS__34C8D9D1" FromRole="TIPOUSUARIOREGISTRO" ToRole="CLIENTES" />
+    <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__EMPLEADO__TIPOUS__29572725" FromRole="TIPOUSUARIOREGISTRO" ToRole="EMPLEADO" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__TIPOUS__25869641" FromRole="TIPOUSUARIOREGISTRO" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="IDUSUARIO" />
+    </Key>
+    <Property Name="IDUSUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="IID" Type="Int32" />
+    <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_USUARIOS_ABONOSVENTASCRED" FromRole="USUARIOS" ToRole="ABONOSVENTASCREDITO" />
+    <NavigationProperty Name="BALANCERUTA" Relationship="Self.fk_USUARIO_BALANCE" FromRole="USUARIOS" ToRole="BALANCERUTA" />
+    <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_USERS_CAMBIOS" FromRole="USUARIOS" ToRole="CAMBIOS" />
+    <NavigationProperty Name="CARGUE" Relationship="Self.fk_USU_CAMBIOS" FromRole="USUARIOS" ToRole="CARGUE" />
+    <NavigationProperty Name="CARGUE2" Relationship="Self.fk_USU_CARGUE2" FromRole="USUARIOS" ToRole="CARGUE2" />
+    <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__EMPLEADO__IDUSUA__286302EC" FromRole="USUARIOS" ToRole="EMPLEADO" />
+    <NavigationProperty Name="TIPOUSUARIOREGISTRO" Relationship="Self.FK__USUARIOS__TIPOUS__25869641" FromRole="USUARIOS" ToRole="TIPOUSUARIOREGISTRO" />
+  </EntityType>
+  <EntityType Name="VENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="UTILIDAD" Type="Double" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTAS_PROD" FromRole="VENTA_PROD" ToRole="CLIENTES" />
+    <NavigationProperty Name="DEVENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVENTAS" FromRole="VENTA_PROD" ToRole="DEVENTA_PROD" />
+  </EntityType>
+  <EntityType Name="VENTA_PRODWEB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+    <Property Name="IDREF" Type="Int32" Nullable="false" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="IDTIPOVENTA" Type="Int32" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTOVENTA" Type="Double" Nullable="false" />
+    <Property Name="CONSECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_VENTASP" FromRole="VENTA_PRODWEB" ToRole="CARGUE" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="VENTA_PRODWEB" ToRole="CLIENTES" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="VENTA_PRODWEB" ToRole="REFERENCIAS" />
+    <NavigationProperty Name="Tbl_TIPO" Relationship="Self.fk_TIPOVENTA_VENTASP" FromRole="VENTA_PRODWEB" ToRole="Tbl_TIPO" />
+  </EntityType>
+  <EntityType Name="VENTASCREDITO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+    <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+    <Property Name="CONSECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_VENTASCRED" FromRole="VENTASCREDITO" ToRole="CARROS" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASCRED" FromRole="VENTASCREDITO" ToRole="CLIENTES" />
+  </EntityType>
+  <EntityType Name="COMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DEVCOMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALCOSTO_UNI" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHACOMPRA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="Int32" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DEVENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAVENTA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVENTAS" FromRole="DEVENTA_PROD" ToRole="VENTA_PROD" />
+  </EntityType>
+  <EntityType Name="GASTOS">
+    <Key>
+      <PropertyRef Name="COMPROVANTE" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="MONTO" />
+      <PropertyRef Name="BENEFICIARIO" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="DESCRIPCION_DETALLADA" />
+    </Key>
+    <Property Name="COMPROVANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO" Type="Double" Nullable="false" />
+    <Property Name="BENEFICIARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION_DETALLADA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BHABILITADO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LIBRODIARIO">
+    <Key>
+      <PropertyRef Name="VENTAS" />
+      <PropertyRef Name="COMPRAS" />
+      <PropertyRef Name="GASTOS" />
+      <PropertyRef Name="VENTASCRED" />
+      <PropertyRef Name="AB_COMPRAS" />
+      <PropertyRef Name="UTILIDAD" />
+      <PropertyRef Name="FECHA" />
+    </Key>
+    <Property Name="VENTAS" Type="Double" Nullable="false" />
+    <Property Name="COMPRAS" Type="Double" Nullable="false" />
+    <Property Name="GASTOS" Type="Double" Nullable="false" />
+    <Property Name="VENTASCRED" Type="Double" Nullable="false" />
+    <Property Name="AB_COMPRAS" Type="Double" Nullable="false" />
+    <Property Name="UTILIDAD" Type="Double" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="fk_ABONOCOMPRAS_CREDITO">
+    <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+    <End Role="ABONOSCOMPRASCREDITO" Type="Self.ABONOSCOMPRASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDORES">
+        <PropertyRef Name="IDPROVEEDOR" />
+      </Principal>
+      <Dependent Role="ABONOSCOMPRASCREDITO">
+        <PropertyRef Name="IDPROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARROS_ABONOSVENTASCRED">
+    <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+    <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARROS">
+        <PropertyRef Name="IDCARRO" />
+      </Principal>
+      <Dependent Role="ABONOSVENTASCREDITO">
+        <PropertyRef Name="IDCARRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_ABONOSVENTASCRED">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="ABONOSVENTASCREDITO">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USUARIOS_ABONOSVENTASCRED">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="ABONOSVENTASCREDITO">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARGUE_BALANCE">
+    <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+    <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGUE">
+        <PropertyRef Name="IDCARGA" />
+      </Principal>
+      <Dependent Role="BALANCERUTA">
+        <PropertyRef Name="IDCARGA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARRO_BALANCE">
+    <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+    <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARROS">
+        <PropertyRef Name="IDCARRO" />
+      </Principal>
+      <Dependent Role="BALANCERUTA">
+        <PropertyRef Name="IDCARRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USUARIO_BALANCE">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="BALANCERUTA">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARGUE_CAMBIOS">
+    <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+    <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGUE">
+        <PropertyRef Name="IDCARGA" />
+      </Principal>
+      <Dependent Role="CAMBIOS">
+        <PropertyRef Name="IDCARGA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_CAMBIOS">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="CAMBIOS">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USERS_CAMBIOS">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="CAMBIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USERS_REFERENCIAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="IDREF" />
+      </Principal>
+      <Dependent Role="CAMBIOS">
+        <PropertyRef Name="IDREF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARGUE_CARGUE2">
+    <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+    <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGUE">
+        <PropertyRef Name="IDCARGA" />
+      </Principal>
+      <Dependent Role="CARGUE2">
+        <PropertyRef Name="IDCARGA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARGUE_VENTASP">
+    <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGUE">
+        <PropertyRef Name="IDCARGA" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDCARGA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARROS_CARGUE">
+    <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+    <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARROS">
+        <PropertyRef Name="IDCARRO" />
+      </Principal>
+      <Dependent Role="CARGUE">
+        <PropertyRef Name="IDCARRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USU_CAMBIOS">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="CARGUE">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARROS_CARGUE2">
+    <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+    <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARROS">
+        <PropertyRef Name="IDCARRO" />
+      </Principal>
+      <Dependent Role="CARGUE2">
+        <PropertyRef Name="IDCARRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USU_CARGUE2">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="CARGUE2">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CARROS_VENTASCRED">
+    <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+    <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARROS">
+        <PropertyRef Name="IDCARRO" />
+      </Principal>
+      <Dependent Role="VENTASCREDITO">
+        <PropertyRef Name="IDCARRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLIENTES__IDRUTA__33D4B598">
+    <End Role="RUTA" Type="Self.RUTA" Multiplicity="1" />
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RUTA">
+        <PropertyRef Name="IDRUTA" />
+      </Principal>
+      <Dependent Role="CLIENTES">
+        <PropertyRef Name="IDRUTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLIENTES__TIPOUS__34C8D9D1">
+    <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOUSUARIOREGISTRO">
+        <PropertyRef Name="TIPOUSUARIO" />
+      </Principal>
+      <Dependent Role="CLIENTES">
+        <PropertyRef Name="TIPOUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTAS_PROD">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASCRED">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="VENTASCREDITO">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASP">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="IDCLIENTE" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDCLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_COMPRAS_CONTADO">
+    <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDORES">
+        <PropertyRef Name="IDPROVEEDOR" />
+      </Principal>
+      <Dependent Role="COMPRAS">
+        <PropertyRef Name="IDPROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EMPLEADO__IDUSUA__286302EC">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUSUARIO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="IDUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EMPLEADO__TIPOUS__29572725">
+    <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOUSUARIOREGISTRO">
+        <PropertyRef Name="TIPOUSUARIO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="TIPOUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Category">
+    <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="REFERENCIAS">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_VENTASP">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="IDREF" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDREF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TIPOVENTA_VENTASP">
+    <End Role="Tbl_TIPO" Type="Self.Tbl_TIPO" Multiplicity="1" />
+    <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_TIPO">
+        <PropertyRef Name="IDTIPOVENTA" />
+      </Principal>
+      <Dependent Role="VENTA_PRODWEB">
+        <PropertyRef Name="IDTIPOVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIOS__TIPOUS__25869641">
+    <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOUSUARIOREGISTRO">
+        <PropertyRef Name="TIPOUSUARIO" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="TIPOUSUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VENTAPROD_DEVENTAS">
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FESTIVALEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" />
+    <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" />
+    <EntitySet Name="BALANCERUTA" EntityType="Self.BALANCERUTA" />
+    <EntitySet Name="CAMBIOS" EntityType="Self.CAMBIOS" />
+    <EntitySet Name="CARGUE" EntityType="Self.CARGUE" />
+    <EntitySet Name="CARGUE2" EntityType="Self.CARGUE2" />
+    <EntitySet Name="CARROS" EntityType="Self.CARROS" />
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+    <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" />
+    <EntitySet Name="CONSECUTIVO" EntityType="Self.CONSECUTIVO" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
+    <EntitySet Name="ITEMS" EntityType="Self.ITEMS" />
+    <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
+    <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" />
+    <EntitySet Name="RUTA" EntityType="Self.RUTA" />
+    <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+    <EntitySet Name="Tbl_TIPO" EntityType="Self.Tbl_TIPO" />
+    <EntitySet Name="TIPOUSUARIOREGISTRO" EntityType="Self.TIPOUSUARIOREGISTRO" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" />
+    <EntitySet Name="VENTA_PRODWEB" EntityType="Self.VENTA_PRODWEB" />
+    <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" />
+    <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" />
+    <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" />
+    <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" />
+    <EntitySet Name="GASTOS" EntityType="Self.GASTOS" />
+    <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" />
+    <AssociationSet Name="fk_ABONOCOMPRAS_CREDITO" Association="Self.fk_ABONOCOMPRAS_CREDITO">
+      <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+      <End Role="ABONOSCOMPRASCREDITO" EntitySet="ABONOSCOMPRASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARROS_ABONOSVENTASCRED" Association="Self.fk_CARROS_ABONOSVENTASCRED">
+      <End Role="CARROS" EntitySet="CARROS" />
+      <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_ABONOSVENTASCRED" Association="Self.fk_CLIENTES_ABONOSVENTASCRED">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USUARIOS_ABONOSVENTASCRED" Association="Self.fk_USUARIOS_ABONOSVENTASCRED">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARGUE_BALANCE" Association="Self.fk_CARGUE_BALANCE">
+      <End Role="CARGUE" EntitySet="CARGUE" />
+      <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARRO_BALANCE" Association="Self.fk_CARRO_BALANCE">
+      <End Role="CARROS" EntitySet="CARROS" />
+      <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USUARIO_BALANCE" Association="Self.fk_USUARIO_BALANCE">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARGUE_CAMBIOS" Association="Self.fk_CARGUE_CAMBIOS">
+      <End Role="CARGUE" EntitySet="CARGUE" />
+      <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_CAMBIOS" Association="Self.fk_CLIENTES_CAMBIOS">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USERS_CAMBIOS" Association="Self.fk_USERS_CAMBIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USERS_REFERENCIAS" Association="Self.fk_USERS_REFERENCIAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARGUE_CARGUE2" Association="Self.fk_CARGUE_CARGUE2">
+      <End Role="CARGUE" EntitySet="CARGUE" />
+      <End Role="CARGUE2" EntitySet="CARGUE2" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARGUE_VENTASP" Association="Self.fk_CARGUE_VENTASP">
+      <End Role="CARGUE" EntitySet="CARGUE" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARROS_CARGUE" Association="Self.fk_CARROS_CARGUE">
+      <End Role="CARROS" EntitySet="CARROS" />
+      <End Role="CARGUE" EntitySet="CARGUE" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USU_CAMBIOS" Association="Self.fk_USU_CAMBIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CARGUE" EntitySet="CARGUE" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARROS_CARGUE2" Association="Self.fk_CARROS_CARGUE2">
+      <End Role="CARROS" EntitySet="CARROS" />
+      <End Role="CARGUE2" EntitySet="CARGUE2" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USU_CARGUE2" Association="Self.fk_USU_CARGUE2">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CARGUE2" EntitySet="CARGUE2" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CARROS_VENTASCRED" Association="Self.fk_CARROS_VENTASCRED">
+      <End Role="CARROS" EntitySet="CARROS" />
+      <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLIENTES__IDRUTA__33D4B598" Association="Self.FK__CLIENTES__IDRUTA__33D4B598">
+      <End Role="RUTA" EntitySet="RUTA" />
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLIENTES__TIPOUS__34C8D9D1" Association="Self.FK__CLIENTES__TIPOUS__34C8D9D1">
+      <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTAS_PROD" Association="Self.fk_CLIENTES_VENTAS_PROD">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASCRED" Association="Self.fk_CLIENTES_VENTASCRED">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_COMPRAS_CONTADO" Association="Self.fk_COMPRAS_CONTADO">
+      <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EMPLEADO__IDUSUA__286302EC" Association="Self.FK__EMPLEADO__IDUSUA__286302EC">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EMPLEADO__TIPOUS__29572725" Association="Self.FK__EMPLEADO__TIPOUS__29572725">
+      <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Category" Association="Self.fk_Category">
+      <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TIPOVENTA_VENTASP" Association="Self.fk_TIPOVENTA_VENTASP">
+      <End Role="Tbl_TIPO" EntitySet="Tbl_TIPO" />
+      <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIOS__TIPOUS__25869641" Association="Self.FK__USUARIOS__TIPOUS__25869641">
+      <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VENTAPROD_DEVENTAS" Association="Self.fk_VENTAPROD_DEVENTAS">
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

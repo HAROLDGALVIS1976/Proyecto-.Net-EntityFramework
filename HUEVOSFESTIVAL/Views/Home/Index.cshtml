@@ -1,0 +1,97 @@
+﻿@model HUEVOSFESTIVAL.Models.Home.HomeIndexViewModel
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Home Page";
+   
+}
+<link href="~/Content/stilos.css" rel="stylesheet" />
+
+<div class="olContent f1"> <h3><font color="purple"><strong>Buscar * Categoria</strong></font></h3></div>
+<form method="post">
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        <input type="text" name="search" placeholder="Seleccione la Categoria" id="search" list="lista" class="inputComn form-control">
+        <datalist id="lista">
+            <option value="Carnes">
+            <option value="Lacteos">
+            <option value="Pescados">
+            <option value="Enlatados">
+            <option value="Pollo">
+            <option value="Huevos">
+            <option value="Embutidos">
+            <option value="Bolsas y Desechables">
+            <option value="Salsas">
+            <option value="Viveres">
+        </datalist>
+        <div class="searchIcon">
+            <button type="submit" class="serchBtn">
+                <i class="fa fa-database"></i>
+                <font color="purple"><strong>Buscar</strong></font>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<section class="contenedor">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h3><font color="purple"><strong>Nuestros Productos</strong></font></h3>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    
+    <div class="row product-container">
+        @foreach (var item in Model.listOfProducts)
+        {
+            <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom:2px">
+                <div class="thumbnail product-item" height="380px" width="300px">
+
+                    <img class="img-responsive" title="Click en el Carrito de abajo para Comprar "
+                         style="cursor:pointer;height:230px;width:210px"
+                         src="~/ProductImg/@item.IMAGEN" />
+
+                    <div class="caption">
+                        <h5><font color="purple">@item.DESCRIPCION</font></h5>
+                        <p><font color="purple">$ @item.VALUNI_VENTA -->  @item.UNI_MEDIDA </font></p>
+                        <p><font color="purple">Click al Carrito para Comprar --></font></p>
+                        <div>
+                            <font color="black">Cantidad:  </font><input id="@item.CANTIDAD" name="@item.CANTIDAD" type="number" min="0" max="@item.CANT" />
+                        </div>
+                        <p>
+                           @if (item.CANT > 0)
+                            {
+                                using (Html.BeginForm("AddToCart", "Home", new { productId = item.IDREF, cantidad = item.CANTIDAD }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="pull-right" height:120px;width:120px><i class="fa fa-shopping-cart"></i></button>
+                                }
+
+                            <p><font color="purple"><strong>Disponible</strong></font></p>
+                        }
+                        else
+                        {
+                            <p><font color="purple"><strong>No Disponible</strong></font></p>
+                        }
+
+                            </p>
+
+
+
+
+                        </div>
+                </div>
+            </div>
+         }
+    </div>
+    <div class="container">
+        @Html.PagedListPager(Model.listOfProducts, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayItemSliceAndTotal = true })
+    </div>
+
+
+
+
+</section>
+

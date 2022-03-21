@@ -1,0 +1,203 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsVentasCredito>
+
+@{
+    ViewBag.Title = "Abonos";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> ListarCliente = (List<SelectListItem>)ViewBag.ListarCliente;
+    List<SelectListItem> ListarPlaca = (List<SelectListItem>)ViewBag.ListarPlaca;
+
+}
+<br />
+<h3><font color="green"><span>Abonos Web - @DateTime.Today.ToLongDateString()</span></font></h3>
+<br />
+<!--Metodo / Controlador -->
+@using (Ajax.BeginForm("Filtrar", "Abonos", null, new AjaxOptions
+ {
+    HttpMethod = "POST",
+    UpdateTargetId = "divUsuario",
+    InsertionMode = InsertionMode.Replace
+ }, new { @id = "frmFiltrar" }))
+ { 
+    <br />
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        @Html.Label("Ingrese el Cliente")
+        @Html.DropDownList("ClienteParametro", ListarCliente, new { @class = "form-control" })
+    </div>
+    <div id="divUsuario">
+        @Html.Partial("_TablaAbonosWeb", Model)
+    </div>
+ }
+ 
+<br />
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><font color="green"> <span>Abonos Web</span></font></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Metodo / Controlador -->
+            @using (Ajax.BeginForm("Guardar", "Abonos", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo")
+
+                <div class="modal-body" >
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Remision")
+                        @Html.TextBox("Remision", null, new { @class = "form-control", @id = "Remision", @readOnly = "true" })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Consecutivo")
+                        @Html.Editor("consecutivo", null, new { htmlAttributes = new { @class = "form-control", @readOnly = "true" } })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Cliente")
+                        @Html.TextBox("Nuip", null, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Monto Deuda")
+                        @Html.Editor("Deuda", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "Deuda", @readOnly = "true" } })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Monto Abono")
+                        @Html.Editor("Abono", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "Abono" } })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Resta")
+                        @Html.Editor("monto_total", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "monto_total", @readOnly = "true" } })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Tipo Venta")
+                        @Html.TextBox("Tipo", null, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Fecha  Pago")
+                        @Html.Editor("fechapago", null, new { htmlAttributes = new { @class = "form-control", @type = "date", @readOnly = "true" } })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Cliente")
+                        @Html.DropDownList("idcliente", ListarCliente, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        @Html.Label("Placa")
+                        @Html.DropDownList("idcarro", ListarPlaca, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" onclick="Multiplicar();" class="btn btn-success">Guardar Cambios</button>
+
+                    </div>
+                </div>
+            }
+            <div id="error">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var ClienteParametro = document.getElementById("ClienteParametro");
+    ClienteParametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+    function Agregar() {
+        Limpiar();
+        document.getElementById("titulo").value = -1;
+    }
+
+    function Eliminar(idventa) {
+        document.getElementById("titulo").value = idventa;
+    }
+
+    function ConfirmarEliminar() {
+        var idventa = document.getElementById("titulo").value;
+        $.get("Admin/EliminarViaje/?idventa=" + idventa, function (data) {
+
+            if (data == 1) {
+                alert("Se ejecuto correctamente");
+                document.getElementById("btnCerrarConfirmacion").click();
+                $("#frmFiltrar").trigger("submit");
+            } else {
+                alert("Ocurrio un error");
+            }
+
+        })
+
+    }
+
+
+    function Multiplicar() {
+        var subtotal = 0;
+        var y = $("#Deuda").val();
+        var x = $("#Abono").val();
+        var R = $("#Remision").val();
+        subtotal = (y - x);
+        console.info(subtotal);
+        $("#monto_total").val(subtotal);
+        alert("El Monto Que Resta es $: " + subtotal + " de la Remision: " + R + "");
+    }
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(id) {
+        Limpiar();
+        document.getElementById("titulo").value = id;
+        //Pendiente
+        $.get("Abonos/RecuperaInformacion/?idref=" + id, function (data) {
+
+            document.getElementById("Remision").value = data.Remision;
+            document.getElementById("Nuip").value = data.Nuip;
+            document.getElementById("Deuda").value = data.Deuda;
+            document.getElementById("Tipo").value = data.Tipo;
+            document.getElementById("fechapago").value = data.fechapagocadena;
+            document.getElementById("idcliente").value = data.idcliente;
+            document.getElementById("idcarro").value = data.idcarro;
+            document.getElementById("consecutivo").value = data.consecutivo;
+        })
+    }
+
+    //Funcion JavaScript para Guardar y Editar los Registros
+    function Guardar(rpta)
+    {
+
+            if (rpta == "1")
+            {
+                alert("Se ejecuto correctamente");
+                document.getElementById("btnClose").click();
+                 document.location.href = "@Url.Action("Index", "AgregarAbono")";
+            } else
+            {
+                alert("Ocurrio un error");
+            }
+
+    }
+
+
+</script>

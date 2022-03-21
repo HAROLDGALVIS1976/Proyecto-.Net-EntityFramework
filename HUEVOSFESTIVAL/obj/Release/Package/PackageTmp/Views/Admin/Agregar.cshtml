@@ -1,0 +1,180 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model ClsVentasweb
+@{
+    ViewBag.Title = "Ventaweb";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<SelectListItem> ListarRutas = (List<SelectListItem>)ViewBag.ListarRutas;
+    List<SelectListItem> ListarClientes = (List<SelectListItem>)ViewBag.ListarClientes;
+    List<SelectListItem> ListarTipo = (List<SelectListItem>)ViewBag.ListarTipo;
+    List<SelectListItem> ListarRef = (List<SelectListItem>)ViewBag.ListarRef;
+    List<SelectListItem> ListarUsuarios = (List<SelectListItem>)ViewBag.ListarUsuarios;
+    List<SelectListItem> ListarPlaca = (List<SelectListItem>)ViewBag.ListarPlaca;
+
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Agregar", "Admin", FormMethod.Post, new { @id = "frmAgregar" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3><font color="green"><span>Ventas Web</span></font></h3>
+            <br />
+
+            @Html.Hidden("Ruta", null, new { @class = "form-control" })
+            @Html.Hidden("Cliente", null, new { @class = "form-control" })
+            @Html.Hidden("Tipo", null, new { @class = "form-control" })
+            @Html.Hidden("Placa", null, new { @class = "form-control" })
+            @Html.Hidden("Ref", null, new { @class = "form-control" })
+
+            <div>
+                @Html.Label("Referencia")
+                @Html.DropDownList("idref", ListarRef, null, new { @class = "form-control", @required = "true" })
+                @Html.ValidationMessageFor(model => model.idref, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Ruta")
+                @Html.DropDownList("idruta", ListarRutas, null, new { @class = "form-control", @required = "true" })
+                @Html.ValidationMessageFor(model => model.idruta, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Tipo Venta")
+                @Html.DropDownList("idtipoventa", ListarTipo, null, new { @class = "form-control", @required = "true" })
+                @Html.ValidationMessageFor(model => model.idtipoventa, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Placa")
+                @Html.DropDownList("idcarro", ListarPlaca, null, new { @class = "form-control", @required = "true" })
+                @Html.ValidationMessageFor(model => model.idcarro, "", new { @class = "text-danger" })
+
+            </div>
+            <div>
+                @Html.Label("Usuario")
+                @Html.DropDownList("idusuario", ListarUsuarios, null, new { @class = "form-control", @required = "true" })
+                @Html.ValidationMessageFor(model => model.idusuario, "", new { @class = "text-danger" })
+
+            </div>
+            <div>
+                @Html.Label("Cliente")
+                @Html.DropDownList("idcliente", ListarClientes, null, new { @class = "form-control", @required = "true" })
+                @Html.ValidationMessageFor(model => model.idcliente, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Valor Venta")
+                @Html.Editor("valuni_venta", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "valuni_venta", required = "required" } })
+                @Html.ValidationMessageFor(model => model.valuni_venta, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Cantidad")
+                @Html.Editor("cant", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "cant", required = "required" } })
+                @Html.ValidationMessageFor(model => model.cant, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Monto Total")
+                @Html.Editor("monto_total", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "monto_total", @readOnly = "true", required = "required" } })
+                @Html.ValidationMessageFor(model => model.monto_total, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Fecha de Venta")
+                @Html.Editor("fechaventa", null, new { htmlAttributes = new { @class = "form-control", @type = "date", required = "required" } })
+                @Html.ValidationMessageFor(model => model.fechaventa, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Fecha de Pago")
+                @Html.Editor("fechapago", null, new { htmlAttributes = new { @class = "form-control", @type = "date", required = "required" } })
+                @Html.ValidationMessageFor(model => model.fechapago, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.Label("Consecutivo")
+                @Html.Editor("consecutivo", null, new { htmlAttributes = new { @class = "form-control", @type = "number", required = "required" } })
+                @Html.ValidationMessageFor(model => model.consecutivo, "", new { @class = "text-danger" })
+            </div>
+            <div class="modal-footer">
+                @Html.ActionLink("Regresar", "Index", "Admin", null, new { @class = "btn btn-danger" })
+                <button type="button" onclick="Multiplicar()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Guardar</button>
+            </div>
+
+         }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Dese guardar los cambios?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div style="padding:1em">
+                <button type="button" onclick="Limpiar()" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="Agregar()" class="btn btn-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var idref = document.getElementById("idref");
+    idref.onchange = function () {
+        document.getElementById("Ref").value = idref.options[idref.selectedIndex].text;
+    }
+
+    var idcliente = document.getElementById("idcliente");
+    idcliente.onchange = function () {
+        document.getElementById("Cliente").value = idcliente.options[idcliente.selectedIndex].text;
+    }
+
+    var idruta = document.getElementById("idruta");
+    idruta.onchange = function () {
+        document.getElementById("Ruta").value = idruta.options[idruta.selectedIndex].text;
+    }
+
+    var idtipoventa = document.getElementById("idtipoventa");
+    idtipoventa.onchange = function () {
+        document.getElementById("Tipo").value = idtipoventa.options[idtipoventa.selectedIndex].text;
+    }
+
+    var idcarro = document.getElementById("idcarro");
+    idcarro.onchange = function () {
+        document.getElementById("Placa").value = idcarro.options[idcarro.selectedIndex].text;
+    }
+
+
+
+    //funcion que dispara el evento Agregar en el Backen
+    function Agregar() {
+        var frmAgregar = document.getElementById("frmAgregar");
+        frmAgregar.submit();
+
+    }
+
+    function Multiplicar() {
+        var subtotal = 0;
+        var y = $("#valuni_venta").val();
+        var x = $("#cant").val();
+        subtotal = (x * y);
+        console.info(subtotal);
+        $("#monto_total").val(subtotal);
+        alert("El Monto de la Venta es $: " + subtotal + "");
+    }
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+
+</script>
+

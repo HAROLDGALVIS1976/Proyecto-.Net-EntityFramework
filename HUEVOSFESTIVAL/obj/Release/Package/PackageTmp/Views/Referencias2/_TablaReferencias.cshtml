@@ -1,0 +1,52 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsReferencias>
+@{
+    Layout = null;
+
+}
+
+
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>@Html.LabelFor(p => Model[0].idref)</td>
+                        <td>@Html.LabelFor(p => Model[0].descripcion)</td>
+                        <td>@Html.LabelFor(p => Model[0].cant)</td>
+                        <td>Editar/Eliminar</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int Cant = 0;
+                    }
+                   @foreach (var item in Model)
+                    {
+                        double Cantidad = item.cant;
+                        Cant = @Cant + Convert.ToInt32(Cantidad);
+
+                        <tr>
+                            <td>@item.idref</td>
+                            <td>@item.descripcion</td>
+                            <td>@item.cant</td>
+                            <td>
+                                <button type="button" onclick="Editar(@item.idref)" class="btn btn-success glyphicon glyphicon-edit" data-toggle="modal" data-target="#exampleModal"></button>
+                                <button type="button" onclick="Eliminar(@item.idref)" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#exampleModalConfirmacion"></button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+                    <tr class="text-xl-right">
+                        <td class="text-xl-right">
+                            <b>Cantidad Total $:  @Cant</b>
+                        </td>
+                    </tr>
+
+
+
+
+
+            </table>
+
+       
+ 

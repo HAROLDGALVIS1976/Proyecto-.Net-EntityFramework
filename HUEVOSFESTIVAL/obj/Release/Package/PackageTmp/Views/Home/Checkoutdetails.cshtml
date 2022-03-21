@@ -1,0 +1,79 @@
+﻿
+@using HUEVOSFESTIVAL.Models.Home
+@{
+    /**/
+
+    ViewBag.Title = "CheckoutDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h4><font color="purple"> <strong>Carrito de Compras</strong></font> </h4>
+<h5><font color="purple"><strong>@DateTime.Today.Date </strong></font></h5>
+<br />
+@if (Session["cart"] == null)
+{
+    <div class="alert alert-danger">
+
+        <h4><font color="purple"> <strong>No Hay Nada en el Carrito!</strong></font> </h4>
+    </div>
+
+}
+else
+{
+    <table class="table table-bordered table-hover">
+
+        <tr>
+            <th><font color="purple"><strong>Producto</strong></font></th>
+            <th><font color="purple"><strong>Precio</strong></font></th>
+            <th><font color="purple"><strong>Cant</strong></font></th>
+            <th><font color="purple"><strong>Total</strong></font></th>
+            <th></th>
+        </tr>
+
+        @{
+            int Total = 0;
+            int Cant = 0;
+            string Prod = null;
+
+        }
+        @foreach (Item item in (List<Item>)Session["cart"])
+        {
+            int Cantidad = item.Quantity;
+            Cant = @Cant + Cantidad;
+
+            int lineTotal = Convert.ToInt32(item.Quantity * item.Product.VALUNI_VENTA);
+            Total = Convert.ToInt32(@Total + lineTotal);
+
+            string Producto = item.Product.DESCRIPCION;
+            Prod = @Prod + Producto;
+
+            <tr>
+                <td>@item.Product.DESCRIPCION</td>
+                <td>@item.Product.VALUNI_VENTA</td>
+                <td>@item.Quantity</td>
+                <td>@lineTotal</td>
+                <td>
+                    @Html.ActionLink(" ", "DecreaseQty", "Home", new { productId = item.Product.IDREF }, new { @class = "fa fa-plus btn btn-success" })
+                    @Html.ActionLink(" ", "RemoveFromCart", "Home", new { productId = item.Product.IDREF }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+            @Html.TextBox("titulo", null, new { @class = "form-control" })
+        }
+        <tr>
+            <td colspan="4" class="text-right"><b>Cantidad: @Cant</b></td>
+        </tr>
+        <tr>
+            <td colspan="4" class="text-right"><b>Total: @Total</b></td>
+        </tr>
+    </table>
+
+    @Html.ActionLink("Pagar >>", "Sweet", "Home", new { @Prod = Prod, @Cant = Cant, @Total = Total }, new { @class = "btn btn-success " })
+
+
+
+}
+<br />
+<br />
+
+

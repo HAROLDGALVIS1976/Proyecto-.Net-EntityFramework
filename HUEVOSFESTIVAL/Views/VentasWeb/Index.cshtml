@@ -1,0 +1,150 @@
+﻿@model HUEVOSFESTIVAL.Models.Home.HomeIndexViewModel
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "VentasWeb";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<link href="~/Content/stilos.css" rel="stylesheet" />
+<style>
+    .agregado {
+        background-color: seagreen;
+        position: relative;
+        color: white !important;
+        font-weight: bold;
+        color: white;
+    }
+
+        .agregado::after {
+            position: absolute;
+            content: "Comprado";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: seagreen;
+            font-size: 2em;
+            color: white;
+            text-align: center;
+        }
+</style>
+<div class="olContent f1"> <h3><font color="black"><strong>Buscar * Categoria</strong></font></h3></div>
+<form method="post">
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        <input type="text" name="search" placeholder="Seleccione la Categoria" id="search" list="lista" class="inputComn form-control">
+        <datalist id="lista">
+            <option value="Carnes">
+            <option value="Lacteos">
+            <option value="Pescados">
+            <option value="Enlatados">
+            <option value="Pollo">
+            <option value="Huevos">
+            <option value="Embutidos">
+            <option value="Bolsas y Desechables">
+            <option value="Salsas">
+            <option value="Viveres">
+        </datalist>
+        <div class="searchIcon">
+            <button type="submit" class="serchBtn">
+                <i class="fa fa-database"></i>
+                <font color="black"><strong>Buscar</strong></font>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<section class="contenedor">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h3><font color="black"><strong>Nuestros Productos</strong></font></h3>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <div id="divReserva">
+
+        @foreach (var item in Model.listOfProducts)
+        {
+            <div class="col-md-3 col-sm-6 col-xs-12" style="margin-top:2em">
+                <div class="thumbnail product-item">
+
+                    <div id="@item.IDREF" style="border:1px solid #666;
+                      border-radius:1px;padding:2px">
+                        <div align="center">
+                            <img class="img-responsive" title="Click en el Carrito de abajo para Comprar "
+                                 style="cursor:pointer;height:270px;width:190%"
+                                 src="~/ProductImg/@item.IMAGEN" />
+                        </div>
+                        <div class="caption">
+                            <h5><font color="black">@item.DESCRIPCION</font></h5>
+                            <p><font color="black">$ @item.VALUNI_VENTA -->   @item.UNI_MEDIDA</font></p>
+
+                            <div style="padding:1em">
+                               @if (item.CANT > 0)
+                                {
+                                    using (Html.BeginForm("AddToCart", "Home", new { productId = item.IDREF, cantidad = item.CANTIDAD }, FormMethod.Post))
+                                    {
+                                        <button type="submit" onclick="Reservar(@item.IDREF" ) class="pull-right" height:120px;width:120px><i class="fa fa-shopping-cart"></i></button>
+                                    }
+                                    <p><font color="black">Disponible</font></p>
+                                }
+                                else
+                                {
+                                    <p><font color="black">No Disponible</font></p>
+                                }
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+    </div>
+
+</section>
+    <div class="container">
+        @Html.PagedListPager(Model.listOfProducts, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayItemSliceAndTotal = true })
+    </div>
+    <script>
+        function Reservar(idref) {
+           
+                if (document.getElementById(idref).classList.contains("agregado")) {
+                    alert("Este Producto ya ha sido Agregado");
+                }
+                else {
+                    //poner el mensaje de Comprado
+                    document.getElementById(idref).classList.add("agregado");
+                    //enabled el input txt_ para no poder editar nueva cantidad
+                                     
+                }
+            
+
+        }
+
+        function quitar(idref) {
+            if (confirm("Desea Cancelar esta Compra? ") == 1) {
+
+                if (document.getElementById(idref).classList.contains("agregado")) {
+                    //eliminar de la cookie
+                    document.getElementById(idref).classList.remove("agregado");
+                    document.getElementById("txt_" + idref).value = "";
+                    //enabled el input txt_ para no poder editar nueva cantidad
+                    document.getElementById("txt_" + idref).readOnly = false;
+                }
+            }
+
+        }
+
+
+    </script>

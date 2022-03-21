@@ -1,0 +1,196 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsClientes>
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> ListarRutas = (List<SelectListItem>)ViewBag.ListarRutas;
+
+}
+<br />
+<h3><font color="green"><span>Clientes Web</span></font></h3>
+<h4><font color="green"><span>@DateTime.Today.ToLongDateString()</span></font></h4>
+<br />
+<div>
+    <button type="button" onclick="Agregar()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        Nuevo Cliente
+    </button>
+</div>
+<br />
+<!--Metodo / Controlador -->
+@using (Ajax.BeginForm("Filtrar", "Clientes", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divUsuario",
+    InsertionMode = InsertionMode.Replace
+}, new { @id = "frmFiltrar" }))
+{
+    <br />
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        @Html.Label("Ingrese la Ruta")
+        @Html.DropDownList("RutaParametro", ListarRutas, new { @class = "form-control" })
+    </div>
+    <div id="divUsuario">
+        @Html.Partial("_TablaClientes", Model)
+    </div>
+}
+
+<br />
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"> <font color="green"> <span>Ingresar Clientes</span></font></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Metodo / Controlador -->
+            @using (Ajax.BeginForm("Guardar", "Clientes", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo")
+
+                <div class="modal-body">
+                    <div>
+                        @Html.Label("Cliente")
+                        @Html.TextBox("cliente", null, new { @class = "form-control", @required = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Identificacion")
+                        @Html.Editor("nuip", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @required = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Direccion")
+                        @Html.TextBox("direccion", null, new { @class = "form-control", @required = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Telefono")
+                        @Html.Editor("telefono", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @required = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Ciudad")
+                        @Html.TextBox("ciudad", null, new { @class = "form-control", @required = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Correo")
+                        @Html.Editor("email", null, new { htmlAttributes = new { @class = "form-control", @type = "email", @required = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Ruta")
+                        @Html.DropDownList("idruta", ListarRutas, new { @class = "form-control", @required = "true" })
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+
+                    </div>
+                </div>
+            }
+            <div id="error"></div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Dese Eiminar el Cliente ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div style="padding:1em">
+                <button type="button" id="btnCerrarConfirmacion" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="ConfirmarEliminar()" class="btn btn-info">Aceptar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var RutaParametro = document.getElementById("RutaParametro");
+    RutaParametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+    function Agregar() {
+        Limpiar();
+        document.getElementById("titulo").value = -1;
+    }
+
+    function Eliminar(idventa) {
+        document.getElementById("titulo").value = idventa;
+    }
+
+    function ConfirmarEliminar() {
+        var idventa = document.getElementById("titulo").value;
+        $.get("Admin/EliminarViaje/?idventa=" + idventa, function (data) {
+
+            if (data == 1) {
+                alert("Se ejecuto correctamente");
+                document.getElementById("btnCerrarConfirmacion").click();
+                $("#frmFiltrar").trigger("submit");
+            } else {
+                alert("Ocurrio un error");
+            }
+
+        })
+
+    }
+
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(id) {
+        Limpiar();
+        document.getElementById("titulo").value = id;
+        //Pendiente
+        $.get("Clientes/RecuperaInformacion/?idref=" + id, function (data) {
+
+            document.getElementById("cliente").value = data.cliente;
+            document.getElementById("nuip").value = data.nuip;
+            document.getElementById("direccion").value = data.direccion;
+            document.getElementById("telefono").value = data.telefono;
+            document.getElementById("ciudad").value = data.ciudad;
+            document.getElementById("email").value = data.email;
+            document.getElementById("idruta").value = data.idruta;
+        })
+    }
+
+    //Funcion JavaScript para Guardar y Editar los Registros
+    function Guardar(rpta) {
+        if (rpta == "1") {
+            alert("Se ejecuto correctamente");
+            document.getElementById("btnClose").click();
+            $("#frmFiltrar").trigger("submit");
+        } else {
+            alert("Ocurrio un error");
+        }
+
+    }
+
+</script>

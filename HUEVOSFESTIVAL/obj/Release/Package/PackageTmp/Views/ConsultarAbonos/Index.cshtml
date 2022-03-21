@@ -1,0 +1,58 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsAbonosVentasCredito>
+
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> ListarCliente = (List<SelectListItem>)ViewBag.ListarCliente;
+}
+
+<br />
+<h3><font color="green"> <span>Modulo Consultar Abonos X Cliente</span></font></h3>
+<h4><font color="green"><span>@DateTime.Today.ToLongDateString() </span></font></h4>
+<br />
+
+<br />
+@using (Ajax.BeginForm("Filtrar", "ConsultarAbonos", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divUsuario",
+    InsertionMode = InsertionMode.Replace
+
+
+}, new { @id = "frmFiltrar" }))
+{
+   
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        @Html.Label("Seleccione el Cliente a Buscar")
+        @Html.DropDownList("ClienteParametro", ListarCliente, new { @class = "form-control" })
+        <br />
+    </div>
+    <br />
+    <div id="divUsuario">
+        @Html.Partial("_TablaAbonos", Model)
+    </div>
+}
+<br />
+
+
+<script>
+
+
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var ClienteParametro = document.getElementById("ClienteParametro");
+    ClienteParametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+
+
+
+
+</script>
+
+

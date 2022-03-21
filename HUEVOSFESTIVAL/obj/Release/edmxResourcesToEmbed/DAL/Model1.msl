@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FESTIVALModelStoreContainer" CdmEntityContainer="FESTIVALEntities">
+    <EntitySetMapping Name="ABONOSCOMPRASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.ABONOSCOMPRASCREDITO">
+        <MappingFragment StoreEntitySet="ABONOSCOMPRASCREDITO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHABONO" ColumnName="FECHABONO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+          <ScalarProperty Name="IDPROVEEDOR" ColumnName="IDPROVEEDOR" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ABONOSVENTASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.ABONOSVENTASCREDITO">
+        <MappingFragment StoreEntitySet="ABONOSVENTASCREDITO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHABONO" ColumnName="FECHABONO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+          <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BALANCERUTA">
+      <EntityTypeMapping TypeName="FESTIVALModel.BALANCERUTA">
+        <MappingFragment StoreEntitySet="BALANCERUTA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EXTR" ColumnName="EXTR" />
+          <ScalarProperty Name="AAR" ColumnName="AAR" />
+          <ScalarProperty Name="AR" ColumnName="AR" />
+          <ScalarProperty Name="BR" ColumnName="BR" />
+          <ScalarProperty Name="EXTB" ColumnName="EXTB" />
+          <ScalarProperty Name="AAB" ColumnName="AAB" />
+          <ScalarProperty Name="AB" ColumnName="AB" />
+          <ScalarProperty Name="BB" ColumnName="BB" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+          <ScalarProperty Name="VENTASCONTADO" ColumnName="VENTASCONTADO" />
+          <ScalarProperty Name="VENTASCREDITO" ColumnName="VENTASCREDITO" />
+          <ScalarProperty Name="ABONOS" ColumnName="ABONOS" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="DEXTR" ColumnName="DEXTR" />
+          <ScalarProperty Name="DAAR" ColumnName="DAAR" />
+          <ScalarProperty Name="DAR" ColumnName="DAR" />
+          <ScalarProperty Name="DBR" ColumnName="DBR" />
+          <ScalarProperty Name="DEXTB" ColumnName="DEXTB" />
+          <ScalarProperty Name="DAAB" ColumnName="DAAB" />
+          <ScalarProperty Name="DAB" ColumnName="DAB" />
+          <ScalarProperty Name="DBB" ColumnName="DBB" />
+          <ScalarProperty Name="MONTOEFECTIVO" ColumnName="MONTOEFECTIVO" />
+          <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+          <ScalarProperty Name="DIFERENCIA" ColumnName="DIFERENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMBIOS">
+      <EntityTypeMapping TypeName="FESTIVALModel.CAMBIOS">
+        <MappingFragment StoreEntitySet="CAMBIOS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="IDREF" ColumnName="IDREF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARGUE">
+      <EntityTypeMapping TypeName="FESTIVALModel.CARGUE">
+        <MappingFragment StoreEntitySet="CARGUE">
+          <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+          <ScalarProperty Name="EXTR" ColumnName="EXTR" />
+          <ScalarProperty Name="AAR" ColumnName="AAR" />
+          <ScalarProperty Name="AR" ColumnName="AR" />
+          <ScalarProperty Name="BR" ColumnName="BR" />
+          <ScalarProperty Name="EXTB" ColumnName="EXTB" />
+          <ScalarProperty Name="AAB" ColumnName="AAB" />
+          <ScalarProperty Name="AB" ColumnName="AB" />
+          <ScalarProperty Name="BB" ColumnName="BB" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARGUE2">
+      <EntityTypeMapping TypeName="FESTIVALModel.CARGUE2">
+        <MappingFragment StoreEntitySet="CARGUE2">
+          <ScalarProperty Name="IDCARGA2" ColumnName="IDCARGA2" />
+          <ScalarProperty Name="EXTR" ColumnName="EXTR" />
+          <ScalarProperty Name="AAR" ColumnName="AAR" />
+          <ScalarProperty Name="AR" ColumnName="AR" />
+          <ScalarProperty Name="BR" ColumnName="BR" />
+          <ScalarProperty Name="EXTB" ColumnName="EXTB" />
+          <ScalarProperty Name="AAB" ColumnName="AAB" />
+          <ScalarProperty Name="AB" ColumnName="AB" />
+          <ScalarProperty Name="BB" ColumnName="BB" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARROS">
+      <EntityTypeMapping TypeName="FESTIVALModel.CARROS">
+        <MappingFragment StoreEntitySet="CARROS">
+          <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+          <ScalarProperty Name="PLACA" ColumnName="PLACA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTES">
+      <EntityTypeMapping TypeName="FESTIVALModel.CLIENTES">
+        <MappingFragment StoreEntitySet="CLIENTES">
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="IDRUTA" ColumnName="IDRUTA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRAS">
+      <EntityTypeMapping TypeName="FESTIVALModel.COMPRAS">
+        <MappingFragment StoreEntitySet="COMPRAS">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+          <ScalarProperty Name="IDPROVEEDOR" ColumnName="IDPROVEEDOR" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONSECUTIVO">
+      <EntityTypeMapping TypeName="FESTIVALModel.CONSECUTIVO">
+        <MappingFragment StoreEntitySet="CONSECUTIVO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CONSECUTIVO1" ColumnName="CONSECUTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="FESTIVALModel.EMPLEADO">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="IIDEMPLEADO" ColumnName="IIDEMPLEADO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FECHACONTRATO" ColumnName="FECHACONTRATO" />
+          <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMS">
+      <EntityTypeMapping TypeName="FESTIVALModel.ITEMS">
+        <MappingFragment StoreEntitySet="ITEMS">
+          <ScalarProperty Name="IDITEM" ColumnName="IDITEM" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDORES">
+      <EntityTypeMapping TypeName="FESTIVALModel.PROVEEDORES">
+        <MappingFragment StoreEntitySet="PROVEEDORES">
+          <ScalarProperty Name="IDPROVEEDOR" ColumnName="IDPROVEEDOR" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REFERENCIAS">
+      <EntityTypeMapping TypeName="FESTIVALModel.REFERENCIAS">
+        <MappingFragment StoreEntitySet="REFERENCIAS">
+          <ScalarProperty Name="IDREF" ColumnName="IDREF" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+          <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+          <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="VALMIN_VENTA" ColumnName="VALMIN_VENTA" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RUTA">
+      <EntityTypeMapping TypeName="FESTIVALModel.RUTA">
+        <MappingFragment StoreEntitySet="RUTA">
+          <ScalarProperty Name="IDRUTA" ColumnName="IDRUTA" />
+          <ScalarProperty Name="NOMBRERUTA" ColumnName="NOMBRERUTA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Category">
+      <EntityTypeMapping TypeName="FESTIVALModel.Tbl_Category">
+        <MappingFragment StoreEntitySet="Tbl_Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_TIPO">
+      <EntityTypeMapping TypeName="FESTIVALModel.Tbl_TIPO">
+        <MappingFragment StoreEntitySet="Tbl_TIPO">
+          <ScalarProperty Name="IDTIPOVENTA" ColumnName="IDTIPOVENTA" />
+          <ScalarProperty Name="TIPOVENTA" ColumnName="TIPOVENTA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOUSUARIOREGISTRO">
+      <EntityTypeMapping TypeName="FESTIVALModel.TIPOUSUARIOREGISTRO">
+        <MappingFragment StoreEntitySet="TIPOUSUARIOREGISTRO">
+          <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="FESTIVALModel.USUARIOS">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+          <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="IID" ColumnName="IID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTA_PROD">
+      <EntityTypeMapping TypeName="FESTIVALModel.VENTA_PROD">
+        <MappingFragment StoreEntitySet="VENTA_PROD">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTA_PRODWEB">
+      <EntityTypeMapping TypeName="FESTIVALModel.VENTA_PRODWEB">
+        <MappingFragment StoreEntitySet="VENTA_PRODWEB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+          <ScalarProperty Name="IDREF" ColumnName="IDREF" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="IDTIPOVENTA" ColumnName="IDTIPOVENTA" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTOVENTA" ColumnName="MONTOVENTA" />
+          <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+          <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.VENTASCREDITO">
+        <MappingFragment StoreEntitySet="VENTASCREDITO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+          <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+          <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+          <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.COMPRASCREDITO">
+        <MappingFragment StoreEntitySet="COMPRASCREDITO">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVCOMPRAS">
+      <EntityTypeMapping TypeName="FESTIVALModel.DEVCOMPRAS">
+        <MappingFragment StoreEntitySet="DEVCOMPRAS">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVENTA_PROD">
+      <EntityTypeMapping TypeName="FESTIVALModel.DEVENTA_PROD">
+        <MappingFragment StoreEntitySet="DEVENTA_PROD">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GASTOS">
+      <EntityTypeMapping TypeName="FESTIVALModel.GASTOS">
+        <MappingFragment StoreEntitySet="GASTOS">
+          <ScalarProperty Name="COMPROVANTE" ColumnName="COMPROVANTE" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="BENEFICIARIO" ColumnName="BENEFICIARIO" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DESCRIPCION_DETALLADA" ColumnName="DESCRIPCION_DETALLADA" />
+          <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIBRODIARIO">
+      <EntityTypeMapping TypeName="FESTIVALModel.LIBRODIARIO">
+        <MappingFragment StoreEntitySet="LIBRODIARIO">
+          <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+          <ScalarProperty Name="COMPRAS" ColumnName="COMPRAS" />
+          <ScalarProperty Name="GASTOS" ColumnName="GASTOS" />
+          <ScalarProperty Name="VENTASCRED" ColumnName="VENTASCRED" />
+          <ScalarProperty Name="AB_COMPRAS" ColumnName="AB_COMPRAS" />
+          <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

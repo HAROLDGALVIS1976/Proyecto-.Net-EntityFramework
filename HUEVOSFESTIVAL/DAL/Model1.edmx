@@ -1,0 +1,2436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FESTIVALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ABONOSCOMPRASCREDITO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ABONO" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHABONO" Type="datetime" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+          <Property Name="IDPROVEEDOR" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="ABONOSVENTASCREDITO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ABONO" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHABONO" Type="datetime" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="IDCARRO" Type="int" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BALANCERUTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXTR" Type="int" Nullable="false" />
+          <Property Name="AAR" Type="int" Nullable="false" />
+          <Property Name="AR" Type="int" Nullable="false" />
+          <Property Name="BR" Type="int" Nullable="false" />
+          <Property Name="EXTB" Type="int" Nullable="false" />
+          <Property Name="AAB" Type="int" Nullable="false" />
+          <Property Name="AB" Type="int" Nullable="false" />
+          <Property Name="BB" Type="int" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="IDCARRO" Type="int" Nullable="false" />
+          <Property Name="VENTASCONTADO" Type="float" Nullable="false" />
+          <Property Name="VENTASCREDITO" Type="float" Nullable="false" />
+          <Property Name="ABONOS" Type="float" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="DEXTR" Type="int" Nullable="false" />
+          <Property Name="DAAR" Type="int" Nullable="false" />
+          <Property Name="DAR" Type="int" Nullable="false" />
+          <Property Name="DBR" Type="int" Nullable="false" />
+          <Property Name="DEXTB" Type="int" Nullable="false" />
+          <Property Name="DAAB" Type="int" Nullable="false" />
+          <Property Name="DAB" Type="int" Nullable="false" />
+          <Property Name="DBB" Type="int" Nullable="false" />
+          <Property Name="MONTOEFECTIVO" Type="float" Nullable="false" />
+          <Property Name="IDCARGA" Type="int" Nullable="false" />
+          <Property Name="DIFERENCIA" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAMBIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCARGA" Type="int" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+          <Property Name="IDREF" Type="int" Nullable="false" />
+          <Property Name="CANT" Type="int" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="CARGUE">
+          <Key>
+            <PropertyRef Name="IDCARGA" />
+          </Key>
+          <Property Name="IDCARGA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXTR" Type="int" Nullable="false" />
+          <Property Name="AAR" Type="int" Nullable="false" />
+          <Property Name="AR" Type="int" Nullable="false" />
+          <Property Name="BR" Type="int" Nullable="false" />
+          <Property Name="EXTB" Type="int" Nullable="false" />
+          <Property Name="AAB" Type="int" Nullable="false" />
+          <Property Name="AB" Type="int" Nullable="false" />
+          <Property Name="BB" Type="int" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="IDCARRO" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="CARGUE2">
+          <Key>
+            <PropertyRef Name="IDCARGA2" />
+          </Key>
+          <Property Name="IDCARGA2" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXTR" Type="int" Nullable="false" />
+          <Property Name="AAR" Type="int" Nullable="false" />
+          <Property Name="AR" Type="int" Nullable="false" />
+          <Property Name="BR" Type="int" Nullable="false" />
+          <Property Name="EXTB" Type="int" Nullable="false" />
+          <Property Name="AAB" Type="int" Nullable="false" />
+          <Property Name="AB" Type="int" Nullable="false" />
+          <Property Name="BB" Type="int" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="IDCARRO" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="IDCARGA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CARROS">
+          <Key>
+            <PropertyRef Name="IDCARRO" />
+          </Key>
+          <Property Name="IDCARRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLACA" Type="varchar" MaxLength="100" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="IDCLIENTE" />
+          </Key>
+          <Property Name="IDCLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENTE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CIUDAD" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IDRUTA" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="TIPOUSUARIO" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPRAS">
+          <Key>
+            <PropertyRef Name="IDCOMPRA" />
+          </Key>
+          <Property Name="IDCOMPRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CANT" Type="float" Nullable="false" />
+          <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+          <Property Name="IDPROVEEDOR" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.COMPRASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="COMPRASCREDITO">
+          <Key>
+            <PropertyRef Name="FACTURA" />
+            <PropertyRef Name="PROVEEDOR" />
+            <PropertyRef Name="MONTODEUDA" />
+            <PropertyRef Name="TIPO" />
+            <PropertyRef Name="FECHAPAGO" />
+          </Key>
+          <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MONTODEUDA" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONSECUTIVO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.DEVCOMPRAS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="DEVCOMPRAS">
+          <Key>
+            <PropertyRef Name="IDCOMPRA" />
+            <PropertyRef Name="FACTURA" />
+            <PropertyRef Name="REF" />
+            <PropertyRef Name="CANT" />
+            <PropertyRef Name="VALCOSTO_UNI" />
+            <PropertyRef Name="PROVEEDOR" />
+            <PropertyRef Name="MONTO_TOTAL" />
+            <PropertyRef Name="TIPO" />
+            <PropertyRef Name="FECHACOMPRA" />
+            <PropertyRef Name="FECHAPAGO" />
+          </Key>
+          <Property Name="IDCOMPRA" Type="int" Nullable="false" />
+          <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CANT" Type="float" Nullable="false" />
+          <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.DEVENTA_PROD' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="DEVENTA_PROD">
+          <Key>
+            <PropertyRef Name="IDVENTA" />
+            <PropertyRef Name="REMISION" />
+            <PropertyRef Name="REF" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="NUIP" />
+            <PropertyRef Name="VALUNI_VENTA" />
+            <PropertyRef Name="CANT" />
+            <PropertyRef Name="MONTO_TOTAL" />
+            <PropertyRef Name="TIPO" />
+            <PropertyRef Name="FECHAVENTA" />
+            <PropertyRef Name="FECHAPAGO" />
+          </Key>
+          <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+          <Property Name="CANT" Type="float" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="IIDEMPLEADO" />
+          </Key>
+          <Property Name="IIDEMPLEADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="FECHACONTRATO" Type="datetime" />
+          <Property Name="SUELDO" Type="float" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="TELEFONO" Type="int" />
+          <Property Name="IDUSUARIO" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="TIPOUSUARIO" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.GASTOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GASTOS">
+          <Key>
+            <PropertyRef Name="COMPROVANTE" />
+            <PropertyRef Name="FECHA" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="MONTO" />
+            <PropertyRef Name="BENEFICIARIO" />
+            <PropertyRef Name="NUIP" />
+            <PropertyRef Name="DESCRIPCION_DETALLADA" />
+          </Key>
+          <Property Name="COMPROVANTE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MONTO" Type="float" Nullable="false" />
+          <Property Name="BENEFICIARIO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION_DETALLADA" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="ITEMS">
+          <Key>
+            <PropertyRef Name="IDITEM" />
+          </Key>
+          <Property Name="IDITEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.LIBRODIARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="LIBRODIARIO">
+          <Key>
+            <PropertyRef Name="VENTAS" />
+            <PropertyRef Name="COMPRAS" />
+            <PropertyRef Name="GASTOS" />
+            <PropertyRef Name="VENTASCRED" />
+            <PropertyRef Name="AB_COMPRAS" />
+            <PropertyRef Name="UTILIDAD" />
+            <PropertyRef Name="FECHA" />
+          </Key>
+          <Property Name="VENTAS" Type="float" Nullable="false" />
+          <Property Name="COMPRAS" Type="float" Nullable="false" />
+          <Property Name="GASTOS" Type="float" Nullable="false" />
+          <Property Name="VENTASCRED" Type="float" Nullable="false" />
+          <Property Name="AB_COMPRAS" Type="float" Nullable="false" />
+          <Property Name="UTILIDAD" Type="float" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVEEDORES">
+          <Key>
+            <PropertyRef Name="IDPROVEEDOR" />
+          </Key>
+          <Property Name="IDPROVEEDOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CIUDAD" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="REFERENCIAS">
+          <Key>
+            <PropertyRef Name="IDREF" />
+          </Key>
+          <Property Name="IDREF" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CANT" Type="float" Nullable="false" />
+          <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+          <Property Name="CANT_MINIMA" Type="float" Nullable="false" />
+          <Property Name="VALCOSTO_TOTAL" Type="float" Nullable="false" />
+          <Property Name="VALVENTA_TOTAL" Type="float" Nullable="false" />
+          <Property Name="IMAGEN" Type="varchar(max)" Nullable="false" />
+          <Property Name="UNI_MEDIDA" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="VALMIN_VENTA" Type="float" />
+          <Property Name="PORCENTAJE" Type="float" />
+        </EntityType>
+        <EntityType Name="RUTA">
+          <Key>
+            <PropertyRef Name="IDRUTA" />
+          </Key>
+          <Property Name="IDRUTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRERUTA" Type="varchar" MaxLength="200" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCategoria" Type="varchar" MaxLength="200" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_TIPO">
+          <Key>
+            <PropertyRef Name="IDTIPOVENTA" />
+          </Key>
+          <Property Name="IDTIPOVENTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPOVENTA" Type="varchar" MaxLength="200" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPOUSUARIOREGISTRO">
+          <Key>
+            <PropertyRef Name="TIPOUSUARIO" />
+          </Key>
+          <Property Name="TIPOUSUARIO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TIPOUSUARIO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="IID" Type="int" />
+        </EntityType>
+        <EntityType Name="VENTA_PROD">
+          <Key>
+            <PropertyRef Name="IDVENTA" />
+          </Key>
+          <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+          <Property Name="CANT" Type="float" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+          <Property Name="UTILIDAD" Type="float" />
+        </EntityType>
+        <EntityType Name="VENTA_PRODWEB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCARGA" Type="int" Nullable="false" />
+          <Property Name="IDREF" Type="int" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+          <Property Name="IDTIPOVENTA" Type="int" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+          <Property Name="CANT" Type="float" Nullable="false" />
+          <Property Name="MONTOVENTA" Type="float" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="50" />
+          <Property Name="ABONO" Type="float" Nullable="false" />
+          <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+        </EntityType>
+        <EntityType Name="VENTASCREDITO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MONTODEUDA" Type="float" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" Nullable="false" />
+          <Property Name="BHABILITADO" Type="int" />
+          <Property Name="IDCARRO" Type="int" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CLIENTES__IDRUTA__33D4B598">
+          <End Role="RUTA" Type="Self.RUTA" Multiplicity="1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUTA">
+              <PropertyRef Name="IDRUTA" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="IDRUTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENTES__TIPOUS__34C8D9D1">
+          <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOUSUARIOREGISTRO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__IDUSUA__286302EC">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__TIPOUS__29572725">
+          <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOUSUARIOREGISTRO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__TIPOUS__25869641">
+          <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOUSUARIOREGISTRO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ABONOCOMPRAS_CREDITO">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+          <End Role="ABONOSCOMPRASCREDITO" Type="Self.ABONOSCOMPRASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Principal>
+            <Dependent Role="ABONOSCOMPRASCREDITO">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_BALANCE">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="BALANCERUTA">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_CAMBIOS">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_CARGUE2">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="CARGUE2">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_VENTASP">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARRO_BALANCE">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="BALANCERUTA">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_ABONOSVENTASCRED">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="ABONOSVENTASCREDITO">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_CARGUE">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="CARGUE">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_CARGUE2">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="CARGUE2">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_VENTASCRED">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="VENTASCREDITO">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="REFERENCIAS">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_ABONOSVENTASCRED">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="ABONOSVENTASCREDITO">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_CAMBIOS">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_VENTAS_PROD">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="VENTA_PROD">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_VENTASCRED">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="VENTASCREDITO">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_VENTASP">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_COMPRAS_CONTADO">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+          <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Principal>
+            <Dependent Role="COMPRAS">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REFERENCIAS_VENTASP">
+          <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REFERENCIAS">
+              <PropertyRef Name="IDREF" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TIPOVENTA_VENTASP">
+          <End Role="Tbl_TIPO" Type="Self.Tbl_TIPO" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_TIPO">
+              <PropertyRef Name="IDTIPOVENTA" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDTIPOVENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USERS_CAMBIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USERS_REFERENCIAS">
+          <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REFERENCIAS">
+              <PropertyRef Name="IDREF" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USU_CAMBIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="CARGUE">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USU_CARGUE2">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="CARGUE2">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USUARIO_BALANCE">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="BALANCERUTA">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USUARIOS_ABONOSVENTASCRED">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="ABONOSVENTASCREDITO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAPROD_DEVENTAS">
+          <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+          <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA_PROD">
+              <PropertyRef Name="IDVENTA" />
+            </Principal>
+            <Dependent Role="DEVENTA_PROD">
+              <PropertyRef Name="IDVENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FESTIVALModelStoreContainer">
+          <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BALANCERUTA" EntityType="Self.BALANCERUTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAMBIOS" EntityType="Self.CAMBIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARGUE" EntityType="Self.CARGUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARGUE2" EntityType="Self.CARGUE2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARROS" EntityType="Self.CARROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONSECUTIVO" EntityType="Self.CONSECUTIVO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITEMS" EntityType="Self.ITEMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RUTA" EntityType="Self.RUTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_TIPO" EntityType="Self.Tbl_TIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOUSUARIOREGISTRO" EntityType="Self.TIPOUSUARIOREGISTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTA_PRODWEB" EntityType="Self.VENTA_PRODWEB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [COMPRASCREDITO].[FACTURA] AS [FACTURA], 
+    [COMPRASCREDITO].[PROVEEDOR] AS [PROVEEDOR], 
+    [COMPRASCREDITO].[MONTODEUDA] AS [MONTODEUDA], 
+    [COMPRASCREDITO].[TIPO] AS [TIPO], 
+    [COMPRASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[COMPRASCREDITO] AS [COMPRASCREDITO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DEVCOMPRAS].[IDCOMPRA] AS [IDCOMPRA], 
+    [DEVCOMPRAS].[FACTURA] AS [FACTURA], 
+    [DEVCOMPRAS].[REF] AS [REF], 
+    [DEVCOMPRAS].[CANT] AS [CANT], 
+    [DEVCOMPRAS].[VALCOSTO_UNI] AS [VALCOSTO_UNI], 
+    [DEVCOMPRAS].[PROVEEDOR] AS [PROVEEDOR], 
+    [DEVCOMPRAS].[MONTO_TOTAL] AS [MONTO_TOTAL], 
+    [DEVCOMPRAS].[TIPO] AS [TIPO], 
+    [DEVCOMPRAS].[FECHACOMPRA] AS [FECHACOMPRA], 
+    [DEVCOMPRAS].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[DEVCOMPRAS] AS [DEVCOMPRAS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DEVENTA_PROD].[IDVENTA] AS [IDVENTA], 
+    [DEVENTA_PROD].[REMISION] AS [REMISION], 
+    [DEVENTA_PROD].[REF] AS [REF], 
+    [DEVENTA_PROD].[DESCRIPCION] AS [DESCRIPCION], 
+    [DEVENTA_PROD].[NUIP] AS [NUIP], 
+    [DEVENTA_PROD].[VALUNI_VENTA] AS [VALUNI_VENTA], 
+    [DEVENTA_PROD].[CANT] AS [CANT], 
+    [DEVENTA_PROD].[MONTO_TOTAL] AS [MONTO_TOTAL], 
+    [DEVENTA_PROD].[TIPO] AS [TIPO], 
+    [DEVENTA_PROD].[FECHAVENTA] AS [FECHAVENTA], 
+    [DEVENTA_PROD].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[DEVENTA_PROD] AS [DEVENTA_PROD]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GASTOS" EntityType="Self.GASTOS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GASTOS].[COMPROVANTE] AS [COMPROVANTE], 
+    [GASTOS].[FECHA] AS [FECHA], 
+    [GASTOS].[DESCRIPCION] AS [DESCRIPCION], 
+    [GASTOS].[MONTO] AS [MONTO], 
+    [GASTOS].[BENEFICIARIO] AS [BENEFICIARIO], 
+    [GASTOS].[NUIP] AS [NUIP], 
+    [GASTOS].[DESCRIPCION_DETALLADA] AS [DESCRIPCION_DETALLADA], 
+    [GASTOS].[BHABILITADO] AS [BHABILITADO]
+    FROM [dbo].[GASTOS] AS [GASTOS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LIBRODIARIO].[VENTAS] AS [VENTAS], 
+    [LIBRODIARIO].[COMPRAS] AS [COMPRAS], 
+    [LIBRODIARIO].[GASTOS] AS [GASTOS], 
+    [LIBRODIARIO].[VENTASCRED] AS [VENTASCRED], 
+    [LIBRODIARIO].[AB_COMPRAS] AS [AB_COMPRAS], 
+    [LIBRODIARIO].[UTILIDAD] AS [UTILIDAD], 
+    [LIBRODIARIO].[FECHA] AS [FECHA]
+    FROM [dbo].[LIBRODIARIO] AS [LIBRODIARIO]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__CLIENTES__IDRUTA__33D4B598" Association="Self.FK__CLIENTES__IDRUTA__33D4B598">
+            <End Role="RUTA" EntitySet="RUTA" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENTES__TIPOUS__34C8D9D1" Association="Self.FK__CLIENTES__TIPOUS__34C8D9D1">
+            <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__IDUSUA__286302EC" Association="Self.FK__EMPLEADO__IDUSUA__286302EC">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__TIPOUS__29572725" Association="Self.FK__EMPLEADO__TIPOUS__29572725">
+            <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__TIPOUS__25869641" Association="Self.FK__USUARIOS__TIPOUS__25869641">
+            <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ABONOCOMPRAS_CREDITO" Association="Self.fk_ABONOCOMPRAS_CREDITO">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="ABONOSCOMPRASCREDITO" EntitySet="ABONOSCOMPRASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_BALANCE" Association="Self.fk_CARGUE_BALANCE">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_CAMBIOS" Association="Self.fk_CARGUE_CAMBIOS">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_CARGUE2" Association="Self.fk_CARGUE_CARGUE2">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="CARGUE2" EntitySet="CARGUE2" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_VENTASP" Association="Self.fk_CARGUE_VENTASP">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARRO_BALANCE" Association="Self.fk_CARRO_BALANCE">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_ABONOSVENTASCRED" Association="Self.fk_CARROS_ABONOSVENTASCRED">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_CARGUE" Association="Self.fk_CARROS_CARGUE">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="CARGUE" EntitySet="CARGUE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_CARGUE2" Association="Self.fk_CARROS_CARGUE2">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="CARGUE2" EntitySet="CARGUE2" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_VENTASCRED" Association="Self.fk_CARROS_VENTASCRED">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Category" Association="Self.fk_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_ABONOSVENTASCRED" Association="Self.fk_CLIENTES_ABONOSVENTASCRED">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_CAMBIOS" Association="Self.fk_CLIENTES_CAMBIOS">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_VENTAS_PROD" Association="Self.fk_CLIENTES_VENTAS_PROD">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_VENTASCRED" Association="Self.fk_CLIENTES_VENTASCRED">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_COMPRAS_CONTADO" Association="Self.fk_COMPRAS_CONTADO">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+            <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TIPOVENTA_VENTASP" Association="Self.fk_TIPOVENTA_VENTASP">
+            <End Role="Tbl_TIPO" EntitySet="Tbl_TIPO" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USERS_CAMBIOS" Association="Self.fk_USERS_CAMBIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USERS_REFERENCIAS" Association="Self.fk_USERS_REFERENCIAS">
+            <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USU_CAMBIOS" Association="Self.fk_USU_CAMBIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CARGUE" EntitySet="CARGUE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USU_CARGUE2" Association="Self.fk_USU_CARGUE2">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CARGUE2" EntitySet="CARGUE2" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USUARIO_BALANCE" Association="Self.fk_USUARIO_BALANCE">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USUARIOS_ABONOSVENTASCRED" Association="Self.fk_USUARIOS_ABONOSVENTASCRED">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAPROD_DEVENTAS" Association="Self.fk_VENTAPROD_DEVENTAS">
+            <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+            <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FESTIVALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ABONOSCOMPRASCREDITO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ABONO" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="PROVEEDORES" Relationship="Self.fk_ABONOCOMPRAS_CREDITO" FromRole="ABONOSCOMPRASCREDITO" ToRole="PROVEEDORES" />
+        </EntityType>
+        <EntityType Name="ABONOSVENTASCREDITO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ABONO" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_ABONOSVENTASCRED" FromRole="ABONOSVENTASCREDITO" ToRole="CARROS" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_ABONOSVENTASCRED" FromRole="ABONOSVENTASCREDITO" ToRole="CLIENTES" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USUARIOS_ABONOSVENTASCRED" FromRole="ABONOSVENTASCREDITO" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="BALANCERUTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXTR" Type="Int32" Nullable="false" />
+          <Property Name="AAR" Type="Int32" Nullable="false" />
+          <Property Name="AR" Type="Int32" Nullable="false" />
+          <Property Name="BR" Type="Int32" Nullable="false" />
+          <Property Name="EXTB" Type="Int32" Nullable="false" />
+          <Property Name="AAB" Type="Int32" Nullable="false" />
+          <Property Name="AB" Type="Int32" Nullable="false" />
+          <Property Name="BB" Type="Int32" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+          <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+          <Property Name="VENTASCONTADO" Type="Double" Nullable="false" />
+          <Property Name="VENTASCREDITO" Type="Double" Nullable="false" />
+          <Property Name="ABONOS" Type="Double" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DEXTR" Type="Int32" Nullable="false" />
+          <Property Name="DAAR" Type="Int32" Nullable="false" />
+          <Property Name="DAR" Type="Int32" Nullable="false" />
+          <Property Name="DBR" Type="Int32" Nullable="false" />
+          <Property Name="DEXTB" Type="Int32" Nullable="false" />
+          <Property Name="DAAB" Type="Int32" Nullable="false" />
+          <Property Name="DAB" Type="Int32" Nullable="false" />
+          <Property Name="DBB" Type="Int32" Nullable="false" />
+          <Property Name="MONTOEFECTIVO" Type="Double" Nullable="false" />
+          <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+          <Property Name="DIFERENCIA" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_BALANCE" FromRole="BALANCERUTA" ToRole="CARGUE" />
+          <NavigationProperty Name="CARROS" Relationship="Self.fk_CARRO_BALANCE" FromRole="BALANCERUTA" ToRole="CARROS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USUARIO_BALANCE" FromRole="BALANCERUTA" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="CAMBIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="IDREF" Type="Int32" Nullable="false" />
+          <Property Name="CANT" Type="Int32" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_CAMBIOS" FromRole="CAMBIOS" ToRole="CARGUE" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_CAMBIOS" FromRole="CAMBIOS" ToRole="CLIENTES" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USERS_CAMBIOS" FromRole="CAMBIOS" ToRole="USUARIOS" />
+          <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_USERS_REFERENCIAS" FromRole="CAMBIOS" ToRole="REFERENCIAS" />
+        </EntityType>
+        <EntityType Name="CARGUE">
+          <Key>
+            <PropertyRef Name="IDCARGA" />
+          </Key>
+          <Property Name="IDCARGA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXTR" Type="Int32" Nullable="false" />
+          <Property Name="AAR" Type="Int32" Nullable="false" />
+          <Property Name="AR" Type="Int32" Nullable="false" />
+          <Property Name="BR" Type="Int32" Nullable="false" />
+          <Property Name="EXTB" Type="Int32" Nullable="false" />
+          <Property Name="AAB" Type="Int32" Nullable="false" />
+          <Property Name="AB" Type="Int32" Nullable="false" />
+          <Property Name="BB" Type="Int32" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+          <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="BALANCERUTA" Relationship="Self.fk_CARGUE_BALANCE" FromRole="CARGUE" ToRole="BALANCERUTA" />
+          <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_CARGUE_CAMBIOS" FromRole="CARGUE" ToRole="CAMBIOS" />
+          <NavigationProperty Name="CARGUE2" Relationship="Self.fk_CARGUE_CARGUE2" FromRole="CARGUE" ToRole="CARGUE2" />
+          <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_CARGUE_VENTASP" FromRole="CARGUE" ToRole="VENTA_PRODWEB" />
+          <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_CARGUE" FromRole="CARGUE" ToRole="CARROS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USU_CAMBIOS" FromRole="CARGUE" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="CARGUE2">
+          <Key>
+            <PropertyRef Name="IDCARGA2" />
+          </Key>
+          <Property Name="IDCARGA2" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXTR" Type="Int32" Nullable="false" />
+          <Property Name="AAR" Type="Int32" Nullable="false" />
+          <Property Name="AR" Type="Int32" Nullable="false" />
+          <Property Name="BR" Type="Int32" Nullable="false" />
+          <Property Name="EXTB" Type="Int32" Nullable="false" />
+          <Property Name="AAB" Type="Int32" Nullable="false" />
+          <Property Name="AB" Type="Int32" Nullable="false" />
+          <Property Name="BB" Type="Int32" Nullable="false" />
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+          <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_CARGUE2" FromRole="CARGUE2" ToRole="CARGUE" />
+          <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_CARGUE2" FromRole="CARGUE2" ToRole="CARROS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.fk_USU_CARGUE2" FromRole="CARGUE2" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="CARROS">
+          <Key>
+            <PropertyRef Name="IDCARRO" />
+          </Key>
+          <Property Name="IDCARRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLACA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_CARROS_ABONOSVENTASCRED" FromRole="CARROS" ToRole="ABONOSVENTASCREDITO" />
+          <NavigationProperty Name="BALANCERUTA" Relationship="Self.fk_CARRO_BALANCE" FromRole="CARROS" ToRole="BALANCERUTA" />
+          <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARROS_CARGUE" FromRole="CARROS" ToRole="CARGUE" />
+          <NavigationProperty Name="CARGUE2" Relationship="Self.fk_CARROS_CARGUE2" FromRole="CARROS" ToRole="CARGUE2" />
+          <NavigationProperty Name="VENTASCREDITO" Relationship="Self.fk_CARROS_VENTASCRED" FromRole="CARROS" ToRole="VENTASCREDITO" />
+        </EntityType>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="IDCLIENTE" />
+          </Key>
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDRUTA" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_CLIENTES_ABONOSVENTASCRED" FromRole="CLIENTES" ToRole="ABONOSVENTASCREDITO" />
+          <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_CLIENTES_CAMBIOS" FromRole="CLIENTES" ToRole="CAMBIOS" />
+          <NavigationProperty Name="RUTA" Relationship="Self.FK__CLIENTES__IDRUTA__33D4B598" FromRole="CLIENTES" ToRole="RUTA" />
+          <NavigationProperty Name="TIPOUSUARIOREGISTRO" Relationship="Self.FK__CLIENTES__TIPOUS__34C8D9D1" FromRole="CLIENTES" ToRole="TIPOUSUARIOREGISTRO" />
+          <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_CLIENTES_VENTAS_PROD" FromRole="CLIENTES" ToRole="VENTA_PROD" />
+          <NavigationProperty Name="VENTASCREDITO" Relationship="Self.fk_CLIENTES_VENTASCRED" FromRole="CLIENTES" ToRole="VENTASCREDITO" />
+          <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="CLIENTES" ToRole="VENTA_PRODWEB" />
+        </EntityType>
+        <EntityType Name="COMPRAS">
+          <Key>
+            <PropertyRef Name="IDCOMPRA" />
+          </Key>
+          <Property Name="IDCOMPRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANT" Type="Double" Nullable="false" />
+          <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="PROVEEDORES" Relationship="Self.fk_COMPRAS_CONTADO" FromRole="COMPRAS" ToRole="PROVEEDORES" />
+        </EntityType>
+        <EntityType Name="CONSECUTIVO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONSECUTIVO1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="IIDEMPLEADO" />
+          </Key>
+          <Property Name="IIDEMPLEADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACONTRATO" Type="DateTime" Precision="3" />
+          <Property Name="SUELDO" Type="Double" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="Int32" />
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK__EMPLEADO__IDUSUA__286302EC" FromRole="EMPLEADO" ToRole="USUARIOS" />
+          <NavigationProperty Name="TIPOUSUARIOREGISTRO" Relationship="Self.FK__EMPLEADO__TIPOUS__29572725" FromRole="EMPLEADO" ToRole="TIPOUSUARIOREGISTRO" />
+        </EntityType>
+        <EntityType Name="ITEMS">
+          <Key>
+            <PropertyRef Name="IDITEM" />
+          </Key>
+          <Property Name="IDITEM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PROVEEDORES">
+          <Key>
+            <PropertyRef Name="IDPROVEEDOR" />
+          </Key>
+          <Property Name="IDPROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="ABONOSCOMPRASCREDITO" Relationship="Self.fk_ABONOCOMPRAS_CREDITO" FromRole="PROVEEDORES" ToRole="ABONOSCOMPRASCREDITO" />
+          <NavigationProperty Name="COMPRAS" Relationship="Self.fk_COMPRAS_CONTADO" FromRole="PROVEEDORES" ToRole="COMPRAS" />
+        </EntityType>
+        <EntityType Name="REFERENCIAS">
+          <Key>
+            <PropertyRef Name="IDREF" />
+          </Key>
+          <Property Name="IDREF" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANT" Type="Double" Nullable="false" />
+          <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+          <Property Name="CANT_MINIMA" Type="Double" Nullable="false" />
+          <Property Name="VALCOSTO_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="VALVENTA_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UNI_MEDIDA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="VALMIN_VENTA" Type="Double" />
+          <Property Name="PORCENTAJE" Type="Double" />
+          <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_USERS_REFERENCIAS" FromRole="REFERENCIAS" ToRole="CAMBIOS" />
+          <NavigationProperty Name="Tbl_Category" Relationship="Self.fk_Category" FromRole="REFERENCIAS" ToRole="Tbl_Category" />
+          <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="REFERENCIAS" ToRole="VENTA_PRODWEB" />
+        </EntityType>
+        <EntityType Name="RUTA">
+          <Key>
+            <PropertyRef Name="IDRUTA" />
+          </Key>
+          <Property Name="IDRUTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRERUTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK__CLIENTES__IDRUTA__33D4B598" FromRole="RUTA" ToRole="CLIENTES" />
+        </EntityType>
+        <EntityType Name="Tbl_Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_Category" FromRole="Tbl_Category" ToRole="REFERENCIAS" />
+        </EntityType>
+        <EntityType Name="Tbl_TIPO">
+          <Key>
+            <PropertyRef Name="IDTIPOVENTA" />
+          </Key>
+          <Property Name="IDTIPOVENTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPOVENTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="VENTA_PRODWEB" Relationship="Self.fk_TIPOVENTA_VENTASP" FromRole="Tbl_TIPO" ToRole="VENTA_PRODWEB" />
+        </EntityType>
+        <EntityType Name="TIPOUSUARIOREGISTRO">
+          <Key>
+            <PropertyRef Name="TIPOUSUARIO" />
+          </Key>
+          <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK__CLIENTES__TIPOUS__34C8D9D1" FromRole="TIPOUSUARIOREGISTRO" ToRole="CLIENTES" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__EMPLEADO__TIPOUS__29572725" FromRole="TIPOUSUARIOREGISTRO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__TIPOUS__25869641" FromRole="TIPOUSUARIOREGISTRO" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPOUSUARIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="IID" Type="Int32" />
+          <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_USUARIOS_ABONOSVENTASCRED" FromRole="USUARIOS" ToRole="ABONOSVENTASCREDITO" />
+          <NavigationProperty Name="BALANCERUTA" Relationship="Self.fk_USUARIO_BALANCE" FromRole="USUARIOS" ToRole="BALANCERUTA" />
+          <NavigationProperty Name="CAMBIOS" Relationship="Self.fk_USERS_CAMBIOS" FromRole="USUARIOS" ToRole="CAMBIOS" />
+          <NavigationProperty Name="CARGUE" Relationship="Self.fk_USU_CAMBIOS" FromRole="USUARIOS" ToRole="CARGUE" />
+          <NavigationProperty Name="CARGUE2" Relationship="Self.fk_USU_CARGUE2" FromRole="USUARIOS" ToRole="CARGUE2" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__EMPLEADO__IDUSUA__286302EC" FromRole="USUARIOS" ToRole="EMPLEADO" />
+          <NavigationProperty Name="TIPOUSUARIOREGISTRO" Relationship="Self.FK__USUARIOS__TIPOUS__25869641" FromRole="USUARIOS" ToRole="TIPOUSUARIOREGISTRO" />
+        </EntityType>
+        <EntityType Name="VENTA_PROD">
+          <Key>
+            <PropertyRef Name="IDVENTA" />
+          </Key>
+          <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+          <Property Name="CANT" Type="Double" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="UTILIDAD" Type="Double" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTAS_PROD" FromRole="VENTA_PROD" ToRole="CLIENTES" />
+          <NavigationProperty Name="DEVENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVENTAS" FromRole="VENTA_PROD" ToRole="DEVENTA_PROD" />
+        </EntityType>
+        <EntityType Name="VENTA_PRODWEB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCARGA" Type="Int32" Nullable="false" />
+          <Property Name="IDREF" Type="Int32" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="IDTIPOVENTA" Type="Int32" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+          <Property Name="CANT" Type="Double" Nullable="false" />
+          <Property Name="MONTOVENTA" Type="Double" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ABONO" Type="Double" Nullable="false" />
+          <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <NavigationProperty Name="CARGUE" Relationship="Self.fk_CARGUE_VENTASP" FromRole="VENTA_PRODWEB" ToRole="CARGUE" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="VENTA_PRODWEB" ToRole="CLIENTES" />
+          <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="VENTA_PRODWEB" ToRole="REFERENCIAS" />
+          <NavigationProperty Name="Tbl_TIPO" Relationship="Self.fk_TIPOVENTA_VENTASP" FromRole="VENTA_PRODWEB" ToRole="Tbl_TIPO" />
+        </EntityType>
+        <EntityType Name="VENTASCREDITO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+          <Property Name="IDCARRO" Type="Int32" Nullable="false" />
+          <Property Name="CONSECUTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CARROS" Relationship="Self.fk_CARROS_VENTASCRED" FromRole="VENTASCREDITO" ToRole="CARROS" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASCRED" FromRole="VENTASCREDITO" ToRole="CLIENTES" />
+        </EntityType>
+        <EntityType Name="COMPRASCREDITO">
+          <Key>
+            <PropertyRef Name="FACTURA" />
+            <PropertyRef Name="PROVEEDOR" />
+            <PropertyRef Name="MONTODEUDA" />
+            <PropertyRef Name="TIPO" />
+            <PropertyRef Name="FECHAPAGO" />
+          </Key>
+          <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DEVCOMPRAS">
+          <Key>
+            <PropertyRef Name="IDCOMPRA" />
+            <PropertyRef Name="FACTURA" />
+            <PropertyRef Name="REF" />
+            <PropertyRef Name="CANT" />
+            <PropertyRef Name="VALCOSTO_UNI" />
+            <PropertyRef Name="PROVEEDOR" />
+            <PropertyRef Name="MONTO_TOTAL" />
+            <PropertyRef Name="TIPO" />
+            <PropertyRef Name="FECHACOMPRA" />
+            <PropertyRef Name="FECHAPAGO" />
+          </Key>
+          <Property Name="IDCOMPRA" Type="Int32" Nullable="false" />
+          <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANT" Type="Double" Nullable="false" />
+          <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+          <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DEVENTA_PROD">
+          <Key>
+            <PropertyRef Name="IDVENTA" />
+            <PropertyRef Name="REMISION" />
+            <PropertyRef Name="REF" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="NUIP" />
+            <PropertyRef Name="VALUNI_VENTA" />
+            <PropertyRef Name="CANT" />
+            <PropertyRef Name="MONTO_TOTAL" />
+            <PropertyRef Name="TIPO" />
+            <PropertyRef Name="FECHAVENTA" />
+            <PropertyRef Name="FECHAPAGO" />
+          </Key>
+          <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+          <Property Name="CANT" Type="Double" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVENTAS" FromRole="DEVENTA_PROD" ToRole="VENTA_PROD" />
+        </EntityType>
+        <EntityType Name="GASTOS">
+          <Key>
+            <PropertyRef Name="COMPROVANTE" />
+            <PropertyRef Name="FECHA" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="MONTO" />
+            <PropertyRef Name="BENEFICIARIO" />
+            <PropertyRef Name="NUIP" />
+            <PropertyRef Name="DESCRIPCION_DETALLADA" />
+          </Key>
+          <Property Name="COMPROVANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO" Type="Double" Nullable="false" />
+          <Property Name="BENEFICIARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION_DETALLADA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BHABILITADO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LIBRODIARIO">
+          <Key>
+            <PropertyRef Name="VENTAS" />
+            <PropertyRef Name="COMPRAS" />
+            <PropertyRef Name="GASTOS" />
+            <PropertyRef Name="VENTASCRED" />
+            <PropertyRef Name="AB_COMPRAS" />
+            <PropertyRef Name="UTILIDAD" />
+            <PropertyRef Name="FECHA" />
+          </Key>
+          <Property Name="VENTAS" Type="Double" Nullable="false" />
+          <Property Name="COMPRAS" Type="Double" Nullable="false" />
+          <Property Name="GASTOS" Type="Double" Nullable="false" />
+          <Property Name="VENTASCRED" Type="Double" Nullable="false" />
+          <Property Name="AB_COMPRAS" Type="Double" Nullable="false" />
+          <Property Name="UTILIDAD" Type="Double" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="fk_ABONOCOMPRAS_CREDITO">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+          <End Role="ABONOSCOMPRASCREDITO" Type="Self.ABONOSCOMPRASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Principal>
+            <Dependent Role="ABONOSCOMPRASCREDITO">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_ABONOSVENTASCRED">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="ABONOSVENTASCREDITO">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_ABONOSVENTASCRED">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="ABONOSVENTASCREDITO">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USUARIOS_ABONOSVENTASCRED">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="ABONOSVENTASCREDITO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_BALANCE">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="BALANCERUTA">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARRO_BALANCE">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="BALANCERUTA">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USUARIO_BALANCE">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="BALANCERUTA" Type="Self.BALANCERUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="BALANCERUTA">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_CAMBIOS">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_CAMBIOS">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USERS_CAMBIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USERS_REFERENCIAS">
+          <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+          <End Role="CAMBIOS" Type="Self.CAMBIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REFERENCIAS">
+              <PropertyRef Name="IDREF" />
+            </Principal>
+            <Dependent Role="CAMBIOS">
+              <PropertyRef Name="IDREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_CARGUE2">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="CARGUE2">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARGUE_VENTASP">
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGUE">
+              <PropertyRef Name="IDCARGA" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDCARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_CARGUE">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="CARGUE">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USU_CAMBIOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CARGUE" Type="Self.CARGUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="CARGUE">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_CARGUE2">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="CARGUE2">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USU_CARGUE2">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CARGUE2" Type="Self.CARGUE2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="CARGUE2">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CARROS_VENTASCRED">
+          <End Role="CARROS" Type="Self.CARROS" Multiplicity="1" />
+          <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARROS">
+              <PropertyRef Name="IDCARRO" />
+            </Principal>
+            <Dependent Role="VENTASCREDITO">
+              <PropertyRef Name="IDCARRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENTES__IDRUTA__33D4B598">
+          <End Role="RUTA" Type="Self.RUTA" Multiplicity="1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUTA">
+              <PropertyRef Name="IDRUTA" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="IDRUTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENTES__TIPOUS__34C8D9D1">
+          <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOUSUARIOREGISTRO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_VENTAS_PROD">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="VENTA_PROD">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_VENTASCRED">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="VENTASCREDITO">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTES_VENTASP">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="IDCLIENTE" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_COMPRAS_CONTADO">
+          <End Role="PROVEEDORES" Type="Self.PROVEEDORES" Multiplicity="1" />
+          <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDORES">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Principal>
+            <Dependent Role="COMPRAS">
+              <PropertyRef Name="IDPROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__IDUSUA__286302EC">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__TIPOUS__29572725">
+          <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOUSUARIOREGISTRO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Category">
+          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
+          <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="REFERENCIAS">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REFERENCIAS_VENTASP">
+          <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REFERENCIAS">
+              <PropertyRef Name="IDREF" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TIPOVENTA_VENTASP">
+          <End Role="Tbl_TIPO" Type="Self.Tbl_TIPO" Multiplicity="1" />
+          <End Role="VENTA_PRODWEB" Type="Self.VENTA_PRODWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_TIPO">
+              <PropertyRef Name="IDTIPOVENTA" />
+            </Principal>
+            <Dependent Role="VENTA_PRODWEB">
+              <PropertyRef Name="IDTIPOVENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__TIPOUS__25869641">
+          <End Role="TIPOUSUARIOREGISTRO" Type="Self.TIPOUSUARIOREGISTRO" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOUSUARIOREGISTRO">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="TIPOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAPROD_DEVENTAS">
+          <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+          <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA_PROD">
+              <PropertyRef Name="IDVENTA" />
+            </Principal>
+            <Dependent Role="DEVENTA_PROD">
+              <PropertyRef Name="IDVENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FESTIVALEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" />
+          <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" />
+          <EntitySet Name="BALANCERUTA" EntityType="Self.BALANCERUTA" />
+          <EntitySet Name="CAMBIOS" EntityType="Self.CAMBIOS" />
+          <EntitySet Name="CARGUE" EntityType="Self.CARGUE" />
+          <EntitySet Name="CARGUE2" EntityType="Self.CARGUE2" />
+          <EntitySet Name="CARROS" EntityType="Self.CARROS" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+          <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" />
+          <EntitySet Name="CONSECUTIVO" EntityType="Self.CONSECUTIVO" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
+          <EntitySet Name="ITEMS" EntityType="Self.ITEMS" />
+          <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
+          <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" />
+          <EntitySet Name="RUTA" EntityType="Self.RUTA" />
+          <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
+          <EntitySet Name="Tbl_TIPO" EntityType="Self.Tbl_TIPO" />
+          <EntitySet Name="TIPOUSUARIOREGISTRO" EntityType="Self.TIPOUSUARIOREGISTRO" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" />
+          <EntitySet Name="VENTA_PRODWEB" EntityType="Self.VENTA_PRODWEB" />
+          <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" />
+          <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" />
+          <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" />
+          <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" />
+          <EntitySet Name="GASTOS" EntityType="Self.GASTOS" />
+          <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" />
+          <AssociationSet Name="fk_ABONOCOMPRAS_CREDITO" Association="Self.fk_ABONOCOMPRAS_CREDITO">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="ABONOSCOMPRASCREDITO" EntitySet="ABONOSCOMPRASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_ABONOSVENTASCRED" Association="Self.fk_CARROS_ABONOSVENTASCRED">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_ABONOSVENTASCRED" Association="Self.fk_CLIENTES_ABONOSVENTASCRED">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USUARIOS_ABONOSVENTASCRED" Association="Self.fk_USUARIOS_ABONOSVENTASCRED">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_BALANCE" Association="Self.fk_CARGUE_BALANCE">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARRO_BALANCE" Association="Self.fk_CARRO_BALANCE">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USUARIO_BALANCE" Association="Self.fk_USUARIO_BALANCE">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="BALANCERUTA" EntitySet="BALANCERUTA" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_CAMBIOS" Association="Self.fk_CARGUE_CAMBIOS">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_CAMBIOS" Association="Self.fk_CLIENTES_CAMBIOS">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USERS_CAMBIOS" Association="Self.fk_USERS_CAMBIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USERS_REFERENCIAS" Association="Self.fk_USERS_REFERENCIAS">
+            <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+            <End Role="CAMBIOS" EntitySet="CAMBIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_CARGUE2" Association="Self.fk_CARGUE_CARGUE2">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="CARGUE2" EntitySet="CARGUE2" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARGUE_VENTASP" Association="Self.fk_CARGUE_VENTASP">
+            <End Role="CARGUE" EntitySet="CARGUE" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_CARGUE" Association="Self.fk_CARROS_CARGUE">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="CARGUE" EntitySet="CARGUE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USU_CAMBIOS" Association="Self.fk_USU_CAMBIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CARGUE" EntitySet="CARGUE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_CARGUE2" Association="Self.fk_CARROS_CARGUE2">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="CARGUE2" EntitySet="CARGUE2" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USU_CARGUE2" Association="Self.fk_USU_CARGUE2">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CARGUE2" EntitySet="CARGUE2" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CARROS_VENTASCRED" Association="Self.fk_CARROS_VENTASCRED">
+            <End Role="CARROS" EntitySet="CARROS" />
+            <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENTES__IDRUTA__33D4B598" Association="Self.FK__CLIENTES__IDRUTA__33D4B598">
+            <End Role="RUTA" EntitySet="RUTA" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENTES__TIPOUS__34C8D9D1" Association="Self.FK__CLIENTES__TIPOUS__34C8D9D1">
+            <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_VENTAS_PROD" Association="Self.fk_CLIENTES_VENTAS_PROD">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_VENTASCRED" Association="Self.fk_CLIENTES_VENTASCRED">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_COMPRAS_CONTADO" Association="Self.fk_COMPRAS_CONTADO">
+            <End Role="PROVEEDORES" EntitySet="PROVEEDORES" />
+            <End Role="COMPRAS" EntitySet="COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__IDUSUA__286302EC" Association="Self.FK__EMPLEADO__IDUSUA__286302EC">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__TIPOUS__29572725" Association="Self.FK__EMPLEADO__TIPOUS__29572725">
+            <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Category" Association="Self.fk_Category">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+            <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TIPOVENTA_VENTASP" Association="Self.fk_TIPOVENTA_VENTASP">
+            <End Role="Tbl_TIPO" EntitySet="Tbl_TIPO" />
+            <End Role="VENTA_PRODWEB" EntitySet="VENTA_PRODWEB" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__TIPOUS__25869641" Association="Self.FK__USUARIOS__TIPOUS__25869641">
+            <End Role="TIPOUSUARIOREGISTRO" EntitySet="TIPOUSUARIOREGISTRO" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAPROD_DEVENTAS" Association="Self.fk_VENTAPROD_DEVENTAS">
+            <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+            <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FESTIVALModelStoreContainer" CdmEntityContainer="FESTIVALEntities">
+          <EntitySetMapping Name="ABONOSCOMPRASCREDITO">
+            <EntityTypeMapping TypeName="FESTIVALModel.ABONOSCOMPRASCREDITO">
+              <MappingFragment StoreEntitySet="ABONOSCOMPRASCREDITO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+                <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+                <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHABONO" ColumnName="FECHABONO" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+                <ScalarProperty Name="IDPROVEEDOR" ColumnName="IDPROVEEDOR" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ABONOSVENTASCREDITO">
+            <EntityTypeMapping TypeName="FESTIVALModel.ABONOSVENTASCREDITO">
+              <MappingFragment StoreEntitySet="ABONOSVENTASCREDITO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHABONO" ColumnName="FECHABONO" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BALANCERUTA">
+            <EntityTypeMapping TypeName="FESTIVALModel.BALANCERUTA">
+              <MappingFragment StoreEntitySet="BALANCERUTA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EXTR" ColumnName="EXTR" />
+                <ScalarProperty Name="AAR" ColumnName="AAR" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="BR" ColumnName="BR" />
+                <ScalarProperty Name="EXTB" ColumnName="EXTB" />
+                <ScalarProperty Name="AAB" ColumnName="AAB" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="BB" ColumnName="BB" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+                <ScalarProperty Name="VENTASCONTADO" ColumnName="VENTASCONTADO" />
+                <ScalarProperty Name="VENTASCREDITO" ColumnName="VENTASCREDITO" />
+                <ScalarProperty Name="ABONOS" ColumnName="ABONOS" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DEXTR" ColumnName="DEXTR" />
+                <ScalarProperty Name="DAAR" ColumnName="DAAR" />
+                <ScalarProperty Name="DAR" ColumnName="DAR" />
+                <ScalarProperty Name="DBR" ColumnName="DBR" />
+                <ScalarProperty Name="DEXTB" ColumnName="DEXTB" />
+                <ScalarProperty Name="DAAB" ColumnName="DAAB" />
+                <ScalarProperty Name="DAB" ColumnName="DAB" />
+                <ScalarProperty Name="DBB" ColumnName="DBB" />
+                <ScalarProperty Name="MONTOEFECTIVO" ColumnName="MONTOEFECTIVO" />
+                <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+                <ScalarProperty Name="DIFERENCIA" ColumnName="DIFERENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAMBIOS">
+            <EntityTypeMapping TypeName="FESTIVALModel.CAMBIOS">
+              <MappingFragment StoreEntitySet="CAMBIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="IDREF" ColumnName="IDREF" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARGUE">
+            <EntityTypeMapping TypeName="FESTIVALModel.CARGUE">
+              <MappingFragment StoreEntitySet="CARGUE">
+                <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+                <ScalarProperty Name="EXTR" ColumnName="EXTR" />
+                <ScalarProperty Name="AAR" ColumnName="AAR" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="BR" ColumnName="BR" />
+                <ScalarProperty Name="EXTB" ColumnName="EXTB" />
+                <ScalarProperty Name="AAB" ColumnName="AAB" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="BB" ColumnName="BB" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARGUE2">
+            <EntityTypeMapping TypeName="FESTIVALModel.CARGUE2">
+              <MappingFragment StoreEntitySet="CARGUE2">
+                <ScalarProperty Name="IDCARGA2" ColumnName="IDCARGA2" />
+                <ScalarProperty Name="EXTR" ColumnName="EXTR" />
+                <ScalarProperty Name="AAR" ColumnName="AAR" />
+                <ScalarProperty Name="AR" ColumnName="AR" />
+                <ScalarProperty Name="BR" ColumnName="BR" />
+                <ScalarProperty Name="EXTB" ColumnName="EXTB" />
+                <ScalarProperty Name="AAB" ColumnName="AAB" />
+                <ScalarProperty Name="AB" ColumnName="AB" />
+                <ScalarProperty Name="BB" ColumnName="BB" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARROS">
+            <EntityTypeMapping TypeName="FESTIVALModel.CARROS">
+              <MappingFragment StoreEntitySet="CARROS">
+                <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+                <ScalarProperty Name="PLACA" ColumnName="PLACA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTES">
+            <EntityTypeMapping TypeName="FESTIVALModel.CLIENTES">
+              <MappingFragment StoreEntitySet="CLIENTES">
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="IDRUTA" ColumnName="IDRUTA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPRAS">
+            <EntityTypeMapping TypeName="FESTIVALModel.COMPRAS">
+              <MappingFragment StoreEntitySet="COMPRAS">
+                <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+                <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+                <ScalarProperty Name="REF" ColumnName="REF" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+                <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+                <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+                <ScalarProperty Name="IDPROVEEDOR" ColumnName="IDPROVEEDOR" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSECUTIVO">
+            <EntityTypeMapping TypeName="FESTIVALModel.CONSECUTIVO">
+              <MappingFragment StoreEntitySet="CONSECUTIVO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CONSECUTIVO1" ColumnName="CONSECUTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO">
+            <EntityTypeMapping TypeName="FESTIVALModel.EMPLEADO">
+              <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="IIDEMPLEADO" ColumnName="IIDEMPLEADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="FECHACONTRATO" ColumnName="FECHACONTRATO" />
+                <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEMS">
+            <EntityTypeMapping TypeName="FESTIVALModel.ITEMS">
+              <MappingFragment StoreEntitySet="ITEMS">
+                <ScalarProperty Name="IDITEM" ColumnName="IDITEM" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDORES">
+            <EntityTypeMapping TypeName="FESTIVALModel.PROVEEDORES">
+              <MappingFragment StoreEntitySet="PROVEEDORES">
+                <ScalarProperty Name="IDPROVEEDOR" ColumnName="IDPROVEEDOR" />
+                <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REFERENCIAS">
+            <EntityTypeMapping TypeName="FESTIVALModel.REFERENCIAS">
+              <MappingFragment StoreEntitySet="REFERENCIAS">
+                <ScalarProperty Name="IDREF" ColumnName="IDREF" />
+                <ScalarProperty Name="REF" ColumnName="REF" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+                <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+                <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+                <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+                <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="VALMIN_VENTA" ColumnName="VALMIN_VENTA" />
+                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUTA">
+            <EntityTypeMapping TypeName="FESTIVALModel.RUTA">
+              <MappingFragment StoreEntitySet="RUTA">
+                <ScalarProperty Name="IDRUTA" ColumnName="IDRUTA" />
+                <ScalarProperty Name="NOMBRERUTA" ColumnName="NOMBRERUTA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Category">
+            <EntityTypeMapping TypeName="FESTIVALModel.Tbl_Category">
+              <MappingFragment StoreEntitySet="Tbl_Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_TIPO">
+            <EntityTypeMapping TypeName="FESTIVALModel.Tbl_TIPO">
+              <MappingFragment StoreEntitySet="Tbl_TIPO">
+                <ScalarProperty Name="IDTIPOVENTA" ColumnName="IDTIPOVENTA" />
+                <ScalarProperty Name="TIPOVENTA" ColumnName="TIPOVENTA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOUSUARIOREGISTRO">
+            <EntityTypeMapping TypeName="FESTIVALModel.TIPOUSUARIOREGISTRO">
+              <MappingFragment StoreEntitySet="TIPOUSUARIOREGISTRO">
+                <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="FESTIVALModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+                <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="IID" ColumnName="IID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTA_PROD">
+            <EntityTypeMapping TypeName="FESTIVALModel.VENTA_PROD">
+              <MappingFragment StoreEntitySet="VENTA_PROD">
+                <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+                <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+                <ScalarProperty Name="REF" ColumnName="REF" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTA_PRODWEB">
+            <EntityTypeMapping TypeName="FESTIVALModel.VENTA_PRODWEB">
+              <MappingFragment StoreEntitySet="VENTA_PRODWEB">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCARGA" ColumnName="IDCARGA" />
+                <ScalarProperty Name="IDREF" ColumnName="IDREF" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="IDTIPOVENTA" ColumnName="IDTIPOVENTA" />
+                <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="MONTOVENTA" ColumnName="MONTOVENTA" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+                <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+                <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTASCREDITO">
+            <EntityTypeMapping TypeName="FESTIVALModel.VENTASCREDITO">
+              <MappingFragment StoreEntitySet="VENTASCREDITO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+                <ScalarProperty Name="IDCARRO" ColumnName="IDCARRO" />
+                <ScalarProperty Name="CONSECUTIVO" ColumnName="CONSECUTIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPRASCREDITO">
+            <EntityTypeMapping TypeName="FESTIVALModel.COMPRASCREDITO">
+              <MappingFragment StoreEntitySet="COMPRASCREDITO">
+                <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+                <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+                <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEVCOMPRAS">
+            <EntityTypeMapping TypeName="FESTIVALModel.DEVCOMPRAS">
+              <MappingFragment StoreEntitySet="DEVCOMPRAS">
+                <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+                <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+                <ScalarProperty Name="REF" ColumnName="REF" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+                <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+                <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEVENTA_PROD">
+            <EntityTypeMapping TypeName="FESTIVALModel.DEVENTA_PROD">
+              <MappingFragment StoreEntitySet="DEVENTA_PROD">
+                <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+                <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+                <ScalarProperty Name="REF" ColumnName="REF" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+                <ScalarProperty Name="CANT" ColumnName="CANT" />
+                <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+                <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GASTOS">
+            <EntityTypeMapping TypeName="FESTIVALModel.GASTOS">
+              <MappingFragment StoreEntitySet="GASTOS">
+                <ScalarProperty Name="COMPROVANTE" ColumnName="COMPROVANTE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="BENEFICIARIO" ColumnName="BENEFICIARIO" />
+                <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+                <ScalarProperty Name="DESCRIPCION_DETALLADA" ColumnName="DESCRIPCION_DETALLADA" />
+                <ScalarProperty Name="BHABILITADO" ColumnName="BHABILITADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIBRODIARIO">
+            <EntityTypeMapping TypeName="FESTIVALModel.LIBRODIARIO">
+              <MappingFragment StoreEntitySet="LIBRODIARIO">
+                <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+                <ScalarProperty Name="COMPRAS" ColumnName="COMPRAS" />
+                <ScalarProperty Name="GASTOS" ColumnName="GASTOS" />
+                <ScalarProperty Name="VENTASCRED" ColumnName="VENTASCRED" />
+                <ScalarProperty Name="AB_COMPRAS" ColumnName="AB_COMPRAS" />
+                <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

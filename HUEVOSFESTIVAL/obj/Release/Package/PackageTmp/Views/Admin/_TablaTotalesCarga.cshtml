@@ -1,0 +1,40 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsVentasweb>
+@{
+    Layout = null;
+
+}
+
+
+<table class="table table-bordered table-hover">
+    <tr class="text-xl-right">
+        
+        <td class="text-xl-right">carga</td>
+        <td class="text-xl-right">idref</td>
+        <td class="text-xl-right">Cliente</td>
+        <td class="text-xl-right">Referencia</td>
+        <td class="text-xl-right">Cant</td>
+    </tr>
+    @{
+        int Cant = 0;
+    }
+   @foreach (var item in Model)
+    {
+        double Cantidad = item.cant;
+        Cant = @Cant + Convert.ToInt32(Cantidad);
+
+        <tr>
+            <td>@item.idcarga</td>
+            <td>@item.idref</td>
+            <td>@item.cliente</td>
+            <td>@item.Ref</td>
+            <td>@item.cant</td>
+        </tr>
+    }
+
+    <tr class="text-xl-right">
+        <td class="text-xl-right">
+            <b>Total Ref:  @Cant</b>
+        </td>
+    </tr>
+</table>

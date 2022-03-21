@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5afab0db91dc4bd6badcb5addbe87f56" Name="Diagram1">
+        <EntityTypeShape EntityType="FESTIVALModel.ABONOSCOMPRASCREDITO" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.ABONOSVENTASCREDITO" Width="1.5" PointX="8.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.BALANCERUTA" Width="1.5" PointX="5.25" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.CAMBIOS" Width="1.5" PointX="10.5" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.CARGUE" Width="1.5" PointX="8.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.CARGUE2" Width="1.5" PointX="10.5" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.CARROS" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.CLIENTES" Width="1.5" PointX="3" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.COMPRAS" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.CONSECUTIVO" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.EMPLEADO" Width="1.5" PointX="5.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.ITEMS" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.PROVEEDORES" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.REFERENCIAS" Width="1.5" PointX="11.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.RUTA" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.Tbl_Category" Width="1.5" PointX="9" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.Tbl_TIPO" Width="1.5" PointX="11.25" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.TIPOUSUARIOREGISTRO" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.USUARIOS" Width="1.5" PointX="3" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.VENTA_PROD" Width="1.5" PointX="5.25" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.VENTA_PRODWEB" Width="1.5" PointX="13.5" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.VENTASCREDITO" Width="1.5" PointX="5.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.COMPRASCREDITO" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.DEVCOMPRAS" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.DEVENTA_PROD" Width="1.5" PointX="7.5" PointY="40.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.GASTOS" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FESTIVALModel.LIBRODIARIO" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="FESTIVALModel.fk_ABONOCOMPRAS_CREDITO" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARROS_ABONOSVENTASCRED" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CLIENTES_ABONOSVENTASCRED" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_USUARIOS_ABONOSVENTASCRED" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARGUE_BALANCE" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARRO_BALANCE" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_USUARIO_BALANCE" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARGUE_CAMBIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARROS_CAMBIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CLIENTES_CAMBIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_Ruta_CAMBIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_USERS_CAMBIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARGUE_CARGUE2" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARGUE_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARROS_CARGUE" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_USU_CAMBIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARROS_CARGUE2" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_USU_CARGUE2" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARROS_VENTASCRED" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CARROS_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.FK__CLIENTES__IDRUTA__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.FK__CLIENTES__TIPOUS__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CLIENTES_VENTAS_PROD" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CLIENTES_VENTASCRED" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_CLIENTES_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_COMPRAS_CONTADO" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.FK__EMPLEADO__IDUSUA__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.FK__EMPLEADO__TIPOUS__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_REFERENCIAS_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_Ruta_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_TIPOVENTA_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.FK__USUARIOS__TIPOUS__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_USUARIOS_VENTASP" ManuallyRouted="false" />
+        <AssociationConnector Association="FESTIVALModel.fk_VENTAPROD_DEVENTAS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

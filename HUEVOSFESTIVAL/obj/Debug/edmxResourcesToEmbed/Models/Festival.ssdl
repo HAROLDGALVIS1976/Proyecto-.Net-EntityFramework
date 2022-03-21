@@ -1,0 +1,1045 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FESTIVALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.ABONOSCOMPRASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ABONOSCOMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ABONO" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHABONO" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.ABONOSVENTASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ABONOSVENTASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ABONO" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHABONO" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="NUIP" />
+    </Key>
+    <Property Name="CLIENTE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CIUDAD" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RUTA" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.COMPRASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="COMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.DEVCOMPRAS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="DEVCOMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALCOSTO_UNI" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHACOMPRA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FACTURA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.DEVENTA_PROD' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="DEVENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAVENTA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.GASTOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="GASTOS">
+    <Key>
+      <PropertyRef Name="COMPROVANTE" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="MONTO" />
+      <PropertyRef Name="BENEFICIARIO" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="DESCRIPCION_DETALLADA" />
+    </Key>
+    <Property Name="COMPROVANTE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MONTO" Type="float" Nullable="false" />
+    <Property Name="BENEFICIARIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION_DETALLADA" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.ITEMS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ITEMS">
+    <Key>
+      <PropertyRef Name="DESCRIPCION" />
+    </Key>
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.LIBRODIARIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="LIBRODIARIO">
+    <Key>
+      <PropertyRef Name="VENTAS" />
+      <PropertyRef Name="COMPRAS" />
+      <PropertyRef Name="GASTOS" />
+      <PropertyRef Name="AB_VENTAS" />
+      <PropertyRef Name="AB_COMPRAS" />
+      <PropertyRef Name="UTILIDAD" />
+      <PropertyRef Name="FECHA" />
+    </Key>
+    <Property Name="VENTAS" Type="float" Nullable="false" />
+    <Property Name="COMPRAS" Type="float" Nullable="false" />
+    <Property Name="GASTOS" Type="float" Nullable="false" />
+    <Property Name="AB_VENTAS" Type="float" Nullable="false" />
+    <Property Name="AB_COMPRAS" Type="float" Nullable="false" />
+    <Property Name="UTILIDAD" Type="float" Nullable="false" />
+    <Property Name="FECHA" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PEDIDOS">
+    <Key>
+      <PropertyRef Name="ORDEN" />
+    </Key>
+    <Property Name="ORDEN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PEDIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="FECHA_PEDIDO" Type="datetime" Nullable="false" />
+    <Property Name="FECHA_ENTREGA" Type="datetime" Nullable="false" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROVEEDORES">
+    <Key>
+      <PropertyRef Name="NUIP" />
+    </Key>
+    <Property Name="PROVEEDOR" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CIUDAD" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REFERENCIAS">
+    <Key>
+      <PropertyRef Name="REF" />
+    </Key>
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="float" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT_MINIMA" Type="float" Nullable="false" />
+    <Property Name="VALCOSTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="VALVENTA_TOTAL" Type="float" Nullable="false" />
+    <Property Name="IMAGEN" Type="varchar" MaxLength="200" />
+    <Property Name="UNI_MEDIDA" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.USUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="USUARIO" />
+      <PropertyRef Name="CONTRASEÑA" />
+    </Key>
+    <Property Name="USUARIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+    </Key>
+    <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="datetime" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.VENTAINICIAL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VENTAINICIAL">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="SUBTOTAL" />
+    </Key>
+    <Property Name="IDVENTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="REF" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CANT" Type="float" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="float" Nullable="false" />
+    <Property Name="SUBTOTAL" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FESTIVAL.dbo.VENTASCREDITO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VENTASCREDITO">
+    <Key>
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="REMISION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NUIP" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="float" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_CLIENTES_ABONOSVENTASCREDITO">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="ABONOSVENTASCREDITO">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_DEVVENTAS">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_PED">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="PEDIDOS" Type="Self.PEDIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="PEDIDOS">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASCREDITO">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="VENTASCREDITO">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASP">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_COMPRASDEVCOMPRAS">
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_DEVVENTAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_PED">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="PEDIDOS" Type="Self.PEDIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="PEDIDOS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_VENTASP">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIASCOMPRAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="COMPRAS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIASDEVCOMPRAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VENTAPROD_DEVVENTAS">
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Sp_BorrarVentaInicial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_BuscaCli" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaCli2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_BuscaCliente2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_BuscaCompra2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaCompraCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaCompras2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaComprasCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaGastos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_BuscaGastos2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="comprobante" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaNuipVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaProv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaProv2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_BuscarComprasCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaRef" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaRef2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaReferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscarLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscarVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_BuscaVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaVenta2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaVentaPerdida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_BuscaVentasCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CargaCboCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CargaCboFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CargaCboFechaPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CargaCboNuip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CargaCboRemision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CargaCboRemision2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CargaCboTipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CompletaBeneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaComprobante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaConsecutivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaDescripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaDescripcionGastos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaNuip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CompletaNuipCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaNuipProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaRef" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaRefDeventas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaReferefencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaRemision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletaRuta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_CompletItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivGastos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoCXC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoCXP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoDevCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoDevVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoVentaInicial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsecutivoVentas2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ConsultaCopras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha1" Type="datetime" Mode="In" />
+    <Parameter Name="fecha2" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_ConsultaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ConsultaDevCopras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha1" Type="datetime" Mode="In" />
+    <Parameter Name="fecha2" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarAbonoCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarAbonoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarGasto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="comprobante" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarVenta2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminarVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_EliminaUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_FechaTipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaAbonoComprasCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="abono" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="fechabono" Type="datetime" Mode="In" />
+    <Parameter Name="fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaAbonoVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="abono" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="fechabono" Type="datetime" Mode="In" />
+    <Parameter Name="fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="direccion" Type="varchar" Mode="In" />
+    <Parameter Name="telefono" Type="varchar" Mode="In" />
+    <Parameter Name="ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+    <Parameter Name="ruta" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcompra" Type="varchar" Mode="In" />
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="cant" Type="float" Mode="In" />
+    <Parameter Name="valcosto" Type="float" Mode="In" />
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="montototal" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="fechacompra" Type="datetime" Mode="In" />
+    <Parameter Name="fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaCompraCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="abono" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaDevCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcompra" Type="varchar" Mode="In" />
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="cant" Type="float" Mode="In" />
+    <Parameter Name="valcosto" Type="float" Mode="In" />
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="montototal" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="fechacompra" Type="datetime" Mode="In" />
+    <Parameter Name="fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaDevVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+    <Parameter Name="Remision" Type="varchar" Mode="In" />
+    <Parameter Name="Ref" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Nuip" Type="varchar" Mode="In" />
+    <Parameter Name="Valuniventa" Type="float" Mode="In" />
+    <Parameter Name="Cant" Type="float" Mode="In" />
+    <Parameter Name="Monto" Type="float" Mode="In" />
+    <Parameter Name="Tipo" Type="varchar" Mode="In" />
+    <Parameter Name="Fechaventa" Type="datetime" Mode="In" />
+    <Parameter Name="Fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaGasto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="comprobante" Type="varchar" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="monto" Type="float" Mode="In" />
+    <Parameter Name="beneficiario" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="descripcion2" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ventas" Type="float" Mode="In" />
+    <Parameter Name="compras" Type="float" Mode="In" />
+    <Parameter Name="gastos" Type="float" Mode="In" />
+    <Parameter Name="abonocxc" Type="float" Mode="In" />
+    <Parameter Name="abonocxp" Type="float" Mode="In" />
+    <Parameter Name="utilidad" Type="float" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="direccion" Type="varchar" Mode="In" />
+    <Parameter Name="telefono" Type="varchar" Mode="In" />
+    <Parameter Name="ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaRef" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Cant" Type="float" Mode="In" />
+    <Parameter Name="Costounidad" Type="float" Mode="In" />
+    <Parameter Name="ValventaUni" Type="float" Mode="In" />
+    <Parameter Name="Cantminima" Type="float" Mode="In" />
+    <Parameter Name="Costototal" Type="float" Mode="In" />
+    <Parameter Name="Ventatotal" Type="float" Mode="In" />
+    <Parameter Name="Imagen" Type="varchar" Mode="In" />
+    <Parameter Name="Unimed" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="contraseña" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="abono" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaVentaIni" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+    <Parameter Name="Remision" Type="varchar" Mode="In" />
+    <Parameter Name="Ref" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Cant" Type="float" Mode="In" />
+    <Parameter Name="Valuniventa" Type="float" Mode="In" />
+    <Parameter Name="Subtot" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_GuardaVentaTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+    <Parameter Name="Remision" Type="varchar" Mode="In" />
+    <Parameter Name="Ref" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Nuip" Type="varchar" Mode="In" />
+    <Parameter Name="Valuniventa" Type="float" Mode="In" />
+    <Parameter Name="Cant" Type="float" Mode="In" />
+    <Parameter Name="Monto" Type="float" Mode="In" />
+    <Parameter Name="Tipo" Type="varchar" Mode="In" />
+    <Parameter Name="Fechaventa" Type="datetime" Mode="In" />
+    <Parameter Name="Fechapago" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="direccion" Type="varchar" Mode="In" />
+    <Parameter Name="telefono" Type="varchar" Mode="In" />
+    <Parameter Name="ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+    <Parameter Name="ruta" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaCompraCXP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="total" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcompra" Type="varchar" Mode="In" />
+    <Parameter Name="cant" Type="float" Mode="In" />
+    <Parameter Name="monto" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaGasto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="comprobante" Type="varchar" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="monto" Type="float" Mode="In" />
+    <Parameter Name="beneficiario" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="descripcion2" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ventas" Type="float" Mode="In" />
+    <Parameter Name="compras" Type="float" Mode="In" />
+    <Parameter Name="gastos" Type="float" Mode="In" />
+    <Parameter Name="abonocxc" Type="float" Mode="In" />
+    <Parameter Name="abonocxp" Type="float" Mode="In" />
+    <Parameter Name="utilidad" Type="float" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+    <Parameter Name="direccion" Type="varchar" Mode="In" />
+    <Parameter Name="telefono" Type="varchar" Mode="In" />
+    <Parameter Name="ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificarComprasCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+    <Parameter Name="abono" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaRef" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Cant" Type="float" Mode="In" />
+    <Parameter Name="Costounidad" Type="float" Mode="In" />
+    <Parameter Name="ValventaUni" Type="float" Mode="In" />
+    <Parameter Name="Cantminima" Type="float" Mode="In" />
+    <Parameter Name="Costototal" Type="float" Mode="In" />
+    <Parameter Name="Ventatotal" Type="float" Mode="In" />
+    <Parameter Name="Imagen" Type="varchar" Mode="In" />
+    <Parameter Name="Unimed" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaReferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="cant" Type="float" Mode="In" />
+    <Parameter Name="valtotcosto" Type="float" Mode="In" />
+    <Parameter Name="valtotventa" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaReferenciaPP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="cant" Type="float" Mode="In" />
+    <Parameter Name="costopp" Type="float" Mode="In" />
+    <Parameter Name="valtotcosto" Type="float" Mode="In" />
+    <Parameter Name="valtotventa" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificarVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+    <Parameter Name="abono" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="contraseña" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idventa" Type="varchar" Mode="In" />
+    <Parameter Name="cant" Type="float" Mode="In" />
+    <Parameter Name="monto" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Sp_ModificaVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="remision" Type="varchar" Mode="In" />
+    <Parameter Name="monto" Type="float" Mode="In" />
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_MostrarCompras2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_MostrarDevCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_MostrarDevVentaTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_MostrarLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parametro" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_MostrarRef" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_MostrarVentaInicial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_MostrarVentaTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_ValidaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ValidaCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcompra" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ValidaGasto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="comprobante" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ValidaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proveedor" Type="varchar" Mode="In" />
+    <Parameter Name="nuip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_Validar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+    <Parameter Name="contraseña" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ValidarDescripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_Validaref" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_Validareferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ref" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ValidarLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Sp_ValidFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="factura" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="FESTIVALModelStoreContainer">
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDOS" EntityType="Self.PEDIDOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ABONOSCOMPRASCREDITO].[IDABONO] AS [IDABONO], 
+    [ABONOSCOMPRASCREDITO].[FACTURA] AS [FACTURA], 
+    [ABONOSCOMPRASCREDITO].[PROVEEDOR] AS [PROVEEDOR], 
+    [ABONOSCOMPRASCREDITO].[ABONO] AS [ABONO], 
+    [ABONOSCOMPRASCREDITO].[TIPO] AS [TIPO], 
+    [ABONOSCOMPRASCREDITO].[FECHABONO] AS [FECHABONO], 
+    [ABONOSCOMPRASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[ABONOSCOMPRASCREDITO] AS [ABONOSCOMPRASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ABONOSVENTASCREDITO].[IDABONO] AS [IDABONO], 
+    [ABONOSVENTASCREDITO].[REMISION] AS [REMISION], 
+    [ABONOSVENTASCREDITO].[NUIP] AS [NUIP], 
+    [ABONOSVENTASCREDITO].[ABONO] AS [ABONO], 
+    [ABONOSVENTASCREDITO].[TIPO] AS [TIPO], 
+    [ABONOSVENTASCREDITO].[FECHABONO] AS [FECHABONO], 
+    [ABONOSVENTASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[ABONOSVENTASCREDITO] AS [ABONOSVENTASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [COMPRASCREDITO].[FACTURA] AS [FACTURA], 
+    [COMPRASCREDITO].[PROVEEDOR] AS [PROVEEDOR], 
+    [COMPRASCREDITO].[MONTODEUDA] AS [MONTODEUDA], 
+    [COMPRASCREDITO].[TIPO] AS [TIPO], 
+    [COMPRASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[COMPRASCREDITO] AS [COMPRASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DEVCOMPRAS].[IDCOMPRA] AS [IDCOMPRA], 
+    [DEVCOMPRAS].[FACTURA] AS [FACTURA], 
+    [DEVCOMPRAS].[REF] AS [REF], 
+    [DEVCOMPRAS].[CANT] AS [CANT], 
+    [DEVCOMPRAS].[VALCOSTO_UNI] AS [VALCOSTO_UNI], 
+    [DEVCOMPRAS].[PROVEEDOR] AS [PROVEEDOR], 
+    [DEVCOMPRAS].[MONTO_TOTAL] AS [MONTO_TOTAL], 
+    [DEVCOMPRAS].[TIPO] AS [TIPO], 
+    [DEVCOMPRAS].[FECHACOMPRA] AS [FECHACOMPRA], 
+    [DEVCOMPRAS].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[DEVCOMPRAS] AS [DEVCOMPRAS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DEVENTA_PROD].[IDVENTA] AS [IDVENTA], 
+    [DEVENTA_PROD].[REMISION] AS [REMISION], 
+    [DEVENTA_PROD].[REF] AS [REF], 
+    [DEVENTA_PROD].[DESCRIPCION] AS [DESCRIPCION], 
+    [DEVENTA_PROD].[NUIP] AS [NUIP], 
+    [DEVENTA_PROD].[VALUNI_VENTA] AS [VALUNI_VENTA], 
+    [DEVENTA_PROD].[CANT] AS [CANT], 
+    [DEVENTA_PROD].[MONTO_TOTAL] AS [MONTO_TOTAL], 
+    [DEVENTA_PROD].[TIPO] AS [TIPO], 
+    [DEVENTA_PROD].[FECHAVENTA] AS [FECHAVENTA], 
+    [DEVENTA_PROD].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[DEVENTA_PROD] AS [DEVENTA_PROD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GASTOS" EntityType="Self.GASTOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GASTOS].[COMPROVANTE] AS [COMPROVANTE], 
+    [GASTOS].[FECHA] AS [FECHA], 
+    [GASTOS].[DESCRIPCION] AS [DESCRIPCION], 
+    [GASTOS].[MONTO] AS [MONTO], 
+    [GASTOS].[BENEFICIARIO] AS [BENEFICIARIO], 
+    [GASTOS].[NUIP] AS [NUIP], 
+    [GASTOS].[DESCRIPCION_DETALLADA] AS [DESCRIPCION_DETALLADA]
+    FROM [dbo].[GASTOS] AS [GASTOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ITEMS" EntityType="Self.ITEMS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ITEMS].[DESCRIPCION] AS [DESCRIPCION]
+    FROM [dbo].[ITEMS] AS [ITEMS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LIBRODIARIO].[VENTAS] AS [VENTAS], 
+    [LIBRODIARIO].[COMPRAS] AS [COMPRAS], 
+    [LIBRODIARIO].[GASTOS] AS [GASTOS], 
+    [LIBRODIARIO].[AB_VENTAS] AS [AB_VENTAS], 
+    [LIBRODIARIO].[AB_COMPRAS] AS [AB_COMPRAS], 
+    [LIBRODIARIO].[UTILIDAD] AS [UTILIDAD], 
+    [LIBRODIARIO].[FECHA] AS [FECHA]
+    FROM [dbo].[LIBRODIARIO] AS [LIBRODIARIO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USUARIOS].[USUARIO] AS [USUARIO], 
+    [USUARIOS].[CONTRASEÑA] AS [CONTRASEÑA]
+    FROM [dbo].[USUARIOS] AS [USUARIOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VENTAINICIAL" EntityType="Self.VENTAINICIAL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VENTAINICIAL].[IDVENTA] AS [IDVENTA], 
+    [VENTAINICIAL].[REMISION] AS [REMISION], 
+    [VENTAINICIAL].[REF] AS [REF], 
+    [VENTAINICIAL].[DESCRIPCION] AS [DESCRIPCION], 
+    [VENTAINICIAL].[CANT] AS [CANT], 
+    [VENTAINICIAL].[VALUNI_VENTA] AS [VALUNI_VENTA], 
+    [VENTAINICIAL].[SUBTOTAL] AS [SUBTOTAL]
+    FROM [dbo].[VENTAINICIAL] AS [VENTAINICIAL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VENTASCREDITO].[REMISION] AS [REMISION], 
+    [VENTASCREDITO].[NUIP] AS [NUIP], 
+    [VENTASCREDITO].[MONTODEUDA] AS [MONTODEUDA], 
+    [VENTASCREDITO].[TIPO] AS [TIPO], 
+    [VENTASCREDITO].[FECHAPAGO] AS [FECHAPAGO]
+    FROM [dbo].[VENTASCREDITO] AS [VENTASCREDITO]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_CLIENTES_ABONOSVENTASCREDITO" Association="Self.fk_CLIENTES_ABONOSVENTASCREDITO">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_DEVVENTAS" Association="Self.fk_CLIENTES_DEVVENTAS">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_PED" Association="Self.fk_CLIENTES_PED">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="PEDIDOS" EntitySet="PEDIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASCREDITO" Association="Self.fk_CLIENTES_VENTASCREDITO">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_COMPRASDEVCOMPRAS" Association="Self.fk_COMPRASDEVCOMPRAS">
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_DEVVENTAS" Association="Self.fk_REFERENCIAS_DEVVENTAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_PED" Association="Self.fk_REFERENCIAS_PED">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="PEDIDOS" EntitySet="PEDIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIASCOMPRAS" Association="Self.fk_REFERENCIASCOMPRAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIASDEVCOMPRAS" Association="Self.fk_REFERENCIASDEVCOMPRAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VENTAPROD_DEVVENTAS" Association="Self.fk_VENTAPROD_DEVVENTAS">
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

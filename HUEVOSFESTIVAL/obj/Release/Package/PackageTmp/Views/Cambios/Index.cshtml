@@ -1,0 +1,250 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsCambios>
+
+@{
+    ViewBag.Title = "Cambios";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
+
+    List<SelectListItem> ListarUsuario = (List<SelectListItem>)ViewBag.ListarUsuario;
+    List<SelectListItem> ListarPlaca = (List<SelectListItem>)ViewBag.ListarPlaca;
+    List<SelectListItem> ListarCliente = (List<SelectListItem>)ViewBag.ListarCliente;
+    List<SelectListItem> ListarRuta = (List<SelectListItem>)ViewBag.ListarRuta;
+    List<SelectListItem> ListarCarga = (List<SelectListItem>)ViewBag.ListarCarga;
+}
+
+<br />
+<h3><font color="green"><span>Cambios Web</span></font></h3>
+<h4><font color="green"><span>@DateTime.Today.ToLongDateString()</span></font></h4>
+<br />
+
+
+<br />
+
+
+<!--Metodo / Controlador -->
+@using (Ajax.BeginForm("Guardar", "Cambios", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "Guardar",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "error"
+}))
+{
+    @Html.Hidden("titulo")
+    @Html.Hidden("usuario")
+    @Html.Hidden("placa")
+
+    <div class="modal-body">
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("Identificador Carga")
+            @Html.DropDownList("idcarga", ListarCarga, new { @class = "form-control", @id = "idcarga" })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("Cliente")
+            @Html.DropDownList("idcliente", ListarCliente, new { @class = "form-control" })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("Ruta")
+            @Html.DropDownList("idruta", ListarRuta, new { @class = "form-control", @readOnly = "true" })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("Usuario")
+            @Html.DropDownList("idusuario", ListarUsuario, new { @class = "form-control", @readOnly = "true" })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("Placa Vehiculo")
+            @Html.DropDownList("idcarro", ListarPlaca, new { @class = "form-control", @readOnly = "true" })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("Fecha Cambio")
+            @Html.Editor("fecha", null, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "fecha" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("EXTR")
+            @Html.Editor("extr", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("AAR")
+            @Html.Editor("aar", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("AR")
+            @Html.Editor("ar", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("BR")
+            @Html.Editor("br", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("EXTB")
+            @Html.Editor("extb", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("AAB")
+            @Html.Editor("aab", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("AB")
+            @Html.Editor("ab", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            @Html.Label("BB")
+            @Html.Editor("bb", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="Cancelar()" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+
+        </div>
+    </div>
+}
+<div id="error">
+
+</div>
+
+<script>
+
+    idcarga.onchange = function () {
+        var idcarga = $("#idcarga").val();
+        BuscaCarga(idcarga);
+       
+        $("#extr").val(0);
+        $("#aar").val(0);
+        $("#ar").val(0);
+        $("#br").val(0);
+        $("#extb").val(0);
+        $("#aab").val(0);
+        $("#ab").val(0);
+        $("#bb").val(0);
+        document.getElementById("titulo").value = -1;
+    }
+
+    var idcliente = document.getElementById("idcliente");
+    idcliente.onchange = function () {
+        var id = $("#idcliente").val();
+        RecuperarRuta(id);
+    }
+
+
+    function Eliminar(id) {
+        document.getElementById("titulo").value = id;
+    }
+
+    function ConfirmarEliminar() {
+        var id = document.getElementById("titulo").value;
+        $.get("Cambios/Elimina/?id=" + id, function (data) {
+
+            if (data == 1) {
+                alert("Se ejecuto correctamente");
+                document.getElementById("btnCerrarConfirmacion").click();
+                $("#frmFiltrar").trigger("submit");
+            } else {
+                alert("Ocurrio un error");
+            }
+
+        })
+
+    }
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(id) {
+        Limpiar();
+        document.getElementById("titulo").value = id;
+        $.get("Cambios/RecuperaInformacion/?id=" + id, function (data) {
+            document.getElementById("extr").value = data.extr;
+            document.getElementById("aar").value = data.aar;
+            document.getElementById("ar").value = data.ar;
+            document.getElementById("br").value = data.br;
+            document.getElementById("extb").value = data.extb;
+            document.getElementById("aab").value = data.aab;
+            document.getElementById("ab").value = data.ab;
+            document.getElementById("bb").value = data.bb;
+            document.getElementById("idusuario").value = data.idusuario;
+            document.getElementById("idcarro").value = data.idcarro;
+            document.getElementById("idcliente").value = data.idcliente;
+            document.getElementById("idruta").value = data.idruta;
+            document.getElementById("fecha").value = data.Fechacadena;
+            document.getElementById("usuario").value = data.usuario;
+            document.getElementById("placa").value = data.placa;
+            document.getElementById("idcarga").value = data.idcarga;
+        })
+    }
+
+    //Funcion JavaScript para Guardar y Editar los Registros
+    function Guardar(rpta) {
+        if (rpta == "1") {
+            alert("Se ejecuto correctamente");
+           document.location.href = "@Url.Action("Index", "Admin")";
+        } else {
+            alert("Ocurrio un error");
+        }
+
+    }
+
+     function Cancelar() {
+        Limpiar();
+        document.location.href = "@Url.Action("Index","Admin")";
+    }
+
+    function Fecha() {
+
+        var now = new Date();
+
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        $("#fecha").val(today);
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function RecuperarRuta(id) {
+        document.getElementById("idcliente").value = id;
+
+        $.get("Cambios/RecuperarRuta/?id=" + id, function (data) {
+            document.getElementById("idruta").value = data.idruta;
+            var RUTA = $("#idruta").val();
+            $("#ruta").val(RUTA);
+        })
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function BuscaCarga(idcarga) {
+        document.getElementById("idcarga").value = idcarga;
+
+        $.get("Cambios/BuscaCarga/?idcarga=" + idcarga, function (data) {
+
+            document.getElementById("idusuario").value = data.idusuario;
+            document.getElementById("idcarro").value = data.idcarro;
+            var USUARIO = $("#idusuario").val();
+            var PLACA = $("#idcarro").val();
+            $("#usuario").val(USUARIO);
+            $("#placa").val(PLACA);
+        })
+    }
+
+
+    function Fecha() {
+        var Tipo = $("#tipo").val();
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+        $("#fecha").val(today);
+    }
+
+
+</script>
+

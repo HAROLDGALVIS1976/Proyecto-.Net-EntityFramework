@@ -1,0 +1,48 @@
+﻿@model IEnumerable<HUEVOSFESTIVAL.DAL.USUARIOS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Usuarios...<h5><font color="green"><span>@DateTime.Today.ToLongDateString()</span></font></h5>
+        <a href="../Usuarios/AgregarUsuarios" class="btn btn-info pull-right fa fa-plus">Nuevo Usuario</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Uusario</th>
+                        <th>TipoUsuario</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                   @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@item.IDUSUARIO</td>
+                            <td>@item.USUARIO</td>
+                            <td>@item.TIPOUSUARIO</td>
+                            <td>
+                                @Html.ActionLink("Editar", "EditarUsuario", new { idusuario = item.IDUSUARIO })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+

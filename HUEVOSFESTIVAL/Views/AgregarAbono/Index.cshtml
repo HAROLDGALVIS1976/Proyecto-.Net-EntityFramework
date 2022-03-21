@@ -1,0 +1,196 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsAbonosVentasCredito>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<SelectListItem> ListaConsecutivo = (List<SelectListItem>)ViewBag.ListaConsecutivo;
+    List<SelectListItem> ListarCliente = (List<SelectListItem>)ViewBag.ListarCliente;
+    List<SelectListItem> ListarUsuario = (List<SelectListItem>)ViewBag.ListarUsuario;
+    List<SelectListItem> ListarPlaca = (List<SelectListItem>)ViewBag.ListarPlaca;
+
+
+}
+<br />
+<h3><font color="green"><span>Registrar Abonos Web</span></font></h3>
+<h4><font color="green"><span>@DateTime.Today.ToLongDateString()</span></font></h4>
+<br />
+<div>
+    <button type="button" onclick="Agregar()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        Registrar Abono
+    </button>
+</div>
+<br />
+@using (Ajax.BeginForm("Filtrar", "AgregarAbono", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divUsuario",
+    InsertionMode = InsertionMode.Replace
+}, new { @id = "frmFiltrar" }))
+
+{
+
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        @Html.Label("Seleccione el Cliente a Buscar")
+        @Html.DropDownList("ClienteParametro", ListarCliente, new { @class = "form-control" })
+    </div>
+    <br />
+    <div id="divUsuario">
+        @Html.Partial("_TablaAgregarabono", Model)
+    </div>
+}
+<br />
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><font color="green"> <span>Registrar Abonos</span></font></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Metodo / Controlador -->
+            @using (Ajax.BeginForm("Guardar", "AgregarAbono", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "error"
+            }))
+            {
+                <!--Helper para obtener el valor de la Remision-->
+                @Html.Hidden("Titulo")
+                <!--Helper para obtener el valor de la funcion Agregar() -->
+                @Html.Hidden("Titulo2")
+
+                <div class="modal-body">
+                    <div>
+                        @Html.Label("Consecutivo")
+                        @Html.DropDownList("consecutivo", ListaConsecutivo, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Abono")
+                        @Html.Editor("abono", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "abono" } })
+                    </div>
+                    <div>
+                        @Html.Label("Usuario")
+                        @Html.DropDownList("idusuario", ListarUsuario, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Remision")
+                        @Html.TextBox("remision", null, new { @class = "form-control", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Documento Cliente")
+                        @Html.TextBox("nuip", null, new { @class = "form-control", @id = "nuip", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Tipo Venta")
+                        @Html.TextBox("tipo", null, new { @class = "form-control", @id = "tipo", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("Fecha  Abono")
+                        @Html.Editor("fechabono", null, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "fechabono" } })
+                    </div>
+                    <div>
+                        @Html.Label("Fecha  Pago")
+                        @Html.Editor("fechapago", null, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "fechapago", @readOnly = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("IdCliente")
+                        @Html.TextBox("idcliente", null, new { @class = "form-control", @id = "idcliente", @readOnly = "true" })
+                    </div>
+                    <div>
+                        @Html.Label("IdPlaca")
+                        @Html.TextBox("idcarro", null, new { @class = "form-control", @id = "idcarro", @readOnly = "true" })
+                    </div>
+                    <div class="modal-footer">
+                        <!--Boton para cerrar el modalpopup-->
+                        <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <!--Boton para guardar el en la base de datos -->
+                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+
+                    </div>
+                </div>
+            }
+            <div id="error">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    //funcion Para recuperar los datos de la BD en funcion de la Variable Titulo
+    //al dar click en el combobox Remision
+    var consecutivo = document.getElementById("consecutivo");
+    consecutivo.onchange = function () {
+        document.getElementById("Titulo").value = consecutivo.options[consecutivo.selectedIndex].text;
+        var y = $("#Titulo").val();
+        Editar(y);
+        fecha();
+    }
+
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var ClienteParametro = document.getElementById("ClienteParametro");
+    ClienteParametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+    function Agregar() {
+        Limpiar();
+        document.getElementById("Titulo2").value = -1;
+    }
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+
+    function Guardar(rpta) {
+        if (rpta == "1") {
+            alert("Seejecuto correctamente");
+            document.getElementById("btnClose").click();
+            document.location.href = "@Url.Action("Index","Admin")";
+        }
+        else
+        {
+            alert("Ocurrio un Error");
+        }
+    }
+
+
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(id) {
+
+        $.get("AgregarAbono/RecuperaInformacion/?id=" + id, function (data) {
+            document.getElementById("remision").value = data.Remision;
+            document.getElementById("nuip").value = data.Nuip;
+            document.getElementById("tipo").value = data.Tipo;
+            document.getElementById("fechapago").value = data.fechapagocadena;
+            document.getElementById("idcliente").value = data.idcliente;
+            document.getElementById("idcarro").value = data.idcarro;
+        })
+    }
+
+    function Fecha() {
+        var Tipo = $("#tipo").val();
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+        $("#fechabono").val(today);
+    }
+
+</script>
+

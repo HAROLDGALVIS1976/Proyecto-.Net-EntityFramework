@@ -1,0 +1,37 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsCargue>
+@{
+    Layout = null;
+
+}
+
+<table class="table table-bordered table-hover">
+
+    <tr>
+        <td>@Html.LabelFor(p => Model[0].idcarga)</td>
+        <td>@Html.LabelFor(p => Model[0].extr)</td>
+        <td>@Html.LabelFor(p => Model[0].aar)</td>
+        <td>@Html.LabelFor(p => Model[0].ar)</td>
+        <td>@Html.LabelFor(p => Model[0].br)</td>
+        <td>@Html.LabelFor(p => Model[0].extb)</td>
+        <td>@Html.LabelFor(p => Model[0].aab)</td>
+        <td>@Html.LabelFor(p => Model[0].ab)</td>
+        <td>@Html.LabelFor(p => Model[0].bb)</td>
+    </tr>
+   @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.idcarga</td>
+        <td>@item.extr</td>
+        <td>@item.aar</td>
+        <td>@item.ar</td>
+        <td>@item.br</td>
+        <td>@item.extb</td>
+        <td>@item.aab</td>
+        <td>@item.ab</td>
+        <td>@item.bb</td>
+
+    </tr>
+    }
+
+</table>

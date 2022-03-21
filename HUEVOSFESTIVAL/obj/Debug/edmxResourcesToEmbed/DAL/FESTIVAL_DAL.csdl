@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FESTIVALModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="NUIP" />
+    </Key>
+    <Property Name="CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RUTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ABONOSVENTASCREDITO" Relationship="Self.fk_CLIENTES_ABONOSVENTASCREDITO" FromRole="CLIENTES" ToRole="ABONOSVENTASCREDITO" />
+    <NavigationProperty Name="DEVENTA_PROD" Relationship="Self.fk_CLIENTES_DEVVENTAS" FromRole="CLIENTES" ToRole="DEVENTA_PROD" />
+    <NavigationProperty Name="PEDIDOS" Relationship="Self.fk_CLIENTES_PED" FromRole="CLIENTES" ToRole="PEDIDOS" />
+    <NavigationProperty Name="VENTASCREDITO" Relationship="Self.fk_CLIENTES_VENTASCREDITO" FromRole="CLIENTES" ToRole="VENTASCREDITO" />
+    <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="CLIENTES" ToRole="VENTA_PROD" />
+  </EntityType>
+  <EntityType Name="COMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DEVCOMPRAS" Relationship="Self.fk_COMPRASDEVCOMPRAS" FromRole="COMPRAS" ToRole="DEVCOMPRAS" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIASCOMPRAS" FromRole="COMPRAS" ToRole="REFERENCIAS" />
+  </EntityType>
+  <EntityType Name="PEDIDOS">
+    <Key>
+      <PropertyRef Name="ORDEN" />
+    </Key>
+    <Property Name="ORDEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PEDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="FECHA_PEDIDO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHA_ENTREGA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_PED" FromRole="PEDIDOS" ToRole="CLIENTES" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIAS_PED" FromRole="PEDIDOS" ToRole="REFERENCIAS" />
+  </EntityType>
+  <EntityType Name="PROVEEDORES">
+    <Key>
+      <PropertyRef Name="NUIP" />
+    </Key>
+    <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REFERENCIAS">
+    <Key>
+      <PropertyRef Name="REF" />
+    </Key>
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT_MINIMA" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="VALVENTA_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UNI_MEDIDA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COMPRAS" Relationship="Self.fk_REFERENCIASCOMPRAS" FromRole="REFERENCIAS" ToRole="COMPRAS" />
+    <NavigationProperty Name="PEDIDOS" Relationship="Self.fk_REFERENCIAS_PED" FromRole="REFERENCIAS" ToRole="PEDIDOS" />
+    <NavigationProperty Name="DEVENTA_PROD" Relationship="Self.fk_REFERENCIAS_DEVVENTAS" FromRole="REFERENCIAS" ToRole="DEVENTA_PROD" />
+    <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="REFERENCIAS" ToRole="VENTA_PROD" />
+    <NavigationProperty Name="DEVCOMPRAS" Relationship="Self.fk_REFERENCIASDEVCOMPRAS" FromRole="REFERENCIAS" ToRole="DEVCOMPRAS" />
+  </EntityType>
+  <EntityType Name="VENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASP" FromRole="VENTA_PROD" ToRole="CLIENTES" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIAS_VENTASP" FromRole="VENTA_PROD" ToRole="REFERENCIAS" />
+    <NavigationProperty Name="DEVENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVVENTAS" FromRole="VENTA_PROD" ToRole="DEVENTA_PROD" />
+  </EntityType>
+  <EntityType Name="ABONOSCOMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ABONOSVENTASCREDITO">
+    <Key>
+      <PropertyRef Name="IDABONO" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="ABONO" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHABONO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDABONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ABONO" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHABONO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_ABONOSVENTASCREDITO" FromRole="ABONOSVENTASCREDITO" ToRole="CLIENTES" />
+  </EntityType>
+  <EntityType Name="COMPRASCREDITO">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DEVCOMPRAS">
+    <Key>
+      <PropertyRef Name="IDCOMPRA" />
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALCOSTO_UNI" />
+      <PropertyRef Name="PROVEEDOR" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHACOMPRA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALCOSTO_UNI" Type="Double" Nullable="false" />
+    <Property Name="PROVEEDOR" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHACOMPRA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="COMPRAS" Relationship="Self.fk_COMPRASDEVCOMPRAS" FromRole="DEVCOMPRAS" ToRole="COMPRAS" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIASDEVCOMPRAS" FromRole="DEVCOMPRAS" ToRole="REFERENCIAS" />
+  </EntityType>
+  <EntityType Name="DEVENTA_PROD">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="MONTO_TOTAL" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAVENTA" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="MONTO_TOTAL" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAVENTA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_DEVVENTAS" FromRole="DEVENTA_PROD" ToRole="CLIENTES" />
+    <NavigationProperty Name="REFERENCIAS" Relationship="Self.fk_REFERENCIAS_DEVVENTAS" FromRole="DEVENTA_PROD" ToRole="REFERENCIAS" />
+    <NavigationProperty Name="VENTA_PROD" Relationship="Self.fk_VENTAPROD_DEVVENTAS" FromRole="DEVENTA_PROD" ToRole="VENTA_PROD" />
+  </EntityType>
+  <EntityType Name="GASTOS">
+    <Key>
+      <PropertyRef Name="COMPROVANTE" />
+      <PropertyRef Name="FECHA" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="MONTO" />
+      <PropertyRef Name="BENEFICIARIO" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="DESCRIPCION_DETALLADA" />
+    </Key>
+    <Property Name="COMPROVANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTO" Type="Double" Nullable="false" />
+    <Property Name="BENEFICIARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION_DETALLADA" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITEMS">
+    <Key>
+      <PropertyRef Name="DESCRIPCION" />
+    </Key>
+    <Property Name="DESCRIPCION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LIBRODIARIO">
+    <Key>
+      <PropertyRef Name="VENTAS" />
+      <PropertyRef Name="COMPRAS" />
+      <PropertyRef Name="GASTOS" />
+      <PropertyRef Name="AB_VENTAS" />
+      <PropertyRef Name="AB_COMPRAS" />
+      <PropertyRef Name="UTILIDAD" />
+      <PropertyRef Name="FECHA" />
+    </Key>
+    <Property Name="VENTAS" Type="Double" Nullable="false" />
+    <Property Name="COMPRAS" Type="Double" Nullable="false" />
+    <Property Name="GASTOS" Type="Double" Nullable="false" />
+    <Property Name="AB_VENTAS" Type="Double" Nullable="false" />
+    <Property Name="AB_COMPRAS" Type="Double" Nullable="false" />
+    <Property Name="UTILIDAD" Type="Double" Nullable="false" />
+    <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="USUARIO" />
+      <PropertyRef Name="CONTRASEÑA" />
+    </Key>
+    <Property Name="USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENTAINICIAL">
+    <Key>
+      <PropertyRef Name="IDVENTA" />
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="REF" />
+      <PropertyRef Name="DESCRIPCION" />
+      <PropertyRef Name="CANT" />
+      <PropertyRef Name="VALUNI_VENTA" />
+      <PropertyRef Name="SUBTOTAL" />
+    </Key>
+    <Property Name="IDVENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANT" Type="Double" Nullable="false" />
+    <Property Name="VALUNI_VENTA" Type="Double" Nullable="false" />
+    <Property Name="SUBTOTAL" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENTASCREDITO">
+    <Key>
+      <PropertyRef Name="REMISION" />
+      <PropertyRef Name="NUIP" />
+      <PropertyRef Name="MONTODEUDA" />
+      <PropertyRef Name="TIPO" />
+      <PropertyRef Name="FECHAPAGO" />
+    </Key>
+    <Property Name="REMISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTODEUDA" Type="Double" Nullable="false" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAPAGO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.fk_CLIENTES_VENTASCREDITO" FromRole="VENTASCREDITO" ToRole="CLIENTES" />
+  </EntityType>
+  <Association Name="fk_CLIENTES_ABONOSVENTASCREDITO">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="ABONOSVENTASCREDITO" Type="Self.ABONOSVENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="ABONOSVENTASCREDITO">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_DEVVENTAS">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_PED">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="PEDIDOS" Type="Self.PEDIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="PEDIDOS">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASCREDITO">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTASCREDITO" Type="Self.VENTASCREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="VENTASCREDITO">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CLIENTES_VENTASP">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="NUIP" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="NUIP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_COMPRASDEVCOMPRAS">
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="IDCOMPRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIASCOMPRAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="COMPRAS" Type="Self.COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="COMPRAS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_PED">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="PEDIDOS" Type="Self.PEDIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="PEDIDOS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_DEVVENTAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIAS_VENTASP">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="VENTA_PROD">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_REFERENCIASDEVCOMPRAS">
+    <End Role="REFERENCIAS" Type="Self.REFERENCIAS" Multiplicity="1" />
+    <End Role="DEVCOMPRAS" Type="Self.DEVCOMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REFERENCIAS">
+        <PropertyRef Name="REF" />
+      </Principal>
+      <Dependent Role="DEVCOMPRAS">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VENTAPROD_DEVVENTAS">
+    <End Role="VENTA_PROD" Type="Self.VENTA_PROD" Multiplicity="1" />
+    <End Role="DEVENTA_PROD" Type="Self.DEVENTA_PROD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Principal>
+      <Dependent Role="DEVENTA_PROD">
+        <PropertyRef Name="IDVENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FESTIVALEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+    <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" />
+    <EntitySet Name="PEDIDOS" EntityType="Self.PEDIDOS" />
+    <EntitySet Name="PROVEEDORES" EntityType="Self.PROVEEDORES" />
+    <EntitySet Name="REFERENCIAS" EntityType="Self.REFERENCIAS" />
+    <EntitySet Name="VENTA_PROD" EntityType="Self.VENTA_PROD" />
+    <EntitySet Name="ABONOSCOMPRASCREDITO" EntityType="Self.ABONOSCOMPRASCREDITO" />
+    <EntitySet Name="ABONOSVENTASCREDITO" EntityType="Self.ABONOSVENTASCREDITO" />
+    <EntitySet Name="COMPRASCREDITO" EntityType="Self.COMPRASCREDITO" />
+    <EntitySet Name="DEVCOMPRAS" EntityType="Self.DEVCOMPRAS" />
+    <EntitySet Name="DEVENTA_PROD" EntityType="Self.DEVENTA_PROD" />
+    <EntitySet Name="GASTOS" EntityType="Self.GASTOS" />
+    <EntitySet Name="ITEMS" EntityType="Self.ITEMS" />
+    <EntitySet Name="LIBRODIARIO" EntityType="Self.LIBRODIARIO" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <EntitySet Name="VENTAINICIAL" EntityType="Self.VENTAINICIAL" />
+    <EntitySet Name="VENTASCREDITO" EntityType="Self.VENTASCREDITO" />
+    <AssociationSet Name="fk_CLIENTES_ABONOSVENTASCREDITO" Association="Self.fk_CLIENTES_ABONOSVENTASCREDITO">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="ABONOSVENTASCREDITO" EntitySet="ABONOSVENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_DEVVENTAS" Association="Self.fk_CLIENTES_DEVVENTAS">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_PED" Association="Self.fk_CLIENTES_PED">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="PEDIDOS" EntitySet="PEDIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASCREDITO" Association="Self.fk_CLIENTES_VENTASCREDITO">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTASCREDITO" EntitySet="VENTASCREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CLIENTES_VENTASP" Association="Self.fk_CLIENTES_VENTASP">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_COMPRASDEVCOMPRAS" Association="Self.fk_COMPRASDEVCOMPRAS">
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIASCOMPRAS" Association="Self.fk_REFERENCIASCOMPRAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="COMPRAS" EntitySet="COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_PED" Association="Self.fk_REFERENCIAS_PED">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="PEDIDOS" EntitySet="PEDIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_DEVVENTAS" Association="Self.fk_REFERENCIAS_DEVVENTAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIAS_VENTASP" Association="Self.fk_REFERENCIAS_VENTASP">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_REFERENCIASDEVCOMPRAS" Association="Self.fk_REFERENCIASDEVCOMPRAS">
+      <End Role="REFERENCIAS" EntitySet="REFERENCIAS" />
+      <End Role="DEVCOMPRAS" EntitySet="DEVCOMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VENTAPROD_DEVVENTAS" Association="Self.fk_VENTAPROD_DEVVENTAS">
+      <End Role="VENTA_PROD" EntitySet="VENTA_PROD" />
+      <End Role="DEVENTA_PROD" EntitySet="DEVENTA_PROD" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

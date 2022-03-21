@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FESTIVALModelStoreContainer" CdmEntityContainer="FESTIVALEntities1">
+    <EntitySetMapping Name="CLIENTES">
+      <EntityTypeMapping TypeName="FESTIVALModel.CLIENTES">
+        <MappingFragment StoreEntitySet="CLIENTES">
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRAS">
+      <EntityTypeMapping TypeName="FESTIVALModel.COMPRAS">
+        <MappingFragment StoreEntitySet="COMPRAS">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDOS">
+      <EntityTypeMapping TypeName="FESTIVALModel.PEDIDOS">
+        <MappingFragment StoreEntitySet="PEDIDOS">
+          <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+          <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="FECHA_PEDIDO" ColumnName="FECHA_PEDIDO" />
+          <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDORES">
+      <EntityTypeMapping TypeName="FESTIVALModel.PROVEEDORES">
+        <MappingFragment StoreEntitySet="PROVEEDORES">
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REFERENCIAS">
+      <EntityTypeMapping TypeName="FESTIVALModel.REFERENCIAS">
+        <MappingFragment StoreEntitySet="REFERENCIAS">
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+          <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+          <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTA_PROD">
+      <EntityTypeMapping TypeName="FESTIVALModel.VENTA_PROD">
+        <MappingFragment StoreEntitySet="VENTA_PROD">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ABONOSCOMPRASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.ABONOSCOMPRASCREDITO">
+        <MappingFragment StoreEntitySet="ABONOSCOMPRASCREDITO">
+          <ScalarProperty Name="IDABONO" ColumnName="IDABONO" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHABONO" ColumnName="FECHABONO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ABONOSVENTASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.ABONOSVENTASCREDITO">
+        <MappingFragment StoreEntitySet="ABONOSVENTASCREDITO">
+          <ScalarProperty Name="IDABONO" ColumnName="IDABONO" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="ABONO" ColumnName="ABONO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHABONO" ColumnName="FECHABONO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.COMPRASCREDITO">
+        <MappingFragment StoreEntitySet="COMPRASCREDITO">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVCOMPRAS">
+      <EntityTypeMapping TypeName="FESTIVALModel.DEVCOMPRAS">
+        <MappingFragment StoreEntitySet="DEVCOMPRAS">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVENTA_PROD">
+      <EntityTypeMapping TypeName="FESTIVALModel.DEVENTA_PROD">
+        <MappingFragment StoreEntitySet="DEVENTA_PROD">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GASTOS">
+      <EntityTypeMapping TypeName="FESTIVALModel.GASTOS">
+        <MappingFragment StoreEntitySet="GASTOS">
+          <ScalarProperty Name="COMPROVANTE" ColumnName="COMPROVANTE" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="BENEFICIARIO" ColumnName="BENEFICIARIO" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DESCRIPCION_DETALLADA" ColumnName="DESCRIPCION_DETALLADA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMS">
+      <EntityTypeMapping TypeName="FESTIVALModel.ITEMS">
+        <MappingFragment StoreEntitySet="ITEMS">
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIBRODIARIO">
+      <EntityTypeMapping TypeName="FESTIVALModel.LIBRODIARIO">
+        <MappingFragment StoreEntitySet="LIBRODIARIO">
+          <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+          <ScalarProperty Name="COMPRAS" ColumnName="COMPRAS" />
+          <ScalarProperty Name="GASTOS" ColumnName="GASTOS" />
+          <ScalarProperty Name="AB_VENTAS" ColumnName="AB_VENTAS" />
+          <ScalarProperty Name="AB_COMPRAS" ColumnName="AB_COMPRAS" />
+          <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="FESTIVALModel.USUARIOS">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTAINICIAL">
+      <EntityTypeMapping TypeName="FESTIVALModel.VENTAINICIAL">
+        <MappingFragment StoreEntitySet="VENTAINICIAL">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTASCREDITO">
+      <EntityTypeMapping TypeName="FESTIVALModel.VENTASCREDITO">
+        <MappingFragment StoreEntitySet="VENTASCREDITO">
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BorrarVentaInicial" FunctionName="FESTIVALModel.Store.Sp_BorrarVentaInicial" />
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCli" FunctionName="FESTIVALModel.Store.Sp_BuscaCli">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCli_Result">
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCli2" FunctionName="FESTIVALModel.Store.Sp_BuscaCli2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCli2_Result">
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCliente" FunctionName="FESTIVALModel.Store.Sp_BuscaCliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCliente_Result">
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCliente2" FunctionName="FESTIVALModel.Store.Sp_BuscaCliente2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCliente2_Result">
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCompra2" FunctionName="FESTIVALModel.Store.Sp_BuscaCompra2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCompra2_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCompraCredito" FunctionName="FESTIVALModel.Store.Sp_BuscaCompraCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCompraCredito_Result">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCompras" FunctionName="FESTIVALModel.Store.Sp_BuscaCompras">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCompras_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaCompras2" FunctionName="FESTIVALModel.Store.Sp_BuscaCompras2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaCompras2_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaComprasCredito" FunctionName="FESTIVALModel.Store.Sp_BuscaComprasCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaComprasCredito_Result">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaGastos" FunctionName="FESTIVALModel.Store.Sp_BuscaGastos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaGastos_Result">
+          <ScalarProperty Name="COMPROVANTE" ColumnName="COMPROVANTE" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="BENEFICIARIO" ColumnName="BENEFICIARIO" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DESCRIPCION_DETALLADA" ColumnName="DESCRIPCION_DETALLADA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaGastos2" FunctionName="FESTIVALModel.Store.Sp_BuscaGastos2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaGastos2_Result">
+          <ScalarProperty Name="COMPROVANTE" ColumnName="COMPROVANTE" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="BENEFICIARIO" ColumnName="BENEFICIARIO" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DESCRIPCION_DETALLADA" ColumnName="DESCRIPCION_DETALLADA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaNuipVentas" FunctionName="FESTIVALModel.Store.Sp_BuscaNuipVentas" />
+    <FunctionImportMapping FunctionImportName="Sp_BuscaProv" FunctionName="FESTIVALModel.Store.Sp_BuscaProv">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaProv_Result">
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaProv2" FunctionName="FESTIVALModel.Store.Sp_BuscaProv2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaProv2_Result">
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaProveedor" FunctionName="FESTIVALModel.Store.Sp_BuscaProveedor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaProveedor_Result">
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscarComprasCredito" FunctionName="FESTIVALModel.Store.Sp_BuscarComprasCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscarComprasCredito_Result">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaRef" FunctionName="FESTIVALModel.Store.Sp_BuscaRef">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaRef_Result">
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+          <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+          <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaRef2" FunctionName="FESTIVALModel.Store.Sp_BuscaRef2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaRef2_Result">
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+          <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+          <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaReferencia" FunctionName="FESTIVALModel.Store.Sp_BuscaReferencia">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaReferencia_Result">
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+          <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+          <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscarLibro" FunctionName="FESTIVALModel.Store.Sp_BuscarLibro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscarLibro_Result">
+          <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+          <ScalarProperty Name="COMPRAS" ColumnName="COMPRAS" />
+          <ScalarProperty Name="GASTOS" ColumnName="GASTOS" />
+          <ScalarProperty Name="AB_VENTAS" ColumnName="AB_VENTAS" />
+          <ScalarProperty Name="AB_COMPRAS" ColumnName="AB_COMPRAS" />
+          <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscarVentaCredito" FunctionName="FESTIVALModel.Store.Sp_BuscarVentaCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscarVentaCredito_Result">
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaUser" FunctionName="FESTIVALModel.Store.Sp_BuscaUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaUser_Result">
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaVenta" FunctionName="FESTIVALModel.Store.Sp_BuscaVenta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaVenta_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaVenta2" FunctionName="FESTIVALModel.Store.Sp_BuscaVenta2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaVenta2_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaVentaCredito" FunctionName="FESTIVALModel.Store.Sp_BuscaVentaCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaVentaCredito_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaVentaPerdida" FunctionName="FESTIVALModel.Store.Sp_BuscaVentaPerdida">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaVentaPerdida_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaVentas" FunctionName="FESTIVALModel.Store.Sp_BuscaVentas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaVentas_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_BuscaVentasCredito" FunctionName="FESTIVALModel.Store.Sp_BuscaVentasCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_BuscaVentasCredito_Result">
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="MONTODEUDA" ColumnName="MONTODEUDA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboCliente" FunctionName="FESTIVALModel.Store.Sp_CargaCboCliente" />
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboFactura" FunctionName="FESTIVALModel.Store.Sp_CargaCboFactura" />
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboFechaPago" FunctionName="FESTIVALModel.Store.Sp_CargaCboFechaPago" />
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboNuip" FunctionName="FESTIVALModel.Store.Sp_CargaCboNuip" />
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboRemision" FunctionName="FESTIVALModel.Store.Sp_CargaCboRemision" />
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboRemision2" FunctionName="FESTIVALModel.Store.Sp_CargaCboRemision2" />
+    <FunctionImportMapping FunctionImportName="Sp_CargaCboTipo" FunctionName="FESTIVALModel.Store.Sp_CargaCboTipo" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaBeneficiario" FunctionName="FESTIVALModel.Store.Sp_CompletaBeneficiario" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaCliente" FunctionName="FESTIVALModel.Store.Sp_CompletaCliente" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaComprobante" FunctionName="FESTIVALModel.Store.Sp_CompletaComprobante" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaConsecutivo" FunctionName="FESTIVALModel.Store.Sp_CompletaConsecutivo" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaDescripcion" FunctionName="FESTIVALModel.Store.Sp_CompletaDescripcion" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaDescripcionGastos" FunctionName="FESTIVALModel.Store.Sp_CompletaDescripcionGastos" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaNuip" FunctionName="FESTIVALModel.Store.Sp_CompletaNuip" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaNuipCliente" FunctionName="FESTIVALModel.Store.Sp_CompletaNuipCliente" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaNuipProveedor" FunctionName="FESTIVALModel.Store.Sp_CompletaNuipProveedor" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaProveedor" FunctionName="FESTIVALModel.Store.Sp_CompletaProveedor" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaRef" FunctionName="FESTIVALModel.Store.Sp_CompletaRef" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaRefDeventas" FunctionName="FESTIVALModel.Store.Sp_CompletaRefDeventas" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaReferefencia" FunctionName="FESTIVALModel.Store.Sp_CompletaReferefencia" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaRemision" FunctionName="FESTIVALModel.Store.Sp_CompletaRemision" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletaRuta" FunctionName="FESTIVALModel.Store.Sp_CompletaRuta" />
+    <FunctionImportMapping FunctionImportName="Sp_CompletItem" FunctionName="FESTIVALModel.Store.Sp_CompletItem" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivGastos" FunctionName="FESTIVALModel.Store.Sp_ConsecutivGastos" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoCompras" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoCompras" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoCXC" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoCXC" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoCXP" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoCXP" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoDevCompras" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoDevCompras" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoDevVentas" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoDevVentas" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoVentaInicial" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoVentaInicial" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoVentas" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoVentas" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsecutivoVentas2" FunctionName="FESTIVALModel.Store.Sp_ConsecutivoVentas2" />
+    <FunctionImportMapping FunctionImportName="Sp_ConsultaCopras" FunctionName="FESTIVALModel.Store.Sp_ConsultaCopras">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_ConsultaCopras_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_ConsultaCredito" FunctionName="FESTIVALModel.Store.Sp_ConsultaCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_ConsultaCredito_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_ConsultaDevCopras" FunctionName="FESTIVALModel.Store.Sp_ConsultaDevCopras">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_ConsultaDevCopras_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_EliminarAbonoCompra" FunctionName="FESTIVALModel.Store.Sp_EliminarAbonoCompra" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarAbonoVentas" FunctionName="FESTIVALModel.Store.Sp_EliminarAbonoVentas" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarClientes" FunctionName="FESTIVALModel.Store.Sp_EliminarClientes" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarGasto" FunctionName="FESTIVALModel.Store.Sp_EliminarGasto" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarProveedor" FunctionName="FESTIVALModel.Store.Sp_EliminarProveedor" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarVenta" FunctionName="FESTIVALModel.Store.Sp_EliminarVenta" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarVenta2" FunctionName="FESTIVALModel.Store.Sp_EliminarVenta2" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminarVentaCredito" FunctionName="FESTIVALModel.Store.Sp_EliminarVentaCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_EliminaUser" FunctionName="FESTIVALModel.Store.Sp_EliminaUser" />
+    <FunctionImportMapping FunctionImportName="Sp_FechaTipo" FunctionName="FESTIVALModel.Store.Sp_FechaTipo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_FechaTipo_Result">
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_GuardaAbonoComprasCredito" FunctionName="FESTIVALModel.Store.Sp_GuardaAbonoComprasCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaAbonoVentaCredito" FunctionName="FESTIVALModel.Store.Sp_GuardaAbonoVentaCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaCliente" FunctionName="FESTIVALModel.Store.Sp_GuardaCliente" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaCompra" FunctionName="FESTIVALModel.Store.Sp_GuardaCompra" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaCompraCredito" FunctionName="FESTIVALModel.Store.Sp_GuardaCompraCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaDevCompra" FunctionName="FESTIVALModel.Store.Sp_GuardaDevCompra" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaDevVenta" FunctionName="FESTIVALModel.Store.Sp_GuardaDevVenta" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaGasto" FunctionName="FESTIVALModel.Store.Sp_GuardaGasto" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaLibro" FunctionName="FESTIVALModel.Store.Sp_GuardaLibro" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaProveedor" FunctionName="FESTIVALModel.Store.Sp_GuardaProveedor" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaRef" FunctionName="FESTIVALModel.Store.Sp_GuardaRef" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaUser" FunctionName="FESTIVALModel.Store.Sp_GuardaUser" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaVentaCredito" FunctionName="FESTIVALModel.Store.Sp_GuardaVentaCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaVentaIni" FunctionName="FESTIVALModel.Store.Sp_GuardaVentaIni" />
+    <FunctionImportMapping FunctionImportName="Sp_GuardaVentaTotal" FunctionName="FESTIVALModel.Store.Sp_GuardaVentaTotal" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaCliente" FunctionName="FESTIVALModel.Store.Sp_ModificaCliente" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaCompraCXP" FunctionName="FESTIVALModel.Store.Sp_ModificaCompraCXP" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaCompras" FunctionName="FESTIVALModel.Store.Sp_ModificaCompras" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaGasto" FunctionName="FESTIVALModel.Store.Sp_ModificaGasto" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaLibro" FunctionName="FESTIVALModel.Store.Sp_ModificaLibro" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaProveedor" FunctionName="FESTIVALModel.Store.Sp_ModificaProveedor" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificarComprasCredito" FunctionName="FESTIVALModel.Store.Sp_ModificarComprasCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaRef" FunctionName="FESTIVALModel.Store.Sp_ModificaRef" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaReferencia" FunctionName="FESTIVALModel.Store.Sp_ModificaReferencia" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaReferenciaPP" FunctionName="FESTIVALModel.Store.Sp_ModificaReferenciaPP" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificarVentaCredito" FunctionName="FESTIVALModel.Store.Sp_ModificarVentaCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaUser" FunctionName="FESTIVALModel.Store.Sp_ModificaUser" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaVenta" FunctionName="FESTIVALModel.Store.Sp_ModificaVenta" />
+    <FunctionImportMapping FunctionImportName="Sp_ModificaVentaCredito" FunctionName="FESTIVALModel.Store.Sp_ModificaVentaCredito" />
+    <FunctionImportMapping FunctionImportName="Sp_MostrarCompras2" FunctionName="FESTIVALModel.Store.Sp_MostrarCompras2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarCompras2_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_MostrarDevCompras" FunctionName="FESTIVALModel.Store.Sp_MostrarDevCompras">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarDevCompras_Result">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="PROVEEDOR" ColumnName="PROVEEDOR" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_MostrarDevVentaTotal" FunctionName="FESTIVALModel.Store.Sp_MostrarDevVentaTotal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarDevVentaTotal_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_MostrarLibro" FunctionName="FESTIVALModel.Store.Sp_MostrarLibro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarLibro_Result">
+          <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+          <ScalarProperty Name="COMPRAS" ColumnName="COMPRAS" />
+          <ScalarProperty Name="GASTOS" ColumnName="GASTOS" />
+          <ScalarProperty Name="AB_VENTAS" ColumnName="AB_VENTAS" />
+          <ScalarProperty Name="AB_COMPRAS" ColumnName="AB_COMPRAS" />
+          <ScalarProperty Name="UTILIDAD" ColumnName="UTILIDAD" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_MostrarRef" FunctionName="FESTIVALModel.Store.Sp_MostrarRef">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarRef_Result">
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALCOSTO_UNI" ColumnName="VALCOSTO_UNI" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT_MINIMA" ColumnName="CANT_MINIMA" />
+          <ScalarProperty Name="VALCOSTO_TOTAL" ColumnName="VALCOSTO_TOTAL" />
+          <ScalarProperty Name="VALVENTA_TOTAL" ColumnName="VALVENTA_TOTAL" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="UNI_MEDIDA" ColumnName="UNI_MEDIDA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_MostrarVentaInicial" FunctionName="FESTIVALModel.Store.Sp_MostrarVentaInicial">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarVentaInicial_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_MostrarVentaTotal" FunctionName="FESTIVALModel.Store.Sp_MostrarVentaTotal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FESTIVALModel.Sp_MostrarVentaTotal_Result">
+          <ScalarProperty Name="IDVENTA" ColumnName="IDVENTA" />
+          <ScalarProperty Name="REMISION" ColumnName="REMISION" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NUIP" ColumnName="NUIP" />
+          <ScalarProperty Name="VALUNI_VENTA" ColumnName="VALUNI_VENTA" />
+          <ScalarProperty Name="CANT" ColumnName="CANT" />
+          <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHAVENTA" ColumnName="FECHAVENTA" />
+          <ScalarProperty Name="FECHAPAGO" ColumnName="FECHAPAGO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_ValidaCliente" FunctionName="FESTIVALModel.Store.Sp_ValidaCliente" />
+    <FunctionImportMapping FunctionImportName="Sp_ValidaCompra" FunctionName="FESTIVALModel.Store.Sp_ValidaCompra" />
+    <FunctionImportMapping FunctionImportName="Sp_ValidaGasto" FunctionName="FESTIVALModel.Store.Sp_ValidaGasto" />
+    <FunctionImportMapping FunctionImportName="Sp_ValidaProveedor" FunctionName="FESTIVALModel.Store.Sp_ValidaProveedor" />
+    <FunctionImportMapping FunctionImportName="Sp_Validar" FunctionName="FESTIVALModel.Store.Sp_Validar" />
+    <FunctionImportMapping FunctionImportName="Sp_ValidarDescripcion" FunctionName="FESTIVALModel.Store.Sp_ValidarDescripcion" />
+    <FunctionImportMapping FunctionImportName="Sp_Validaref" FunctionName="FESTIVALModel.Store.Sp_Validaref" />
+    <FunctionImportMapping FunctionImportName="Sp_Validareferencia" FunctionName="FESTIVALModel.Store.Sp_Validareferencia" />
+    <FunctionImportMapping FunctionImportName="Sp_ValidarLibro" FunctionName="FESTIVALModel.Store.Sp_ValidarLibro" />
+    <FunctionImportMapping FunctionImportName="Sp_ValidFactura" FunctionName="FESTIVALModel.Store.Sp_ValidFactura" />
+  </EntityContainerMapping>
+</Mapping>

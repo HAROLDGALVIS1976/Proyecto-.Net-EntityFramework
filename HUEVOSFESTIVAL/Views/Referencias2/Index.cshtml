@@ -1,0 +1,259 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsReferencias>
+
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_AdminLayout3.cshtml";
+                List<SelectListItem> ListarCategoria = (List<SelectListItem>)ViewBag.ListarCategoria;
+                List<SelectListItem> ListarRef = (List<SelectListItem>)ViewBag.ListarRef;
+
+}
+
+<br />
+<h3><font color="green"><span>Referencias </span></font></h3>
+<h4><font color="green"><span>@DateTime.Today.Date </span></font></h4>
+<br />
+<div class="modal-footer text-left">
+    <button type="button" onclick="Agregar()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Nueva Ref</button>
+    @Html.ActionLink("PDF", "generarPDF", "Referencias2", null, new { @class = "btn btn-primary", @target = "_blank" })
+    @Html.ActionLink("XLSX", "generarExcel", "Referencias2", null, new { @class = "btn btn-primary", @target = "_blank" })
+
+</div>
+<br />
+@using (Ajax.BeginForm("Filtrar", "Referencias2", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divUsuario",
+    InsertionMode = InsertionMode.Replace
+}, new { @id = "frmFiltrar" }))
+{<div>
+        @Html.Label("Seleccione la Referencia")
+    </div>
+    <div>
+        @Html.DropDownList("Parametro", ListarRef, new { @class = "form-control" })
+    </div>
+    <br />
+    <div id="divUsuario">
+        @Html.Partial("_TablaReferencias", Model)
+    </div>
+}
+<br />
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"><font color="green"> <span>Referencias</span></font></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            @using (Ajax.BeginForm("Guardar", "Referencias2", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo", null, new { @class = "form-control" })
+
+
+                <div class="modal-body">
+                    <div>
+                        @Html.Label("Referencia")
+                        @Html.Editor("Ref", null, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "Ref" } })
+                    </div>
+                    <div>
+                        @Html.Label("Descripcion")
+                        @Html.Editor("descripcion", null, new { htmlAttributes = new { @class = "form-control", @type = "tetx", @id = "descripcion" } })
+                    </div>
+                    <div>
+                        @Html.Label("Cantidad")
+                        @Html.Editor("cant", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "cant" } })
+                    </div>
+                    <div>
+                        @Html.Label("Va Costo Unidad")
+                        @Html.Editor("valcosto_uni", null, new { htmlAttributes = new { @class = "form-control", @type = "number", id = "valcosto_uni" } })
+                    </div>
+                    <div>
+                        @Html.Label("Val Venta Uni")
+                        @Html.Editor("valuni_venta", null, new { htmlAttributes = new { @class = "form-control", @type = "number", id = "valuni_venta" } })
+                    </div>
+                    <div>
+                        @Html.Label("Cant Minima")
+                        @Html.Editor("cant_minima", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "cant_minima" } })
+                    </div>
+
+                    <div>
+                        @Html.Label("Val Costo Total")
+                        @Html.Editor("valcosto_total", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "valcosto_total" } })
+                    </div>
+                    <div>
+                        @Html.Label("Val Venta Total")
+                        @Html.Editor("valventa_total", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "valventa_total" } })
+                    </div>
+                    <div>
+                        @Html.Label("Imagen")
+                        <input type="file" name="imagen" id="imagen" style="width: 100%;" />
+                    </div>
+                    <div>
+                        @Html.Label("Uni Medida")
+                        @Html.Editor("uni_medida", null, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "uni_medida" } })
+                    </div>
+                    <div>
+                        @Html.Label("Categoria")
+                        @Html.DropDownList("categoryid", ListarCategoria, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.Label("Val Minimo Venta")
+                        @Html.Editor("valmin_venta", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "valmin_venta" } })
+                    </div>
+                    <div>
+                        @Html.Label("Porcentaje")
+                        @Html.Editor("porcentaje", null, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "porcentaje" } })
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                    </div>
+                    <br />
+                </div>
+            }
+            <div id="error">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><font color="orange"> <span>¿Dese guardar Los Cambios ?</span></font></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div style="padding:1em">
+                <button type="button" id="btnCerrarConfirmacion" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="ConfirmarEliminar()" class="btn btn-success">Aceptar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function Eliminar(idventa) {
+        document.getElementById("titulo").value = idventa;
+    }
+
+    function ConfirmarEliminar() {
+        var idref = document.getElementById("titulo").value;
+        $.get("Referencias2/EliminarViaje/?idref=" + idref, function (data) {
+
+            if (data == 1) {
+                alert("Se ejecuto correctamente");
+                document.getElementById("btnCerrarConfirmacion").click();
+                $("#frmFiltrar").trigger("submit");
+            } else {
+                alert("Ocurrio un error");
+            }
+
+        })
+
+    }
+
+    function Multiplicar() {
+        var subtotal = 0;
+        var VALUNI = $("#valuni_venta").val();
+        var VALMIN = $("#valmin_venta").val();
+        var CANT = $("#cant").val();
+
+
+        if (parseInt(VALUNI) >= parseInt(VALMIN)) {
+            subtotal = (CANT * VALUNI);
+            console.info(subtotal);
+            $("#monto_total").val(subtotal);
+
+        } else {
+            alert("El Valor de Venta Mininimo debe ser: " + VALMIN + ", Corrija el Valor de Venta por favor");
+        }
+
+    }
+
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var Parametro = document.getElementById("Parametro");
+    Parametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(idref) {
+        Limpiar();
+        document.getElementById("titulo").value = idref;
+        $.get("Referencias2/RecuperarInformacion/?idref=" + idref, function (data) {
+
+            document.getElementById("Ref").value = data.Ref;
+            document.getElementById("descripcion").value = data.descripcion;
+            document.getElementById("cant").value = data.cant;
+            document.getElementById("valcosto_uni").value = data.valcosto_uni;
+            document.getElementById("valuni_venta").value = data.valuni_venta;
+            document.getElementById("cant_minima").value = data.cant_minima;
+            document.getElementById("valcosto_total").value = data.valcosto_total;
+            document.getElementById("valventa_total").value = data.valventa_total;
+            document.getElementById("uni_medida").value = data.uni_medida;
+            document.getElementById("categoryid").value = data.categoryid;
+            document.getElementById("valmin_venta").value = data.valmin_venta;
+            document.getElementById("porcentaje").value = data.porcentaje;
+        })
+    }
+
+    function Agregar() {
+        Limpiar();
+        document.getElementById("titulo").value = -1;
+    }
+
+
+    //Funcion JavaScript para Guardar y Editar los Registros
+    function Guardar(rpta) {
+
+        if (rpta == "1") {
+
+            alert("Se ejecuto correctamente");
+
+        }
+        else {
+            alert("Ocurrio un error");
+
+        }
+    }
+
+
+
+
+
+</script>
+
+

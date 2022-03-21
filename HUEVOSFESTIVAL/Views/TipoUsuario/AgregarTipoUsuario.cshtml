@@ -1,0 +1,57 @@
+﻿@model HUEVOSFESTIVAL.DAL.TIPOUSUARIOREGISTRO
+
+@{
+    ViewBag.Title = "AgregarTipoUsuario";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Agregar TipoUusario....
+    </div>
+    <div class="card-body">
+
+       @using (Html.BeginForm("AgregarTipoUsuario", "TipoUsuario", FormMethod.Post, new { enctype = "muorm-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TIPOUSUARIO, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.TIPOUSUARIO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Nombre-Tipo", htmlAttributes: new { @class = "control -label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-6">
+                        <a href="../TipoUsuario/Index" class="btn btn-danger text-white">Cancelar</a>
+                        <input type="submit" value="Guardar >>" class="btn btn-success" />
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+

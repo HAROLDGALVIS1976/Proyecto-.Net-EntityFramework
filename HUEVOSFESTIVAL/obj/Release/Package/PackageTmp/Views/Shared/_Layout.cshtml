@@ -1,0 +1,110 @@
+﻿@using HUEVOSFESTIVAL.Models.Home;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huevos Festival</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MyMainLayOut.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../Images/FESTIVAL.png" />
+    <link href="Content/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
+   
+</head>
+
+<body>
+    <header >
+        <nav class="navbar-form navbar-right">
+            <div class="navbar navbar-inverse navbar-fixed-top col-md-12">
+                <div class="container2">
+                    <div class="navbar-header col-md-12">
+                        <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" >
+                                          <!-- NombreLink / Vista / Controlador -->
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Ubicacion", "About", "Home")</li>
+                            <li>@Html.ActionLink("Al Carrito", "Checkoutdetails", "Home")</li>
+                            <li>@Html.ActionLink("Login", "Enter", "Loguin")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h3><a><strong>Huevos Festival </strong></a></h3>
+                <p class="text-xl-left text-info"><strong>LLevamos Tu Pedido a Toda el Area Metropolitana </strong></p>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Carito de Compras<b class="caret"></b><i class="fa fa-shopping-cart"></i></a>
+                        <ul class="dropdown-menu">
+                             <li>@Html.ActionLink("Al Carrito", "Checkoutdetails", "Home")</li>
+                            @*@if (Session["cart"] != null)
+                            {
+                                foreach (Item item in (List<Item>)Session["cart"])
+                                {
+                                    <li>
+                                        <a href="@Url.Action("RemoveFromCart", "Home", new {productId=item.Product.IDREF })">@item.Product.DESCRIPCION (@item.Quantity) <i class="fa fa-times"></i></a>
+
+                                    </li>
+                                }
+                            }
+                            <li class="divider"></li>
+                            @*<li><a href="#">IT</a></li>*@
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+            <footer>
+                <div class="row">
+                    <div class="col-md-12 copyright">
+                        <div class="cpy-right text-center py-3">
+                            <br />
+                            <div class="cpy-right text-center py-3">
+                                <p class="">
+                                    <strong class="text-center text-info">Calle 96 N° 68-35 Medellin - Castilla</strong>
+                                    <strong class="text-center text-info">Tel:(034)237 68 90,  Celular:313 727 25 15   Fabian Flores</strong>
+                                    <br />
+                                    <strong class="text-center text-info"> Huevos Festival © - @DateTime.Now.Year | Desarrollado por </strong>
+                                    <strong class="text-center text-info"><a href="https://www.gygsystems.com"> www.gygsystems.com </a></strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 copyright-right">
+                            <ul class="list-unstyled list-social">
+                                <li><a href="https://www.instagram.com/" target="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                                <li><a href="https://api.whatsapp.com/send?phone=+573113395819&text=!Quisiera%20Comunicarme%20con%20ustedes%20?" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

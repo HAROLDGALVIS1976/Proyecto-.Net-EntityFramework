@@ -1,0 +1,40 @@
+Instale el paquete PagedList.MVC 
+Newtonsoft.Json
+En NuGets
+
+Agregar al proyecto la libreria 
+jquery.unobtusive-ajax.js ----- jquery-1.10.2.js 
+en la carpeta Scripts del proyecto.
+Agregar Referencia A System.Transactions
+ en las Referencias del sistema
+Instanciar la libreria
+Using System.Transaction
+
+//libreria para encriptar
+using System.Security.Cryptography;
+//libreria para instanciar bytes
+
+using System.Text;
+//libreria para Asegurar la Transaccion
+using System.Transactions;
+ using (var transaccion = new TransactionScope())
+   {  transaccion.Complete();  }
+
+//la seguridad de las rutas de la pagina Web
+crear carpeta Filtros
+crear clase Aceder
+
+crear el metodo para filtrar los accesos prohibidos
+//libreria para la seguridad de las rutas
+using System.Web.Mvc;
+public class Aceder:ActionFilterAttribute{ }
+//imvocar la Clase que realiza los filtros en los controladore a Proteger
+using HUEVOSFESTIVAL.Filtros;
+y poner el tag con el nombre del metodo (Acceso)
+
+
+Instale el paquete EP PLUS
+En NuGets PARA Crear Archivos de Excel
+
+Agregar Referencia a itextsharp.dll para
+Manejar los Archivos PDF

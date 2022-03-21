@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HUEVOSFESTIVAL.DAL.REFERENCIAS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout2.cshtml";
+}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Referencias....<h5><font color="green"><span>@DateTime.Today.ToLongDateString()</span></font></h5>
+        @*<a href="../Admin/ProductAdd" class="btn btn-info pull-right fa fa-plus">Nuevo Producto</a>*@
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Desccripcion</th>
+                        <th>Cant</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                   @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@item.IDREF</td>
+                            <td>@item.DESCRIPCION</td>
+                            <td>@item.CANT</td>
+                            <td>
+                                @Html.ActionLink("Editar", "EditarRefrencias", new { idref = item.IDREF }@*, new {  @class="btn btn-success glyphicon glyphicon-edit"}*@)
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

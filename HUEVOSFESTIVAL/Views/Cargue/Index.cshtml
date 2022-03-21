@@ -1,0 +1,175 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsCargue>
+
+@{
+    ViewBag.Title = "Cargue";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<SelectListItem> ListarCarga = (List<SelectListItem>)ViewBag.ListarCarga;
+}
+<br />
+<h3><font color="green"><span>Informe Carga</span></font></h3>
+<h4><font color="green"><span>@DateTime.Today.ToLongDateString()</span></font></h4>
+<br />
+@using (Ajax.BeginForm("Filtrar", "Cargue", null, new AjaxOptions
+ {
+    HttpMethod = "POST",
+    UpdateTargetId = "divUsuario",
+    InsertionMode = InsertionMode.Replace
+ }, new { @id = "frmFiltrar" }))
+ {
+
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        @Html.Label("Seleccione el IdCarga")
+        @Html.DropDownList("Parametro", ListarCarga, new { @class = "form-control" })
+    </div>
+    <br />
+    <div id="divUsuario">
+        @Html.Partial("_TablaCargue", Model)
+    </div>
+ }
+<br />
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel"> <font color="green"><span>Modificar Carga</span></font></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!--Metodo / Controlador -->
+            @using (Ajax.BeginForm("Guardar", "Cargue", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "Guardar",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "error"
+            }))
+            {
+                @Html.Hidden("titulo")
+                <div class="modal-body">
+                    <div>
+                        @Html.Label("EXTR")
+                        @Html.Editor("extr", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("AAR")
+                        @Html.Editor("aar", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("AR")
+                        @Html.Editor("ar", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("BR")
+                        @Html.Editor("br", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("EXTB")
+                        @Html.Editor("extb", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("AAB")
+                        @Html.Editor("aab", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("AB")
+                        @Html.Editor("ab", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("BB")
+                        @Html.Editor("bb", null, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    </div>
+                    <div>
+                        @Html.Label("Fecha")
+                        @Html.Editor("fecha", null, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "fecha", @readOnly = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Identificador Carga")
+                        @Html.Editor("idcarga", null, new { htmlAttributes = new { @class = "form-control", @type = "text", @readOnly = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Usuario")
+                        @Html.Editor("idusuario", null, new { htmlAttributes = new { @class = "form-control", @type = "text", @readOnly = "true" } })
+                    </div>
+                    <div>
+                        @Html.Label("Placa Vehiculo")
+                        @Html.Editor("idcarro", null, new { htmlAttributes = new { @class = "form-control", @type = "text", @readOnly = "true" } })
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnClose" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+
+                    </div>
+                </div>
+            }
+            <div id="error">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    function Limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var ncontroles = controles.length;
+        for (var i = 0; i < ncontroles; i++) {
+            controles[i].value = "";
+        }
+        document.getElementById("error").innerHTML = "";
+    }
+
+    // var frmFiltrar = document.getElementById("frmFiltrar");
+    var Parametro = document.getElementById("Parametro");
+    Parametro.onchange = function () {
+        $("#frmFiltrar").trigger("submit");
+    }
+
+
+    //Funcion JvaScript para Recuperar los datos
+    function Editar(id) {
+        Limpiar();
+        document.getElementById("titulo").value = id;
+        $.get("Cargue/RecuperaInformacion/?id=" + id, function (data) {
+            document.getElementById("extr").value = data.extr;
+            document.getElementById("aar").value = data.aar;
+            document.getElementById("ar").value = data.ar;
+            document.getElementById("br").value = data.br;
+            document.getElementById("extb").value = data.extb;
+            document.getElementById("aab").value = data.aab;
+            document.getElementById("ab").value = data.ab;
+            document.getElementById("bb").value = data.bb;
+            document.getElementById("idusuario").value = data.idusuario;
+            document.getElementById("idcarro").value = data.idcarro;
+            document.getElementById("idcarga").value = data.idcarga;
+            document.getElementById("fecha").value = data.Fechacadena;
+        })
+    }
+
+
+    function Guardar(rpta) {
+        if (rpta == 1) {
+            var id = $("#idcarga").val();
+            alert("Gracias por Actualizar el Stock de la Carga con Identificador: " + id + "");
+            document.getElementById("btnClose").click();
+             document.location.href = "@Url.Action("Index","Admin")";
+        }
+        else {
+            alert("Ocurrio un error, no ha Actualizado Ninguna Referencia");
+        }
+
+    }
+
+</script>
+

@@ -1,0 +1,28 @@
+﻿@using HUEVOSFESTIVAL.DAL
+@model List<ClsAbonosVentasCredito>
+@{
+    Layout = null;
+
+}
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>@Html.LabelFor(p => Model[0].ID)</td>
+        <td>@Html.LabelFor(p => Model[0].consecutivo)</td>
+        <td>@Html.LabelFor(p => Model[0].idcliente)</td>
+        <td>@Html.LabelFor(p => Model[0].abono)</td>
+        <td>@Html.LabelFor(P => Model[0].fechabono)</td>
+    </tr>
+     @foreach (var item in Model)
+      {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.consecutivo</td>
+            <td>@item.idcliente</td>
+            <td>@item.abono</td>
+            <td>@item.fechabono</td>
+        </tr>
+      }
+
+   
+
+</table>
